@@ -1,0 +1,268 @@
+.disha-floating {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    height: 65px;
+    min-width: 180px;
+
+    background-color: #d8e9f7;
+
+    border-radius: 35px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 8px 20px 8px 8px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    transition: 0.3s;
+}
+
+.disha-floating:hover {
+    transform: translateY(-3px);
+}
+
+.disha-avatar {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background-color: #d6991e;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    height: 3rem;
+}
+.b-img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    height: 6rem;
+}
+
+.disha-floating span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c97207df;
+}
+
+.disha-chat {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 390px;
+    height: 550px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 35px rgba(0,0,0,0.25);
+
+    overflow: hidden;
+
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+}
+.disha-header {
+    height: 65px;
+
+    background-color: orange;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 15px;
+}
+
+.disha-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.disha-close {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+.disha-body {
+    flex: 1;
+
+    overflow-y: auto;
+
+    background-color: #f5f7fb;
+}
+
+.disha-welcome {
+    text-align: center;
+
+    padding: 35px 20px;
+}
+
+.big-avatar {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    background-color: orange;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.disha-welcome h2 {
+    margin-top: 20px;
+
+    color: #111;
+}
+
+.disha-welcome p {
+    color: #999;
+
+    margin-top: 20px;
+}
+
+.quick-questions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.quick-questions button {
+    min-height: 90px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    text-align: left;
+
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quick-questions button:hover {
+    border-color: orange;
+
+    transform: translateY(-2px);
+}
+.disha-input {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border-top: 1px solid #ddd;
+
+    background-color: white;
+}
+
+.disha-input input {
+    flex: 1;
+
+    height: 45px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 25px;
+
+    padding: 0 18px;
+
+    font-size: 1rem;
+
+    outline: none;
+}
+
+.disha-input button {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background-color: orange;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+.disha-note {
+    text-align: center;
+
+    font-size: 0.7rem;
+
+    color: #999;
+
+    padding: 5px 10px 8px;
+
+    background-color: white;
+}

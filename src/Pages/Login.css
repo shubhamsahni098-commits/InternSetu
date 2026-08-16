@@ -1,0 +1,515 @@
+/*.log-left-mid{
+    height: 30rem;
+    width: 70%;
+    margin-top: 4rem;
+    background-color: aqua;
+}
+.img-div{
+    background-color: pink;
+    height: 100%;
+    width: 40%;
+}*/
+/*
+.log-left-mid {
+   
+    border-radius: 1rem;
+    height: 30rem;
+    width: 70%;
+    margin-top: 4rem;
+    display: flex;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.12);
+    margin-bottom: 5rem;    
+}
+
+.img-div {
+    height: 100%;
+    width: 40%;
+    background-image: url('../assets/rf.png');
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+
+
+.img-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.img-overlay h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-overlay p {
+    font-size: 1.1rem;
+}
+.right{
+    height: 100%;
+    width: 60%;
+   
+}
+.email{
+    height: 3.5rem;
+    width: 60%;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    
+}
+.e-txt{
+    margin-bottom: 0.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(71, 70, 70);
+}
+.input{
+    height: 2.7rem;
+    width: 90%;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    border: 1px solid gray;
+}
+.btn-div{
+  
+    margin-top: 8rem;
+    margin-left: 8rem;
+    height: 3.3rem;
+}
+.log-btn{
+    height: 3.3rem;
+    width: 70%;
+    background-color: rgb(214, 142, 9);
+    border: 1px solid gray;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.log-btn:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.login{
+    color: white;
+    font-size: 1rem;
+}
+.acc{
+    margin-left: 11rem;
+    margin-top: 2rem;
+    color: rgb(61, 61, 61);
+}*/
+
+/* =========================
+   LOGIN MAIN CARD
+========================= */
+
+.log-left-mid {
+    border-radius: 1rem;
+
+    min-height: 30rem;
+    width: 70%;
+
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+
+    display: flex;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   LEFT IMAGE
+========================= */
+
+.img-div {
+    height: 30rem;
+    width: 40%;
+
+    background-image: url('../assets/rf.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+
+/* Overlay */
+
+.img-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+}
+
+.img-overlay h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-overlay p {
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   RIGHT LOGIN SECTION
+========================= */
+
+.right {
+    min-height: 30rem;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================
+   INPUT SECTION
+========================= */
+
+.email {
+    width: 70%;
+
+    margin-top: 3rem;
+}
+
+.e-txt {
+    margin-bottom: 0.2rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    color: rgb(71, 70, 70);
+}
+
+.input {
+    height: 2.7rem;
+    width: 100%;
+
+    border-radius: 7px;
+
+    border: 1px solid gray;
+
+    padding: 0 0.7rem;
+
+    outline: none;
+}
+
+.input:focus {
+    border-color: #f97316;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.btn-div {
+    width: 70%;
+
+    margin-top: 5rem;
+
+    height: 3.3rem;
+}
+
+.log-btn {
+    height: 3.3rem;
+    width: 100%;
+
+    background-color: rgb(214, 142, 9);
+
+    border: 1px solid gray;
+
+    border-radius: 7px;
+
+    transition: 0.3s ease;
+}
+
+.log-btn:hover {
+    background-color: green;
+
+    cursor: pointer;
+
+    transform: translateY(-2px);
+}
+
+.login {
+    color: white;
+
+    font-size: 1rem;
+}
+
+
+/* =========================
+   CREATE ACCOUNT
+========================= */
+
+.acc {
+    margin-top: 2rem;
+
+    color: rgb(61, 61, 61);
+
+    text-align: center;
+}
+
+.acc span {
+    color: green;
+
+    margin-left: 0.3rem;
+
+    text-decoration: none;
+}
+
+.acc span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .log-left-mid {
+        width: 85%;
+
+        min-height: 28rem;
+    }
+
+    .img-div {
+        height: 28rem;
+    }
+
+    .right {
+        min-height: 28rem;
+    }
+
+    .email {
+        width: 75%;
+    }
+
+    .btn-div {
+        width: 75%;
+    }
+
+    .img-overlay h1 {
+        font-size: 2.2rem;
+    }
+
+    .img-overlay p {
+        font-size: 1rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .log-left-mid {
+        width: 90%;
+
+        min-height: auto;
+
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+
+        flex-direction: column;
+    }
+
+
+    /* Image becomes top section */
+
+    .img-div {
+        width: 100%;
+        height: 16rem;
+
+        flex-shrink: 0;
+    }
+
+
+    .img-overlay h1 {
+        font-size: 2.2rem;
+    }
+
+    .img-overlay p {
+        font-size: 1rem;
+    }
+
+
+    /* Login section */
+
+    .right {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 1rem 0 2rem;
+    }
+
+
+    /* Inputs */
+
+    .email {
+        width: 80%;
+
+        margin-top: 1.5rem;
+    }
+
+
+    /* Button */
+
+    .btn-div {
+        width: 80%;
+
+        margin-top: 3rem;
+    }
+
+
+    /* Account */
+
+    .acc {
+        margin-top: 1.5rem;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .log-left-mid {
+        width: 94%;
+
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+
+        border-radius: 0.8rem;
+    }
+
+
+    /* Smaller image */
+
+    .img-div {
+        height: 13rem;
+    }
+
+
+    .img-overlay h1 {
+        font-size: 1.8rem;
+    }
+
+    .img-overlay p {
+        font-size: 0.85rem;
+    }
+
+
+    /* Login section */
+
+    .right {
+        padding-top: 0.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+
+    /* Inputs */
+
+    .email {
+        width: 88%;
+
+        margin-top: 1.3rem;
+    }
+
+    .e-txt {
+        font-size: 0.9rem;
+    }
+
+    .input {
+        height: 2.6rem;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* Button */
+
+    .btn-div {
+        width: 88%;
+
+        margin-top: 2.5rem;
+    }
+
+    .log-btn {
+        height: 3rem;
+    }
+
+
+    /* Account */
+
+    .acc {
+        font-size: 0.8rem;
+
+        margin-top: 1.3rem;
+    }
+    
+}

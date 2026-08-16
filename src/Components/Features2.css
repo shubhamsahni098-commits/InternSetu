@@ -1,0 +1,147 @@
+.features {
+    min-height: 28rem;
+    width: 90%;
+}
+
+/* Cards container */
+.feat-in {
+    width: 100%;
+    min-height: 20rem;
+}
+
+/* Feature card */
+.feat-cards {
+    height: 28%;
+    width: 24%;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    box-shadow: 0 0 15px rgba(17, 17, 16, 0.4);
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+.feat-cards:hover {
+    border-color: #f97316;
+    border-width: 3px;
+    transform: scale(1.08);
+}
+
+/* Heading */
+.f-h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: green;
+    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.f-h {
+    color: green;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 0.8rem;
+}
+
+.f-p {
+    color: rgb(81, 81, 81);
+}
+
+.gap-f {
+    gap: 2rem;
+}
+
+
+/* ========================= */
+/* Tablet */
+/* ========================= */
+
+@media (max-width: 1024px) {
+
+    .features {
+        width: 90%;
+        min-height: auto;
+    }
+
+    .feat-cards {
+        width: 31%;
+        height: auto;
+        min-height: 150px;
+    }
+
+    .f-h1 {
+        font-size: 2.5rem;
+    }
+
+    .f-h {
+        font-size: 1.1rem;
+    }
+
+    .f-p {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .features {
+        width: 90%;
+        min-height: auto;
+    }
+
+    .feat-in {
+        height: auto;
+        gap: 1.5rem;
+    }
+
+    .feat-cards {
+        width: 47%;
+        height: auto;
+        min-height: 150px;
+    }
+
+    .f-h1 {
+        font-size: 2.2rem;
+    }
+}
+
+
+/* ========================= */
+/* Small Mobile */
+/* ========================= */
+
+@media (max-width: 480px) {
+
+    .features {
+        width: 92%;
+    }
+
+    .feat-in {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .feat-cards {
+        width: 100%;
+        min-height: 130px;
+    }
+
+    .f-h1 {
+        font-size: 2rem;
+    }
+
+    .f-h {
+        font-size: 1.05rem;
+    }
+
+    .f-p {
+        font-size: 0.9rem;
+    }
+
+    .feat-cards:hover {
+        transform: scale(1.02);
+    }
+}

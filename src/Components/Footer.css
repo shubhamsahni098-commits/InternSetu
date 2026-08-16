@@ -1,0 +1,650 @@
+/*.ft-div{
+    height: 23rem;
+    width: 100%;
+    background-color: orange;
+}
+.ft1{
+    height: 100%;
+    width: 33%;
+    
+    margin-left: 2rem;
+}
+.ft2{
+    height: 100%;
+    width: 15%;
+   
+}
+.ft3{
+    height: 100%;
+    width: 15%;
+    
+    
+}
+.gap-ft{
+    gap: 6rem;
+}
+.gap-lg{
+    gap: 0.4rem;
+}
+.sat-img{
+    height: 3rem;
+}
+.in-div{
+    position: relative;
+   background-color: white;
+   height: 3rem;
+   aspect-ratio: 1;
+   border-radius: 50%;
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   -ms-border-radius: 50%;
+   -o-border-radius: 50%;
+}
+
+.in-logo{
+    position: absolute;
+    top: 1rem;
+    left: 0.4rem;
+    height: 1rem;
+}
+.ft-logo{
+    margin-top: 1rem;
+}
+.p-div{
+    margin-top: 0.7rem;
+    color: rgb(81,81,81);
+}
+.h2-div{
+    margin-top: 3rem;
+}
+.text{
+    color: rgb(81,81,81);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.social {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.social:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+
+/* Facebook */
+
+.facebook {
+    background-color: #1877F2;
+}
+
+
+/* X */
+
+.twitter {
+    background-color: #000000;
+}
+
+
+/* Instagram */
+
+.instagram {
+    background: linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+}
+
+
+/* LinkedIn */
+
+.linkedin {
+    background-color: #0A66C2;
+}
+
+
+/* YouTube */
+/*
+.youtube {
+    background-color: #FF0000;
+}
+
+.line-div{
+    margin-top: 2rem;
+}
+.line {
+    height: 2px;
+    border: none;
+    background-color: rgb(81,81,81);
+}
+.cpy{
+    margin-top: 8px;
+}
+.close{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.list-ft2{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    list-style: none;
+    color: white;
+}
+.list-ft2:hover{
+    color: green;
+    cursor: pointer;
+}*/
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.ft-div {
+    min-height: 23rem;
+    width: 100%;
+    background-color: orange;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   FIRST SECTION
+========================= */
+
+.ft1 {
+    min-height: 23rem;
+    width: 33%;
+
+    margin-left: 2rem;
+}
+
+
+/* =========================
+   LINK COLUMNS
+========================= */
+
+.ft2,
+.ft3 {
+    min-height: 23rem;
+    width: 15%;
+}
+
+
+/* =========================
+   GAPS
+========================= */
+
+.gap-ft {
+    gap: 6rem;
+}
+
+.gap-lg {
+    gap: 0.4rem;
+}
+
+
+/* =========================
+   LOGOS
+========================= */
+
+.sat-img {
+    height: 3rem;
+}
+
+.in-div {
+    position: relative;
+
+    background-color: white;
+
+    height: 3rem;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+}
+
+.in-logo {
+    position: absolute;
+
+    top: 1rem;
+    left: 0.4rem;
+
+    height: 1rem;
+}
+
+.ft-logo {
+    margin-top: 1rem;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.p-div {
+    margin-top: 0.7rem;
+    color: rgb(81, 81, 81);
+}
+
+
+/* =========================
+   FOLLOW US
+========================= */
+
+.h2-div {
+    margin-top: 3rem;
+}
+
+.text {
+    color: rgb(81, 81, 81);
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.social-icons {
+    display: flex;
+
+    gap: 1rem;
+
+    align-items: center;
+
+    margin-top: 1rem;
+}
+
+.social {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.social:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+
+/* Facebook */
+
+.facebook {
+    background-color: #1877F2;
+}
+
+
+/* X */
+
+.twitter {
+    background-color: #000000;
+}
+
+
+/* Instagram */
+
+.instagram {
+    background: linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+}
+
+
+/* LinkedIn */
+
+.linkedin {
+    background-color: #0A66C2;
+}
+
+
+/* YouTube */
+
+.youtube {
+    background-color: #FF0000;
+}
+
+
+/* =========================
+   COPYRIGHT LINE
+========================= */
+
+.line-div {
+    margin-top: 2rem;
+}
+
+.line {
+    height: 2px;
+
+    border: none;
+
+    background-color: rgb(81, 81, 81);
+}
+
+.cpy {
+    margin-top: 8px;
+}
+
+.close {
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.list-ft2 {
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+    list-style: none;
+
+    color: white;
+}
+
+.list-ft2:hover {
+    color: green;
+    cursor: pointer;
+}
+
+
+/* =================================================
+   TABLET
+================================================= */
+
+@media (max-width: 1024px) {
+
+    .ft-div {
+        min-height: auto;
+
+        gap: 2rem;
+
+        padding: 1.5rem;
+    }
+
+    .ft1 {
+        width: 45%;
+        margin-left: 0;
+
+        min-height: auto;
+    }
+
+    .ft2,
+    .ft3 {
+        width: 20%;
+        min-height: auto;
+    }
+
+    .gap-ft {
+        gap: 2rem;
+    }
+
+    .p-div {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .list-ft2 {
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 768px) {
+
+    .ft-div {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 2rem 1.5rem;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 2rem;
+    }
+
+
+    /* First section takes full width */
+
+    .ft1 {
+        width: 100%;
+        min-height: auto;
+
+        margin-left: 0;
+
+        grid-column: 1 / -1;
+    }
+
+
+    /* Link columns */
+
+    .ft2,
+    .ft3 {
+        width: 100%;
+        min-height: auto;
+    }
+
+
+    .gap-ft {
+        gap: 1rem;
+    }
+
+
+    /* Logo */
+
+    .ft-logo {
+        margin-top: 0;
+    }
+
+
+    /* Description */
+
+    .p-div {
+        font-size: 0.9rem;
+
+        line-height: 1.5;
+
+        max-width: 600px;
+    }
+
+
+    /* Follow */
+
+    .h2-div {
+        margin-top: 2rem;
+    }
+
+    .text {
+        font-size: 1.3rem;
+    }
+
+
+    /* Social */
+
+    .social-icons {
+        gap: 0.8rem;
+    }
+
+    .social {
+        width: 40px;
+        height: 40px;
+
+        font-size: 1.2rem;
+    }
+
+
+    /* Line */
+
+    .line-div {
+        margin-top: 1.5rem;
+    }
+
+
+    /* Copyright */
+
+    .close {
+        font-size: 0.8rem;
+    }
+
+
+    /* Links */
+
+    .list-ft2 {
+        margin-left: 0;
+
+        margin-top: 1rem;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =================================================
+   SMALL MOBILE
+================================================= */
+
+@media (max-width: 480px) {
+
+    .ft-div {
+        padding: 1.5rem 1rem;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 1rem;
+    }
+
+
+    /* First section */
+
+    .ft1 {
+        width: 100%;
+    }
+
+
+    /* Logos */
+
+    .sat-img {
+        height: 2.5rem;
+    }
+
+    .in-div {
+        height: 2.5rem;
+    }
+
+    .in-logo {
+        height: 0.85rem;
+
+        top: 0.85rem;
+        left: 0.3rem;
+    }
+
+
+    /* Description */
+
+    .p-div {
+        font-size: 0.8rem;
+
+        line-height: 1.5;
+    }
+
+
+    /* Follow */
+
+    .h2-div {
+        margin-top: 1.5rem;
+    }
+
+    .text {
+        font-size: 1.1rem;
+    }
+
+
+    /* Social */
+
+    .social-icons {
+        gap: 0.6rem;
+    }
+
+    .social {
+        width: 35px;
+        height: 35px;
+
+        font-size: 1rem;
+    }
+
+
+    /* Copyright */
+
+    .close {
+        font-size: 0.7rem;
+
+        line-height: 1.4;
+    }
+
+
+    /* Links */
+
+    .list-ft2 {
+        margin-top: 0.8rem;
+
+        font-size: 0.8rem;
+    }
+    .ft-div{
+        position: relative;
+        top: 25rem;
+    }
+}

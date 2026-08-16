@@ -1,0 +1,318 @@
+/*.log-ft2{
+    background-color: orange;
+    height: 12rem;
+}
+.end{
+    margin-top: 1rem;
+
+}
+.e-l{
+    height: 3px;
+
+    border: none;
+
+    background-color: white;
+}
+.p-div2 {
+    font-size: 1.1rem;
+    width: 50%;
+    margin-left: 25rem;
+    color: rgb(81, 81, 81);
+}
+.ft-div {
+    min-height: 23rem;
+    width: 100%;
+    background-color: orange;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.ft-logo2 {
+    margin-top: 1rem;
+    margin-left: 45rem;
+    height: 4rem;
+    
+}
+.c-text{
+    margin-top: 0.4rem;
+    margin-left: 0.4rem;
+    color: rgb(70, 70, 70);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.in-div {
+    position: relative;
+
+    background-color: white;
+
+    height: 3rem;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+}
+
+.in-logo {
+    position: absolute;
+
+    top: 1rem;
+    left: 0.4rem;
+
+    height: 1rem;
+}
+*/
+/* =========================
+   LOGIN FOOTER
+========================= */
+
+.log-ft2 {
+    background-color: orange;
+
+    min-height: 12rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.ft-logo2 {
+    margin-top: 1rem;
+
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Parliament / Government logo */
+
+.sat-img {
+    height: 3rem;
+    width: auto;
+}
+
+
+/* InternSetu logo circle */
+
+.in-div {
+    position: relative;
+
+    background-color: white;
+
+    height: 3rem;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+}
+
+
+/* InternSetu logo */
+
+.in-logo {
+    position: absolute;
+
+    top: 1rem;
+    left: 0.4rem;
+
+    height: 1rem;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.p-div2 {
+    font-size: 1.1rem;
+
+    width: 50%;
+
+    margin-top: 0.5rem;
+
+    color: rgb(81, 81, 81);
+
+    text-align: center;
+}
+
+
+/* =========================
+   LINE
+========================= */
+
+.end {
+    width: 90%;
+
+    margin-top: 1rem;
+}
+
+.e-l {
+    height: 3px;
+
+    border: none;
+
+    background-color: white;
+
+    margin: 0;
+}
+
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.end-txt {
+    width: 100%;
+
+    text-align: center;
+}
+
+.c-text {
+    margin-top: 0.4rem;
+
+    color: rgb(70, 70, 70);
+
+    font-family:
+        Cambria,
+        Cochin,
+        Georgia,
+        Times,
+        'Times New Roman',
+        serif;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1024px) {
+
+    .log-ft2 {
+        min-height: 12rem;
+    }
+
+    .p-div2 {
+        width: 70%;
+
+        font-size: 1rem;
+    }
+
+    .end {
+        width: 90%;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .log-ft2 {
+    min-height: 13rem;
+    padding-bottom: 0.5rem;
+}
+
+
+    .ft-logo2 {
+        margin-top: 1rem;
+    }
+
+
+    .p-div2 {
+        width: 85%;
+
+        font-size: 0.95rem;
+
+        line-height: 1.4;
+    }
+
+
+    .end {
+        width: 90%;
+
+        margin-top: 1rem;
+    }
+
+
+    .c-text {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .log-ft2 {
+    min-height: 14rem;
+    padding-bottom: 0.7rem;
+}
+
+
+    .ft-logo2 {
+        height: 3.5rem;
+
+        margin-top: 0.8rem;
+    }
+
+
+    .sat-img {
+        height: 2.5rem;
+    }
+
+
+    .in-div {
+        height: 2.5rem;
+    }
+
+
+    .in-logo {
+        top: 0.85rem;
+        left: 0.3rem;
+
+        height: 0.85rem;
+    }
+
+
+    .p-div2 {
+        width: 90%;
+
+        font-size: 0.85rem;
+
+        line-height: 1.35;
+
+        margin-top: 0.3rem;
+    }
+
+
+    .end {
+        width: 92%;
+
+        margin-top: 1rem;
+    }
+
+
+    .e-l {
+        height: 2px;
+    }
+
+
+    .c-text {
+        font-size: 0.72rem;
+
+        margin-top: 0.4rem;
+    }
+}

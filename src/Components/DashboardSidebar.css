@@ -1,0 +1,124 @@
+.dashboard-sidebar {
+    width: 240px;
+
+    min-height: 100vh;
+
+    flex-shrink: 0;
+
+    background-color: white;
+
+    border-right: 1px solid #eee;
+
+    padding: 1.5rem 1rem;
+
+    box-sizing: border-box;
+}
+
+
+.sidebar-title {
+    padding: 0 0.8rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.sidebar-title h2 {
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.intern-text {
+    color: #f97316;
+}
+
+.setu-text {
+    color: green;
+}
+
+
+.sidebar-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.4rem;
+}
+
+
+.sidebar-link {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    padding: 0.8rem;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #555;
+
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+
+.sidebar-link:hover {
+    background-color: #fff3e8;
+
+    color: #f97316;
+}
+
+
+/* Active route */
+
+.sidebar-link.active {
+    background-color: #f97316;
+
+    color: white;
+}
+
+
+@media (max-width: 700px) {
+
+    .dashboard-sidebar {
+        width: 70px;
+
+        padding: 1rem 0.5rem;
+    }
+
+
+    .sidebar-title {
+        text-align: center;
+
+        padding: 0;
+
+        margin-bottom: 1.5rem;
+    }
+
+
+    .sidebar-title h2 {
+        font-size: 0;
+    }
+
+
+    .sidebar-title h2::first-letter {
+        font-size: 1.4rem;
+    }
+
+
+    .sidebar-link {
+        justify-content: center;
+
+        padding: 0.8rem;
+    }
+
+
+    .sidebar-link span {
+        display: none;
+    }
+
+}

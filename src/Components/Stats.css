@@ -1,0 +1,379 @@
+/*.stats-div{
+    
+    height: 20rem;
+    width: 95%;
+    margin-left: 2rem ;
+}
+.gap-s{
+    gap: 14rem;
+}
+.about{
+    
+    height: 13rem;
+    width: 30rem;
+}
+.about-h2{
+    margin-bottom: 0.4rem;
+    color: green;
+}
+.about-h1{
+    margin-bottom: 0.3rem;
+    
+}
+.about-p{
+    color: rgb(81,81,81);
+ 
+}
+.more{
+    margin-top: 2rem;
+
+} 
+.stats{
+    background-color: #fbeade;
+    height: 13rem;
+    width: 38rem;
+    border-radius: 1.4rem;
+    -webkit-border-radius: 1.4rem;
+    -moz-border-radius: 1.4rem;
+    -ms-border-radius: 1.4rem;
+    -o-border-radius: 1.4rem;
+}
+.data{
+    
+    width: 40%;
+}
+.d1{
+    margin-left: 3rem;
+}   
+.d2{
+    margin-left: 3rem;
+}
+
+.d1-p{
+    
+    margin-left: 2.9rem;
+}
+.s-logo{
+    height: 8rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid orange;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(19, 18, 18, 0.3);
+}
+.s-img{
+    height: 3rem;
+    top: 2.5rem;
+    left: 0.3rem;
+    
+   
+}*/
+.stats-div {
+    min-height: 20rem;
+    width: 95%;
+    margin-left: 2rem;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
+   GAP
+========================= */
+
+.gap-s {
+    gap: 14rem;
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about {
+    min-height: 13rem;
+    width: 30rem;
+}
+
+.about-h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 0.4rem;
+    color: green;
+}
+
+.about-h1 {
+    margin-bottom: 0.3rem;
+}
+
+.about-p {
+    color: rgb(81, 81, 81);
+}
+
+.more {
+    margin-top: 2rem;
+}
+
+
+/* =========================
+   STATS BOX
+========================= */
+
+.stats {
+    background-color: #fbeade;
+
+    min-height: 13rem;
+    width: 38rem;
+
+    border-radius: 1.4rem;
+}
+
+
+/* =========================
+   DATA
+========================= */
+
+.data {
+    width: 40%;
+}
+
+.d1,
+.d2 {
+    margin-left: 3rem;
+}
+
+.d1-p {
+    margin-left: 2.9rem;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.s-logo {
+    height: 8rem;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    border: 2px solid orange;
+
+    background-color: white;
+
+    box-shadow: 0 0 30px rgba(19, 18, 18, 0.3);
+}
+
+.s-img {
+    height: 3rem;
+
+    top: 2.5rem;
+    left: 0.3rem;
+}
+
+
+/* =================================================
+   TABLET
+================================================= */
+
+@media (max-width: 1024px) {
+
+    .stats-div {
+        width: 90%;
+        margin: auto;
+    }
+
+    .gap-s {
+        gap: 3rem;
+    }
+
+    .about {
+        width: 45%;
+    }
+
+    .stats {
+        width: 55%;
+    }
+
+    .about-h1 {
+        font-size: 1.8rem;
+    }
+
+    .about-p {
+        font-size: 0.9rem;
+    }
+
+    .data {
+        width: 55%;
+    }
+
+    .d1,
+    .d2 {
+        margin-left: 1.5rem;
+    }
+
+    .d1-p {
+        margin-left: 1.4rem;
+    }
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 768px) {
+
+    .stats-div {
+        width: 90%;
+        margin: auto;
+
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 2rem;
+    }
+
+    .about {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .about-h2 {
+        font-size: 1.3rem;
+    }
+
+    .about-h1 {
+        font-size: 1.8rem;
+    }
+
+    .about-p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .more {
+        margin-top: 1.5rem;
+    }
+
+
+    /* Stats box */
+
+    .stats {
+        width: 100%;
+        min-height: 13rem;
+
+        padding: 1rem;
+    }
+
+    .data {
+        width: 55%;
+    }
+
+    .d1,
+    .d2 {
+        margin-left: 0.5rem;
+    }
+
+    .d1 h1,
+    .d2 h1 {
+        font-size: 1.5rem;
+    }
+
+    .d1-p {
+        margin-left: 2.2rem;
+        font-size: 0.9rem;
+    }
+
+    .s-logo {
+        height: 7rem;
+    }
+
+    .s-img {
+        height: 2.5rem;
+        top: 2.2rem;
+        left: 0.2rem;
+    }
+}
+
+
+/* =================================================
+   SMALL MOBILE
+================================================= */
+
+@media (max-width: 480px) {
+
+    .stats-div {
+        width: 92%;
+        gap: 1.5rem;
+    }
+
+    .about {
+        width: 100%;
+    }
+
+    .about-h2 {
+        font-size: 1.1rem;
+    }
+
+    .about-h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .about-p {
+        font-size: 0.85rem;
+    }
+
+    .more {
+        margin-top: 1rem;
+    }
+
+
+    /* Stats */
+
+    .stats {
+        width: 100%;
+        min-height: 12rem;
+
+        padding: 0.8rem;
+
+        gap: 0.5rem;
+    }
+
+    .data {
+        width: 58%;
+    }
+
+    .d1,
+    .d2 {
+        margin-left: 1.5rem;
+    }
+    .d2{
+        margin-top: 1.5rem;
+    }
+
+    .d1 h1,
+    .d2 h1 {
+        font-size: 1.3rem;
+    }
+
+    .d1-p {
+        margin-left: 2rem;
+        font-size: 0.8rem;
+    }
+
+    .s-logo {
+        height: 6rem;
+    }
+
+    .s-img {
+        height: 2.2rem;
+        top: 1.8rem;
+        left: 0.1rem;
+    }
+    .stats-div{
+        position: relative;
+        top: 24rem;
+    }
+}

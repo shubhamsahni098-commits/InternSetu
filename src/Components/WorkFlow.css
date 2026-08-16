@@ -1,0 +1,27 @@
+/*.flow{
+    background-color: pink;
+    height: 30rem;
+    width: 100%;
+}
+.work-img{
+    height: 32rem;
+    width: 100%;
+}*/
+.flow {
+    
+    width: 100%;
+    height: auto;
+   
+}
+
+.work-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+@media(max-width:480px){
+    .work-img{
+        position: relative;
+        top: 22rem;
+    }
+}

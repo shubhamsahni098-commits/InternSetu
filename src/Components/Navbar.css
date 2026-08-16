@@ -1,0 +1,68 @@
+*{
+   
+    margin: 0;
+    box-sizing: border-box;
+}
+.nav-1{
+    
+    min-height: 45px;
+}
+.logo{
+    height: 55px;
+}
+.satymev{
+    height: 55px;
+}
+.language-select {
+  height: 35px;
+  padding: 4px 2px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+.gap-2{
+    gap: 2rem;
+}
+.gap-1{
+    gap: 0.4rem;
+}
+.gap{
+    gap: 55%;
+}
+.pd{
+    padding: 12px;
+}
+.m{
+    margin-left: 1rem;
+}
+.m-r{
+    margin-right: 3rem;
+}
+
+/*    Nav 2  */
+
+.nav-2{
+    background-color: orange;
+    height: 50px;
+}
+.nav-link{
+    height: 50px;
+    width: 60%;
+    
+}
+.link{
+    height: inherit;
+    width: 6rem;  
+}
+.link:hover{
+    background-color: green;
+    color: white;
+}
+.gap-4{
+    gap: 4rem;
+}
+.gap-c{
+    gap: 34rem;
+}

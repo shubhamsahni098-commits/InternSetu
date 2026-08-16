@@ -1,0 +1,2515 @@
+/*.header{
+    background-color: rgb(197, 159, 121);
+    height: 20rem;
+    width: 100%;
+}
+.l-hd{
+    height: 100%;
+    width: 34%;
+   
+
+}
+.img-hd{
+    background-color: rgb(43, 119, 20);
+    height: 18rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    
+}
+.r-hd{
+   
+    height: 60%;
+    width: 58%;
+    margin-top: 6rem;
+}
+.r-h4{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    color: green;
+}
+.line-dv{
+    margin-top: 1rem;
+}
+.l-dv{
+    height: 2px;
+
+    border: none;
+
+    background-color: rgb(6, 89, 38);
+}
+.hd-e{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(3, 3, 64);
+}*/
+
+.header {
+    background-color: #FFF3E0;
+    min-height: 20rem;
+    width: 100%;
+
+    display: flex;
+}
+
+.l-hd {
+    height: 20rem;
+    width: 34%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-hd {
+    height: 18rem;
+    width: 18rem;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background-color: rgb(43, 119, 20);
+
+    flex-shrink: 0;
+}
+
+.about-img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
+
+.r-hd {
+    height: auto;
+    width: 59%;
+
+    margin-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+.r-h4 {
+    font-family: 'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 1.5rem;
+
+    color: green;
+
+    line-height: 1.4;
+
+    margin: 0;
+}
+
+.line-dv {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.l-dv {
+    height: 2px;
+
+    border: none;
+
+    background-color: rgb(6, 89, 38);
+
+    width: 100%;
+}
+
+.hd-e {
+    font-family: 'Trebuchet MS',
+        'Lucida Sans Unicode',
+        'Lucida Grande',
+        'Lucida Sans',
+        Arial,
+        sans-serif;
+
+    color: rgb(3, 3, 64);
+
+    display: block;
+}
+
+.hd-e:first-of-type {
+    margin-top: 1rem;
+}
+
+.hd-e:last-of-type {
+    margin-top: 0.4rem;
+}
+@media (max-width: 600px) {
+
+    .header {
+        min-height: auto;
+
+        flex-direction: column;
+
+        padding: 2rem 1rem 3rem;
+    }
+
+    .l-hd {
+        width: 100%;
+        height: auto;
+
+        margin-bottom: 2rem;
+    }
+
+    .img-hd {
+        height: 13rem;
+        width: 13rem;
+    }
+
+    .r-hd {
+        width: 100%;
+
+        margin-top: 0;
+
+        padding: 0 1rem;
+
+        text-align: center;
+    }
+
+    .r-h4 {
+        font-size: 1.15rem;
+
+        line-height: 1.5;
+
+        margin-bottom: 0.5rem;
+    }
+
+    .line-dv {
+        margin-top: 1.5rem;
+    }
+
+    .l-dv {
+        width: 90%;
+        margin: auto;
+    }
+
+    .hd-e {
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 400px) {
+
+    .header {
+        padding: 1.5rem 0.7rem 2.5rem;
+    }
+
+    .img-hd {
+        height: 11rem;
+        width: 11rem;
+    }
+
+    .r-h4 {
+        font-size: 1rem;
+    }
+
+    .hd-e {
+        font-size: 0.75rem;
+    }
+}
+
+/*ab-dv
+.ab-dv{
+    height: 28rem;
+   
+}
+.ab-l{
+    height: 24rem;
+    width: 50rem;
+    margin-left: 4rem;
+    
+}
+.ab-r{
+    height: 24rem;
+    width: 50rem;
+    margin-right: 4rem;
+   
+}
+.ab-l-in1{
+    height: 15rem;
+    width: 100%;
+   
+}
+.ab-l-in2{
+    height: 9rem;
+    width: 100%;
+   
+}
+.ab-cards1{
+    height: 7rem;
+    width: 12rem;
+    background-color: white;
+    border: 1px solid green;
+}
+.ab-cards1 {
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.ab-cards1:hover {
+    background-color: green;
+}
+
+.ab-cards1:hover .card-icon {
+    color: white;
+}
+
+.ab-cards1:hover h3 {
+    color: white;
+}
+.ab-cards2{
+    height: 7rem;
+    width: 12rem;
+    background-color: rgb(24, 138, 85);
+}
+.ab-cards3{
+    height: 7rem;
+    width: 12rem;
+    background-color: rgb(78, 45, 5);
+}
+.gap-ab{
+    gap: 2rem;
+}
+.ab-dv1{
+    height: 16rem;
+    width: 12rem;
+    
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+    
+
+}
+.ab-dv2{
+     height: 16rem;
+    width: 12rem;
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+     
+    
+
+}
+.ab-dv3{
+     height: 16rem;
+    width: 12rem;
+     
+     box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+    
+
+}
+.img-div-ab{
+    height: 10rem;
+    width: 100%;
+    
+}
+.ab-img{
+    height: 10.9rem;
+}
+.ab-img3{
+    height: 10.9rem;
+}
+.post{
+    text-align: center;
+    padding: 0.7rem  ;
+    
+    height: 3rem;
+    width: 100%;
+    
+    margin-top: 1rem;
+}
+.post-p{
+    height: 3rem;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    color: #040f44;
+    margin-top: 5px;
+}
+.ab-h4{
+   
+    padding-top: 3rem;
+    padding-left: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    color: rgb(10, 84, 10);
+}
+.ab-p{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.card-icon {
+    font-size: 2.2rem;
+    color: #173b7a;
+    margin-bottom: 1rem;
+    
+}
+
+
+
+
+
+
+
+.ab-r {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    padding: 2rem 4rem 3rem;
+}
+
+.ab-dv1,
+.ab-dv2,
+.ab-dv3 {
+    height: 16rem;
+    width: 12rem;
+
+    flex-shrink: 0;
+
+    background-color: white;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+
+    transition: all 0.3s ease;
+}
+
+.ab-dv1:hover,
+.ab-dv2:hover,
+.ab-dv3:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 20px rgba(0, 0, 0, 0.18),
+        0 20px 35px rgba(0, 0, 0, 0.12);
+}
+
+.img-div-ab {
+    height: 10rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow: hidden;
+
+    background-color: white;
+}
+
+.ab-img,
+.ab-img3 {
+    width: 100%;
+    height: 10.9rem;
+
+    object-fit: contain;
+    object-position: center top;
+
+    display: block;
+}
+
+.post {
+    text-align: center;
+
+    padding: 0.5rem;
+
+    min-height: 2.5rem;
+    height: auto;
+    width: 100%;
+
+    margin-top: 0.5rem;
+
+    font-weight: 600;
+
+    box-sizing: border-box;
+}
+
+.post-p {
+    min-height: 3rem;
+    height: auto;
+    width: 100%;
+
+    background-color: white;
+
+    text-align: center;
+
+    color: #040f44;
+
+    margin: 0;
+
+    padding: 0 0.4rem;
+
+    box-sizing: border-box;
+
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+
+    .ab-l {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ab-r {
+        width: 100%;
+
+        padding: 2rem;
+
+        gap: 1.5rem;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 11rem;
+        height: 16rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        height: 10.5rem;
+    }
+
+    .post {
+        font-size: 0.95rem;
+    }
+
+    .post-p {
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 600px) {
+
+    .ab-l {
+        width: 100%;
+
+        height: auto;
+
+        margin: 0;
+    }
+
+    .ab-l-in1 {
+        height: auto;
+    }
+
+    .ab-l-in2 {
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 1rem;
+
+        padding: 1rem;
+    }
+
+    .ab-cards1,
+    .ab-cards2,
+    .ab-cards3 {
+        width: 90%;
+        max-width: 20rem;
+
+        height: 7rem;
+    }
+
+    .ab-r {
+        width: 100%;
+
+        height: auto;
+
+        margin: 0;
+
+        padding: 2rem 1rem 3rem;
+
+        flex-direction: column;
+
+        gap: 2rem;
+
+        align-items: center;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 18rem;
+        height: 16rem;
+    }
+
+    .img-div-ab {
+        height: 10rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        height: 10.5rem;
+
+        width: 100%;
+    }
+
+    .post {
+        font-size: 1rem;
+
+        margin-top: 0.5rem;
+    }
+
+    .post-p {
+        font-size: 0.9rem;
+
+        padding: 0 0.5rem;
+    }
+
+    .ab-h4 {
+        padding-top: 2rem;
+        padding-left: 1rem;
+
+        font-size: 1.1rem;
+    }
+
+    .ab-p {
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .ab-r {
+        padding: 1.5rem 0.5rem 2rem;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 16rem;
+        height: 15.5rem;
+    }
+
+    .img-div-ab {
+        height: 9.7rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        height: 10rem;
+    }
+
+    .post {
+        font-size: 0.95rem;
+    }
+
+    .post-p {
+        font-size: 0.82rem;
+    }
+
+    .card-icon {
+        font-size: 2rem;
+    }
+}*/
+
+/* =========================
+   MAIN ABOUT CONTAINER
+========================= */
+
+.ab-dv {
+    min-height: 28rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.ab-l {
+    height: 24rem;
+    width: 48%;
+
+    margin-left: 4rem;
+
+    box-sizing: border-box;
+}
+
+.ab-l-in1 {
+    height: 15rem;
+    width: 100%;
+}
+
+.ab-l-in2 {
+    height: 9rem;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+
+/* =========================
+   THREE ABOUT CARDS
+========================= */
+
+.ab-cards1,
+.ab-cards2,
+.ab-cards3 {
+    height: 7rem;
+    width: 12rem;
+
+    flex-shrink: 1;
+
+    background-color: white;
+
+    box-sizing: border-box;
+}
+
+.ab-cards1 {
+    border: 1px solid green;
+
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.ab-cards1:hover {
+    background-color: green;
+}
+
+.ab-cards1:hover .card-icon {
+    color: white;
+}
+
+.ab-cards1:hover h3 {
+    color: white;
+}
+
+.ab-cards2 {
+    background-color: rgb(24, 138, 85);
+}
+
+.ab-cards3 {
+    background-color: rgb(78, 45, 5);
+}
+
+.gap-ab {
+    gap: 2rem;
+}
+
+
+/* =========================
+   ABOUT TEXT
+========================= */
+
+.ab-h4 {
+    padding-top: 3rem;
+    padding-left: 2rem;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+
+    color: rgb(10, 84, 10);
+}
+
+.ab-p {
+    margin-left: 2rem;
+    margin-top: 1rem;
+
+    font-size: 1.3rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    line-height: 1.4;
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    color: #173b7a;
+
+    margin-bottom: 1rem;
+}
+
+
+/* =========================
+   RIGHT SECTION
+   MINISTER CARDS
+========================= */
+
+.ab-r {
+    height: auto;
+    width: 48%;
+
+    margin-right: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 2rem;
+
+    flex-wrap: wrap;
+
+    padding-top: 2rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   MINISTER CARD
+========================= */
+
+.ab-dv1,
+.ab-dv2,
+.ab-dv3 {
+    height: 16rem;
+    width: 12rem;
+
+    flex-shrink: 1;
+
+    background-color: white;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+
+    transition: all 0.3s ease;
+
+    box-sizing: border-box;
+}
+
+.ab-dv1:hover,
+.ab-dv2:hover,
+.ab-dv3:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 20px rgba(0, 0, 0, 0.18),
+        0 20px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   MINISTER IMAGE
+========================= */
+
+.img-div-ab {
+    height: 10rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow: hidden;
+
+    background-color: white;
+}
+
+.ab-img,
+.ab-img3 {
+    width: 100%;
+    height: 10.9rem;
+
+    object-fit: contain;
+    object-position: center top;
+
+    display: block;
+}
+
+
+/* =========================
+   MINISTER NAME
+========================= */
+
+.post {
+    text-align: center;
+
+    padding: 0.5rem;
+
+    min-height: 2.5rem;
+    height: auto;
+
+    width: 100%;
+
+    margin-top: 0.5rem;
+
+    font-weight: 600;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   MINISTER DESIGNATION
+========================= */
+
+.post-p {
+    min-height: 3rem;
+    height: auto;
+
+    width: 100%;
+
+    background-color: white;
+
+    text-align: center;
+
+    color: #040f44;
+
+    margin: 0;
+
+    padding: 0 0.4rem;
+
+    box-sizing: border-box;
+
+    font-size: 0.9rem;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 1100px) {
+
+    .ab-dv {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 2rem;
+
+        min-height: auto;
+    }
+
+    /* LEFT */
+
+    .ab-l {
+        width: 90%;
+
+        height: auto;
+
+        margin-left: 0;
+    }
+
+    .ab-l-in1 {
+        height: auto;
+    }
+
+    .ab-l-in2 {
+        height: auto;
+
+        justify-content: center;
+
+        margin-top: 2rem;
+    }
+
+    /* RIGHT */
+
+    .ab-r {
+        width: 90%;
+
+        margin-right: 0;
+
+        justify-content: center;
+
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 12rem;
+    }
+}
+
+
+/* ==================================================
+   SMALL TABLET
+   ================================================== */
+
+@media (max-width: 800px) {
+
+    .ab-l {
+        width: 90%;
+    }
+
+    .ab-p {
+        font-size: 1.15rem;
+    }
+
+    .ab-l-in2 {
+        gap: 1.2rem;
+    }
+
+    .ab-cards1,
+    .ab-cards2,
+    .ab-cards3 {
+        width: 11rem;
+    }
+
+    .ab-r {
+        width: 100%;
+
+        gap: 1.5rem;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 11rem;
+        height: 16rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        height: 10.5rem;
+    }
+
+    .post {
+        font-size: 0.95rem;
+    }
+
+    .post-p {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    .ab-dv {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 2rem;
+    }
+
+
+    /* LEFT SECTION */
+
+    .ab-l {
+        width: 100%;
+
+        height: auto;
+
+        margin: 0;
+
+        padding: 0 1rem;
+
+        box-sizing: border-box;
+    }
+
+    .ab-l-in1 {
+        height: auto;
+    }
+
+    .ab-h4 {
+        padding-top: 2rem;
+        padding-left: 0;
+
+        text-align: center;
+
+        font-size: 1.1rem;
+    }
+
+    .ab-p {
+        margin-left: 0;
+        margin-right: 0;
+
+        text-align: center;
+
+        font-size: 1.05rem;
+
+        line-height: 1.5;
+    }
+
+
+    /* ABOUT BUTTON CARDS */
+
+    .ab-l-in2 {
+        height: auto;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 1rem;
+
+        margin-top: 2rem;
+    }
+
+    .ab-cards1,
+    .ab-cards2,
+    .ab-cards3 {
+        width: 90%;
+        max-width: 20rem;
+
+        height: 7rem;
+    }
+
+
+    /* MINISTER SECTION */
+
+    .ab-r {
+        width: 100%;
+
+        margin: 0;
+
+        padding: 1rem 1rem 3rem;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 2rem;
+
+        box-sizing: border-box;
+    }
+
+
+    /* MINISTER CARDS */
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 18rem;
+
+        height: 16rem;
+    }
+
+    .img-div-ab {
+        height: 10rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        width: 100%;
+
+        height: 10.5rem;
+    }
+
+    .post {
+        font-size: 1rem;
+
+        margin-top: 0.5rem;
+    }
+
+    .post-p {
+        font-size: 0.9rem;
+
+        padding: 0 0.5rem;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 400px) {
+
+    .ab-l {
+        padding: 0 0.7rem;
+    }
+
+    .ab-p {
+        font-size: 1rem;
+    }
+
+    .ab-dv1,
+    .ab-dv2,
+    .ab-dv3 {
+        width: 16rem;
+
+        height: 15.5rem;
+    }
+
+    .img-div-ab {
+        height: 9.7rem;
+    }
+
+    .ab-img,
+    .ab-img3 {
+        height: 10rem;
+    }
+
+    .post {
+        font-size: 0.95rem;
+    }
+
+    .post-p {
+        font-size: 0.82rem;
+    }
+
+    .card-icon {
+        font-size: 2rem;
+    }
+}
+
+/* why internsetu 
+
+.why-dv{
+    height: 80rem;
+    width: 100%;
+    background-color: #FFF3E0;
+    display: flow-root;
+}
+.wh-in{
+    
+    height: 25rem;
+    width: 75%;
+    margin-top: 3rem;
+}
+.wh-h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: rgb(4, 79, 4);
+}
+.wh-p1{
+    margin-top: 1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    font-size: 1.4rem;
+    color: rgb(55, 53, 53);
+}
+.x{
+    height: 50rem;
+    width: 100%;
+    
+}
+.wh-card{
+    height: 20rem;
+    width: 75%;
+    background-color: white;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+     box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        0 20px 40px rgba(0, 0, 0, 0.10);
+}
+.wh-c-h3{
+    padding-top: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    
+    color: rgb(4, 79, 4);
+}
+*/
+
+/* =========================
+   WHY INTERNSETU
+========================= */
+
+.why-dv {
+    min-height: 80rem;
+    width: 100%;
+
+    background-color: #FFF3E0;
+
+    display: flow-root;
+
+    box-sizing: border-box;
+}
+
+.x {
+    width: 100%;
+    min-height: 90rem;
+
+    box-sizing: border-box;
+    
+}
+
+
+/* =========================
+   INTRODUCTION SECTION
+========================= */
+
+.wh-in {
+    width: 75%;
+    min-height: 25rem;
+
+    margin-top: 3rem;
+
+    box-sizing: border-box;
+}
+
+.wh-h2 {
+    font-family: 'Times New Roman', Times, serif;
+
+    font-size: 2rem;
+
+    color: rgb(4, 79, 4);
+
+    margin: 0;
+}
+
+.wh-p1 {
+    margin-top: 1rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 1.4rem;
+
+    color: rgb(55, 53, 53);
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   MISSION CARD
+========================= */
+
+.wh-card {
+    width: 75%;
+    min-height: 20rem;
+
+    background-color: white;
+
+    margin-top: 2rem;
+
+    padding: 1rem 0 2rem;
+
+    border-radius: 1rem;
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        0 20px 40px rgba(0, 0, 0, 0.10);
+
+    box-sizing: border-box;
+}
+
+.wh-c-h3 {
+    padding-top: 1rem;
+
+    font-family: 'Times New Roman', Times, serif;
+
+    color: rgb(4, 79, 4);
+}
+
+.m-l1 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.m-l2 {
+    margin-left: 3rem;
+    margin-right: 2rem;
+
+    margin-top: 0.7rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 1.2rem;
+
+    color: rgb(55, 53, 53);
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .why-dv {
+        min-height: auto;
+
+        padding-bottom: 4rem;
+    }
+
+    .x {
+        min-height: auto;
+    }
+
+    .wh-in {
+        width: 85%;
+
+        min-height: auto;
+
+        margin-top: 2.5rem;
+    }
+
+    .wh-h2 {
+        font-size: 1.8rem;
+    }
+
+    .wh-p1 {
+        font-size: 1.2rem;
+
+        line-height: 1.5;
+    }
+
+    .wh-card {
+        width: 85%;
+
+        min-height: auto;
+
+        padding-bottom: 2rem;
+    }
+
+    .m-l1 {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .m-l2 {
+        margin-left: 2.5rem;
+        margin-right: 1.5rem;
+
+        font-size: 1.1rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .why-dv {
+        min-height: auto;
+
+        padding: 0 0 3rem;
+    }
+
+    .x {
+        width: 100%;
+
+        min-height: auto;
+    }
+
+    /* INTRO */
+
+    .wh-in {
+        width: 90%;
+
+        min-height: auto;
+
+        margin-top: 2rem;
+    }
+
+    .wh-h2 {
+        font-size: 1.6rem;
+
+        text-align: center;
+    }
+
+    .wh-p1 {
+        font-size: 1.05rem;
+
+        line-height: 1.5;
+
+        text-align: left;
+    }
+
+
+    /* MISSION CARD */
+
+    .wh-card {
+        width: 90%;
+
+        min-height: auto;
+
+        margin-top: 2rem;
+
+        padding: 1rem 0 2rem;
+
+        border-radius: 0.8rem;
+    }
+
+    .wh-c-h3 {
+        padding-top: 0.5rem;
+
+        font-size: 1.2rem;
+
+        text-align: center;
+    }
+
+    .m-l1 {
+        margin-left: 1.2rem;
+        margin-right: 1.2rem;
+    }
+
+    .m-l2 {
+        margin-left: 2rem;
+        margin-right: 1rem;
+
+        margin-top: 0.6rem;
+
+        font-size: 1rem;
+
+        line-height: 1.4;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .wh-in {
+        width: 92%;
+
+        margin-top: 1.5rem;
+    }
+
+    .wh-h2 {
+        font-size: 1.4rem;
+    }
+
+    .wh-p1 {
+        font-size: 0.95rem;
+
+        line-height: 1.5;
+    }
+
+    .wh-card {
+        width: 92%;
+
+        margin-top: 1.5rem;
+    }
+
+    .wh-c-h3 {
+        font-size: 1.1rem;
+    }
+
+    .m-l1 {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .m-l2 {
+        margin-left: 1.7rem;
+        margin-right: 0.8rem;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================
+   WHAT INTERNSETU FOCUSES ON
+========================= */
+
+.focus-dv {
+    width: 100%;
+    margin-top: 6rem;
+
+    padding: 3rem 0 4rem;
+
+    box-sizing: border-box;
+}
+
+.focus-container {
+    width: 90%;
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+.focus-title {
+    margin: 0 0 2.5rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 2.3rem;
+
+    color: #034F04;
+}
+
+.focus-cards {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 3rem;
+}
+
+.focus-card {
+    width: 33.33%;
+
+    background-color: white;
+
+    border: 1px solid #b8e8d4;
+
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.08),
+        0 15px 25px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s ease;
+}
+
+.focus-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, 0.12),
+        0 25px 40px rgba(0, 0, 0, 0.08);
+}
+
+.focus-card-title {
+    margin: 0 0 1rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.35rem;
+
+    color: #034F04;
+}
+
+.focus-card-text {
+    margin: 0 0 1rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.15rem;
+
+    line-height: 1.5;
+
+    color: #39445a;
+}
+
+.focus-card ul {
+    margin: 0;
+    padding-left: 1.4rem;
+}
+
+.focus-card li {
+    margin-bottom: 0.7rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.45;
+
+    color: #075f4c;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .focus-cards {
+        gap: 1.5rem;
+    }
+
+    .focus-card {
+        padding: 1.5rem;
+    }
+
+    .focus-title {
+        font-size: 2rem;
+    }
+
+    .focus-card-title {
+        font-size: 1.2rem;
+    }
+
+    .focus-card-text {
+        font-size: 1.05rem;
+    }
+
+    .focus-card li {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .focus-dv {
+        padding: 2rem 0 3rem;
+    }
+
+    .focus-container {
+        width: 92%;
+    }
+
+    .focus-title {
+        text-align: center;
+        font-size: 1.7rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .focus-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .focus-card {
+        width: 100%;
+        padding: 1.4rem;
+    }
+
+    .focus-card-title {
+        font-size: 1.2rem;
+    }
+
+    .focus-card-text {
+        font-size: 1rem;
+    }
+
+    .focus-card li {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .focus-title {
+        font-size: 1.45rem;
+    }
+
+    .focus-card {
+        padding: 1.2rem;
+    }
+
+    .focus-card-title {
+        font-size: 1.1rem;
+    }
+
+    .focus-card-text,
+    .focus-card li {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================
+   OUR CORE VALUES
+========================= */
+
+.values-dv {
+    width: 100%;
+    background-color: #FFF3E0;
+
+    padding: 3rem 0 4rem;
+
+    box-sizing: border-box;
+}
+
+.values-container {
+    width: 90%;
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+.values-title {
+    margin: 0 0 2.5rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 2.3rem;
+
+    color: #034F04;
+}
+
+.values-cards {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 2.5rem;
+}
+
+.value-card {
+    width: 25%;
+    min-height: 15rem;
+
+    background-color: white;
+
+    border: 1px solid #b8e8d4;
+
+    border-radius: 1rem;
+
+    padding: 2rem 1.5rem;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.08),
+        0 15px 25px rgba(0, 0, 0, 0.06);
+
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, 0.12),
+        0 25px 40px rgba(0, 0, 0, 0.08);
+}
+
+.value-card h3 {
+    margin: 0 0 1.2rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.35rem;
+
+    color: #034F04;
+}
+
+.value-card p {
+    margin: 0;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.1rem;
+
+    line-height: 1.5;
+
+    color: #39445a;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .values-cards {
+        gap: 1.5rem;
+    }
+
+    .value-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .values-title {
+        font-size: 2rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .value-card p {
+        font-size: 1rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .values-dv {
+        padding: 2rem 0 3rem;
+    }
+
+    .values-container {
+        width: 92%;
+    }
+
+    .values-title {
+        text-align: center;
+
+        font-size: 1.7rem;
+
+        margin-bottom: 1.8rem;
+    }
+
+    .values-cards {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 1.5rem;
+    }
+
+    .value-card {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 1.5rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .value-card p {
+        font-size: 1rem;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .values-title {
+        font-size: 1.45rem;
+    }
+
+    .value-card {
+        padding: 1.2rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .value-card p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* =========================
+   EXCELLENCE SECTION
+========================= */
+
+.excellence {
+    width: 100%;
+    min-height: 35rem;
+     
+    
+    background-color: white;
+
+    padding-bottom: 4rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.ex-d1 {
+    width: 100%;
+    min-height: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+}
+
+.ed1-h4 {
+    margin: 0;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 2rem;
+
+    color: rgb(4, 70, 5);
+
+    text-align: center;
+}
+
+
+/* =========================
+   CARDS CONTAINER
+========================= */
+
+.ex-d2 {
+    width: 100%;
+
+    min-height: 30rem;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+
+    flex-wrap: wrap;
+
+    padding: 2rem 3rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   3D CARD
+========================= */
+
+.ex-c1,
+.ex-c2,
+.ex-c3 {
+
+    width: 25rem;
+    height: 30rem;
+
+    background-color: white;
+
+    overflow: hidden;
+
+    border-radius: 1rem;
+
+    flex-shrink: 0;
+
+    /* 3D */
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.12),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================
+   3D HOVER
+========================= */
+
+.ex-c1:hover,
+.ex-c2:hover,
+.ex-c3:hover {
+
+    transform:
+        perspective(1000px)
+        rotateX(4deg)
+        rotateY(-7deg)
+        translateY(-10px);
+
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, 0.18),
+        0 25px 45px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Different direction for middle card */
+
+.ex-c2:hover {
+    transform:
+        perspective(1000px)
+        rotateX(4deg)
+        rotateY(7deg)
+        translateY(-10px);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.ex1-img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+/* Image depth */
+
+.ex-c1:hover .ex1-img,
+.ex-c2:hover .ex1-img,
+.ex-c3:hover .ex1-img {
+    transform: scale(1.04) translateZ(15px);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+    .ex-d2 {
+        gap: 1.5rem;
+
+        padding: 2rem;
+    }
+
+    .ex-c1,
+    .ex-c2,
+    .ex-c3 {
+        width: 20rem;
+        height: 27rem;
+    }
+
+    .ed1-h4 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* =========================
+   SMALL TABLET
+========================= */
+
+@media (max-width: 750px) {
+
+    .excellence {
+        padding-bottom: 3rem;
+    }
+
+    .ex-d2 {
+        flex-direction: column;
+
+        gap: 2rem;
+
+        padding: 2rem 1rem;
+    }
+
+    .ex-c1,
+    .ex-c2,
+    .ex-c3 {
+        width: 80%;
+        max-width: 25rem;
+
+        height: 28rem;
+    }
+
+    .ed1-h4 {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .ex-d1 {
+        min-height: 4.5rem;
+
+        padding: 0 1rem;
+    }
+
+    .ed1-h4 {
+        font-size: 1.4rem;
+
+        line-height: 1.3;
+    }
+
+    .ex-d2 {
+        padding: 1.5rem 1rem;
+    }
+
+    .ex-c1,
+    .ex-c2,
+    .ex-c3 {
+        width: 100%;
+        max-width: 22rem;
+
+        height: 27rem;
+
+        border-radius: 0.8rem;
+    }
+
+    /*
+       Mobile par strong tilt avoid kar rahe hain.
+       Sirf subtle lift.
+    */
+
+    .ex-c1:hover,
+    .ex-c2:hover,
+    .ex-c3:hover {
+
+        transform:
+            perspective(1000px)
+            translateY(-7px)
+            rotateX(2deg);
+
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .ed1-h4 {
+        font-size: 1.25rem;
+    }
+
+    .ex-d2 {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .ex-c1,
+    .ex-c2,
+    .ex-c3 {
+        width: 100%;
+        height: 24rem;
+    }
+}
+
+
+
+/* =========================
+   CONTACT & SUPPORT
+========================= */
+
+.contact-support {
+    width: 100%;
+    padding: 3rem 5%;
+    background-color: #FFF8F0;
+    box-sizing: border-box;
+}
+
+.cs-h2 {
+    text-align: center;
+
+    font-family: 'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 2.5rem;
+    color: #102A43;
+
+    margin-bottom: 1.5rem;
+}
+
+
+/* CARDS CONTAINER */
+
+.cs-cards {
+    width: 90%;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    gap: 2rem;
+}
+
+
+/* CARD */
+
+.cs-card {
+    flex: 1;
+
+    min-height: 13rem;
+
+    background-color: #ffffff;
+
+    border: 1px solid #FFE0B2;
+
+    border-radius: 1rem;
+
+    padding: 2rem 1.5rem;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* 3D HOVER */
+
+.cs-card:hover {
+    transform:
+        translateY(-8px)
+        perspective(600px)
+        rotateX(2deg);
+
+    border-color: #FF7A00;
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.12),
+        0 20px 35px rgba(255, 122, 0, 0.15);
+}
+
+
+/* CARD HEADING */
+
+.cs-card h3 {
+    color: #102A43;
+
+    font-family: 'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.5rem;
+
+    margin-bottom: 1rem;
+}
+
+
+/* CARD TEXT */
+
+.cs-card p {
+    color: #374151;
+
+    font-family: 'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        sans-serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 1rem;
+}
+
+
+/* LINKS */
+
+.cs-card a {
+    color: #FF7A00;
+
+    text-decoration: none;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    transition: color 0.3s ease;
+}
+
+.cs-card a:hover {
+    color: #198754;
+    text-decoration: underline;
+}
+.ab-end{
+    
+    height: 14rem;
+    width: 100%;
+    background-color: #198754;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .contact-support {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .cs-cards {
+        width: 100%;
+        gap: 1.2rem;
+    }
+
+    .cs-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .cs-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .cs-card p {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .contact-support {
+        padding: 2rem 1rem;
+    }
+
+    .cs-h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cs-cards {
+        flex-direction: column;
+        width: 100%;
+        gap: 1.2rem;
+    }
+
+    .cs-card {
+        width: 100%;
+        min-height: auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .cs-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .cs-card p {
+        font-size: 1rem;
+    }
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width: 400px) {
+
+    .cs-h2 {
+        font-size: 1.7rem;
+    }
+
+    .cs-card {
+        padding: 1.3rem 0.8rem;
+    }
+
+    .cs-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .cs-card p {
+        font-size: 0.9rem;
+    }
+    
+}

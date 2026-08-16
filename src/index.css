@@ -1,0 +1,29 @@
+.flex{
+    display: flex;
+}
+.m-auto{
+    margin: auto;
+}
+.cnt{
+    text-align: center;
+}
+.btn{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 2.5rem;
+    background-color: orange;
+    text-align: center;
+    margin: auto;
+}
+.btn:hover{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+.hv-cnt{
+    justify-content: center;
+    align-items: center;
+}

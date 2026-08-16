@@ -1,0 +1,68 @@
+.hero {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+}
+
+.hero-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hero-prev {
+  left: 20px;
+}
+
+.hero-next {
+  right: 20px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #f97316;
+}
