@@ -1,116 +1,206 @@
+/* =========================================================
+   REGISTER MAIN CARD
+========================================================= */
+
 .register-container {
+
     width: 90%;
     min-height: 38rem;
+
     margin-top: 4rem;
+    margin-right: auto;
     margin-bottom: 5rem;
+    margin-left: auto;
 
     display: flex;
 
     border-radius: 1rem;
+
     overflow: hidden;
+
+    background-color: white;
 
     box-shadow:
         0 8px 15px rgba(0, 0, 0, 0.15),
         0 15px 30px rgba(0, 0, 0, 0.12);
-}
-
-
-/* ========================= */
-/* LEFT SIDE */
-/* ========================= */
-
-.register-left {
-    width: 40%;
-    min-height: 38rem;
-
-    background-image: url('../assets/rf.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     position: relative;
 }
 
 
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.register-left {
+
+    width: 40%;
+    min-height: 38rem;
+
+    background-image:
+        url('../assets/rf.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LEFT OVERLAY
+========================================================= */
+
 .register-overlay {
+
     position: absolute;
+
     inset: 0;
 
     background: rgba(0, 0, 0, 0.35);
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
     text-align: center;
+
     color: white;
-}
 
+    padding: 2rem;
 
-.register-overlay h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-
-.register-overlay p {
-    font-size: 1.1rem;
-}
-
-
-/* ========================= */
-/* RIGHT SIDE */
-/* ========================= */
-
-.register-right {
-    width: 60%;
-    padding: 3rem 4rem;
     box-sizing: border-box;
 }
 
+.register-overlay h1 {
 
-.register-title {
-    color: #194f42;
-    font-size: 2rem;
-    margin-bottom: 4rem;
+    font-size: 2.5rem;
+
+    margin: 0 0 0.5rem;
+
+    line-height: 1.2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+.register-overlay p {
+
+    font-size: 1.1rem;
+
+    margin: 0;
+
+    line-height: 1.5;
+
+    max-width: 90%;
 }
 
 
-/* Form row */
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.register-right {
+
+    width: 60%;
+
+    padding: 3rem 4rem;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    flex-shrink: 1;
+}
+
+
+/* =========================================================
+   REGISTER TITLE
+========================================================= */
+
+.register-title {
+
+    color: #194f42;
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+
+    margin: 0 0 4rem;
+}
+
+
+/* =========================================================
+   FORM ROW
+========================================================= */
 
 .form-row {
+
+    width: 100%;
+
     display: flex;
+
     gap: 1.5rem;
+
     margin-bottom: 1.7rem;
 }
 
 
-/* Form group */
+/* =========================================================
+   FORM GROUP
+========================================================= */
 
 .form-group {
+
     width: 50%;
 
     display: flex;
+
     flex-direction: column;
+
+    min-width: 0;
 }
 
-
 .full-width {
+
     width: 100%;
+
     margin-bottom: 1.7rem;
 }
 
 
+/* =========================================================
+   LABEL
+========================================================= */
+
 .form-group label {
+
     font-size: 1rem;
+
     color: #173b61;
+
     margin-bottom: 0.5rem;
+
+    line-height: 1.3;
 }
 
 
+/* =========================================================
+   INPUT
+========================================================= */
+
 .form-group input {
+
     height: 3.5rem;
+
     width: 100%;
 
     box-sizing: border-box;
@@ -120,200 +210,476 @@
     font-size: 1rem;
 
     border: 1px solid #cbd5df;
+
     border-radius: 0.6rem;
 
     outline: none;
-}
 
+    color: #222;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
 .form-group input:focus {
+
     border-color: #194f42;
-    box-shadow: 0 0 4px rgba(25, 79, 66, 0.2);
+
+    box-shadow:
+        0 0 4px rgba(25, 79, 66, 0.2);
 }
 
 
-/* ========================= */
-/* TERMS */
-/* ========================= */
+/* =========================================================
+   TERMS
+========================================================= */
 
 .terms {
+
     display: flex;
+
     align-items: center;
+
     gap: 0.7rem;
 
     margin-top: 1rem;
+
     margin-bottom: 1.5rem;
 
     color: #174b5c;
-}
 
+    line-height: 1.4;
+}
 
 .terms input {
+
     width: 1.2rem;
     height: 1.2rem;
+
+    flex-shrink: 0;
 }
 
 
-/* ========================= */
-/* BUTTON */
-/* ========================= */
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
 
 .register-btn {
+
     width: 100%;
+
     height: 3.5rem;
 
     border: none;
+
     border-radius: 0.6rem;
 
     background-color: #194f42;
+
     color: white;
 
     font-size: 1.1rem;
+
     font-weight: bold;
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }
-
 
 .register-btn:hover {
+
     background-color: #f97316;
+
+    transform: translateY(-2px);
 }
 
 
-/* ========================= */
-/* SIGN IN */
-/* ========================= */
+/* =========================================================
+   SIGN IN
+========================================================= */
 
 .signin-text {
+
     text-align: center;
 
     margin-top: 3rem;
 
-    color: #777;
-}
+    margin-bottom: 0;
 
+    color: #777;
+
+    line-height: 1.4;
+}
 
 .signin-text span {
-    color: #174b5c;
-    text-decoration: none;
-    font-weight: 500;
-}
 
+    color: #174b5c;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    margin-left: 0.3rem;
+}
 
 .signin-text span:hover {
+
     color: #f97316;
+
     cursor: pointer;
+
+    text-decoration: underline;
 }
 
 
-/* ========================= */
-/* TABLET */
-/* ========================= */
+/* =========================================================
+   LARGE TABLET <= 1024px
+========================================================= */
 
 @media (max-width: 1024px) {
 
     .register-container {
+
         width: 92%;
+
+        margin-top: 3.5rem;
+        margin-bottom: 4.5rem;
     }
 
     .register-right {
-        padding: 2.5rem;
+
+        padding:
+            2.5rem 2.5rem;
     }
 
     .register-title {
+
         margin-bottom: 3rem;
+    }
+
+    .form-row {
+
+        gap: 1rem;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET <= 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .register-container {
+
+        width: 94%;
+    }
+
+    .register-left {
+
+        width: 38%;
+    }
+
+    .register-right {
+
+        width: 62%;
+
+        padding:
+            2.2rem 2rem;
+    }
+
+    .register-title {
+
+        font-size: 1.8rem;
+
+        margin-bottom: 2.5rem;
+    }
+
+    .form-row {
+
+        gap: 1rem;
+    }
+
+    .form-group label {
+
+        font-size: 0.92rem;
+    }
+
+    .form-group input {
+
+        height: 3.2rem;
+
+        font-size: 0.92rem;
     }
 }
 
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+/* =========================================================
+   MOBILE <= 768px
+========================================================= */
 
 @media (max-width: 768px) {
 
     .register-container {
+
         width: 92%;
-        flex-direction: column;
+
         min-height: auto;
+
+        margin-top: 2.5rem;
+        margin-right: auto;
+        margin-bottom: 4rem;
+        margin-left: auto;
+
+        flex-direction: column;
     }
 
     .register-left {
+
         width: 100%;
+
         height: 15rem;
         min-height: 15rem;
     }
 
     .register-right {
+
         width: 100%;
-        padding: 2rem;
+
+        padding:
+            2rem;
     }
 
     .register-title {
+
         font-size: 1.8rem;
+
         margin-bottom: 2rem;
     }
 
     .form-row {
+
         flex-direction: column;
+
         gap: 1.2rem;
+
+        margin-bottom: 1.2rem;
     }
 
     .form-group {
+
         width: 100%;
     }
 
     .full-width {
+
         width: 100%;
-    }
-}
 
-
-/* ========================= */
-/* SMALL MOBILE */
-/* ========================= */
-
-@media (max-width: 480px) {
-
-    .register-container {
-        width: 94%;
-        margin-top: 2rem;
-    }
-
-    .register-left {
-        height: 13rem;
-        min-height: 13rem;
-    }
-
-    .register-overlay h1 {
-        font-size: 2rem;
-    }
-
-    .register-overlay p {
-        font-size: 0.95rem;
-    }
-
-    .register-right {
-        padding: 1.5rem;
-    }
-
-    .register-title {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.2rem;
     }
 
     .form-group input {
+
         height: 3.2rem;
     }
 
     .terms {
-        font-size: 0.9rem;
+
         align-items: flex-start;
+
+        margin-top: 1rem;
+    }
+
+    .register-btn {
+
+        height: 3.3rem;
     }
 
     .signin-text {
+
         margin-top: 2rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE <= 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .register-container {
+
+        width: 94%;
+
+        margin-top: 1.5rem;
+        margin-right: auto;
+        margin-bottom: 3.5rem;
+        margin-left: auto;
+
+        border-radius: 0.8rem;
+    }
+
+    .register-left {
+
+        height: 13rem;
+        min-height: 13rem;
+    }
+
+    .register-overlay {
+
+        padding:
+            1rem;
+    }
+
+    .register-overlay h1 {
+
+        font-size: 2rem;
+    }
+
+    .register-overlay p {
+
+        font-size: 0.95rem;
+
+        line-height: 1.4;
+    }
+
+    .register-right {
+
+        padding:
+            1.5rem;
+    }
+
+    .register-title {
+
+        font-size: 1.6rem;
+
+        margin-bottom: 2rem;
+    }
+
+    .form-group label {
+
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+
+        height: 3.1rem;
+
+        padding:
+            0 1rem;
+
+        font-size: 0.9rem;
+    }
+
+    .terms {
+
+        gap: 0.55rem;
+
+        font-size: 0.9rem;
+    }
+
+    .terms input {
+
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .register-btn {
+
+        height: 3.2rem;
+
+        font-size: 1rem;
+    }
+
+    .signin-text {
+
+        margin-top: 2rem;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE <= 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .register-container {
+
+        width: 95%;
+
+        margin-top: 1.2rem;
+        margin-right: auto;
+        margin-bottom: 3rem;
+        margin-left: auto;
+    }
+
+    .register-left {
+
+        height: 12rem;
+        min-height: 12rem;
+    }
+
+    .register-overlay h1 {
+
+        font-size: 1.7rem;
+    }
+
+    .register-overlay p {
+
+        font-size: 0.78rem;
+    }
+
+    .register-right {
+
+        padding:
+            1.2rem 0.9rem 1.8rem;
+    }
+
+    .register-title {
+
+        font-size: 1.35rem;
+
+        margin-bottom: 1.7rem;
+    }
+
+    .form-group label {
+
+        font-size: 0.82rem;
+    }
+
+    .form-group input {
+
+        height: 2.9rem;
+
+        padding:
+            0 0.8rem;
+
+        font-size: 0.82rem;
+    }
+
+    .terms {
+
+        font-size: 0.8rem;
+    }
+
+    .register-btn {
+
+        height: 3rem;
+
+        font-size: 0.9rem;
+    }
+
+    .signin-text {
+
+        font-size: 0.8rem;
     }
 }

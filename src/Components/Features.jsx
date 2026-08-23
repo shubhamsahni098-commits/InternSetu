@@ -1,51 +1,117 @@
-import React from 'react'
-import './Features.css';
-import '../index2.css'
+import React from "react";
+import "./Features.css";
+import "../index2.css";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Features() {
+
+  const { t } = useLanguage();
+
   return (
     <>
       <div className="features m-aut">
-        <div className=''>
-            <h1 className='cnt f-h1'>Key Features</h1>  
+
+        <div>
+          <h1 className="cnt f-h1">
+            {t.keyFeatures}
+          </h1>
         </div>
 
-        <div className='feat-in flex wrap gap-f hv-cnt'>
-            <div className='feat-cards '>
-                <h3 className='cnt f-h'>AI-Powered Internship Matching</h3>
-                <p className='cnt f-p'>Smart recommendations based on skills, interests, and eligibility.</p>
 
-            </div>
-            <div className='feat-cards'>
-                <h3 className='cnt f-h'>Skill-Based Matching</h3>
-                <p className='cnt f-p'>Match your skills with relevant internship requirements.</p>
+        <div className="feat-in flex wrap gap-f hv-cnt">
 
-            </div>
-            <div className='feat-cards'>
-                <h3 className='cnt f-h'>Location-Based Matching</h3>
-                <p className='cnt f-p'>Discover internships based on your preferred location.</p>
+          {/* AI MATCHING */}
 
-            </div>
-            <div className='feat-cards'>
-                <h3 className='cnt f-h'>Personalized Recommendations</h3>
-                <p className='cnt f-p'>Get the most relevant internships tailored to your profile.</p>
+          <div className="feat-cards">
 
-            </div>
-            <div className='feat-cards'>
-                <h3 className='cnt f-h'>Smart Search & Filters</h3>
-                <p className='cnt f-p'>Find opportunities using role, skill, location, and sector filters.</p>
+            <h3 className="cnt f-h">
+              {t.aiMatching}
+            </h3>
 
-            </div>
-            <div className='feat-cards'>
-                <h3 className='cnt f-h'>Match Score</h3>
-                <p className='cnt f-p'>See how closely each internship matches your profile.</p>
+            <p className="cnt f-p">
+              {t.aiMatchingDesc}
+            </p>
 
-            </div>
-            
+          </div>
+
+
+          {/* SKILL MATCHING */}
+
+          <div className="feat-cards">
+
+            <h3 className="cnt f-h">
+              {t.skillBasedMatching}
+            </h3>
+
+            <p className="cnt f-p">
+              {t.skillBasedMatchingDesc}
+            </p>
+
+          </div>
+
+
+          {/* LOCATION MATCHING */}
+
+          <div className="feat-cards">
+
+            <h3 className="cnt f-h">
+              {t.locationBasedMatching}
+            </h3>
+
+            <p className="cnt f-p">
+              {t.locationBasedMatchingDesc}
+            </p>
+
+          </div>
+
+
+          {/* PERSONALIZED */}
+
+          <div className="feat-cards">
+
+            <h3 className="cnt f-h">
+              {t.personalizedRecommendations}
+            </h3>
+
+            <p className="cnt f-p">
+              {t.personalizedRecommendationsDesc}
+            </p>
+
+          </div>
+
+
+          {/* SEARCH */}
+
+          <div className="feat-cards">
+
+            <h3 className="cnt f-h">
+              {t.smartSearchFilters}
+            </h3>
+
+            <p className="cnt f-p">
+              {t.smartSearchFiltersDesc}
+            </p>
+
+          </div>
+
+
+          {/* MATCH SCORE */}
+
+          <div className="feat-cards">
+
+            <h3 className="cnt f-h">
+              {t.matchScore}
+            </h3>
+
+            <p className="cnt f-p">
+              {t.matchScoreDesc}
+            </p>
+
+          </div>
+
         </div>
 
       </div>
-      
     </>
-  )
+  );
 }

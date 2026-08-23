@@ -1,3 +1,7 @@
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
 .dashboard-sidebar {
     width: 240px;
 
@@ -12,8 +16,16 @@
     padding: 1.5rem 1rem;
 
     box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
 }
 
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .sidebar-title {
     padding: 0 0.8rem;
@@ -21,9 +33,9 @@
     margin-bottom: 2rem;
 }
 
-
 .sidebar-title h2 {
     font-size: 1.7rem;
+
     margin: 0;
 }
 
@@ -36,6 +48,10 @@
 }
 
 
+/* =========================================================
+   MAIN NAVIGATION
+========================================================= */
+
 .sidebar-nav {
     display: flex;
 
@@ -44,6 +60,10 @@
     gap: 0.4rem;
 }
 
+
+/* =========================================================
+   NORMAL NAV LINKS
+========================================================= */
 
 .sidebar-link {
     display: flex;
@@ -62,7 +82,9 @@
 
     font-weight: 500;
 
-    transition: 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 
@@ -73,7 +95,9 @@
 }
 
 
-/* Active route */
+/* =========================================================
+   ACTIVE ROUTE
+========================================================= */
 
 .sidebar-link.active {
     background-color: #f97316;
@@ -81,6 +105,72 @@
     color: white;
 }
 
+
+/* =========================================================
+   BOTTOM ACTIONS
+========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.4rem;
+
+    padding-top: 2rem;
+}
+
+
+/* =========================================================
+   RETURN HOME / LOGOUT
+========================================================= */
+
+.sidebar-action {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    padding: 0.8rem;
+
+    border-radius: 8px;
+
+    color: #555;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sidebar-action:hover {
+    background-color: #fff3e8;
+
+    color: #f97316;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-action:hover {
+    background-color: #fff0f0;
+
+    color: #dc2626;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -118,6 +208,23 @@
 
 
     .sidebar-link span {
+        display: none;
+    }
+
+
+    .sidebar-bottom {
+        padding-top: 1rem;
+    }
+
+
+    .sidebar-action {
+        justify-content: center;
+
+        padding: 0.8rem;
+    }
+
+
+    .sidebar-action span {
         display: none;
     }
 

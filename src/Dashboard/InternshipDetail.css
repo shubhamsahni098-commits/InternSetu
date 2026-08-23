@@ -1,0 +1,742 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+.internship-details-page {
+    width: 100%;
+
+    min-height: 100vh;
+
+    background-color: #f7f7f7;
+
+    padding:
+        2rem
+        2.5rem
+        4rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.4rem;
+
+    border: none;
+
+    background: transparent;
+
+    color: #555;
+
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    padding: 0.4rem 0;
+
+    margin-bottom: 1.2rem;
+
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #f97316;
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.internship-details-card {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    background-color: white;
+
+    border-radius: 1rem;
+
+    padding: 2rem 2.2rem;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.details-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.2rem;
+}
+
+.company-logo {
+    width: 76px;
+    height: 76px;
+
+    min-width: 76px;
+
+    border-radius: 1rem;
+
+    background-color: #fff1e7;
+
+    color: #f97316;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+}
+
+.header-content {
+    width: 100%;
+}
+
+.title-row {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.title-row h1 {
+    margin: 0;
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+
+    color: #161616;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+.company-name {
+    margin-top: 0.5rem;
+
+    margin-bottom: 0;
+
+    color: #6a6a6a;
+
+    font-size: 1rem;
+}
+
+.match-badge {
+    white-space: nowrap;
+
+    background-color: #fff3e8;
+
+    color: #f97316;
+
+    border-radius: 999px;
+
+    padding:
+        0.55rem
+        0.9rem;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   QUICK INFO
+========================================================= */
+
+.quick-info {
+    margin-top: 2rem;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.65rem;
+
+    padding: 1rem;
+
+    border-radius: 0.8rem;
+
+    background-color: #fafafa;
+
+    color: #666;
+}
+
+.info-item svg {
+    color: #f97316;
+
+    flex-shrink: 0;
+}
+
+.info-item div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.2rem;
+}
+
+.info-item span {
+    font-size: 0.75rem;
+
+    color: #888;
+}
+
+.info-item strong {
+    font-size: 0.92rem;
+
+    color: #222;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.details-divider {
+    width: 100%;
+
+    height: 1px;
+
+    background-color: #e7e7e7;
+
+    margin:
+        2rem
+        0;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.details-section {
+    margin-bottom: 2rem;
+}
+
+.details-section h2 {
+    margin:
+        0 0
+        1rem;
+
+    color: #202020;
+
+    font-size: 1.25rem;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.6rem;
+}
+
+.skill-tag {
+    background-color: #f5f5f5;
+
+    color: #444;
+
+    border-radius: 0.45rem;
+
+    padding:
+        0.45rem
+        0.8rem;
+
+    font-size: 0.85rem;
+
+    border: 1px solid #e7e7e7;
+}
+
+
+/* =========================================================
+   DETAIL BOX
+========================================================= */
+
+.detail-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.7rem;
+
+    padding:
+        1rem;
+
+    border-radius: 0.7rem;
+
+    border: 1px solid #ededed;
+
+    background-color: #fcfcfc;
+
+    color: #333;
+}
+
+.detail-box svg {
+    color: #f97316;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   DATES
+========================================================= */
+
+.date-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 1rem;
+}
+
+.small-label {
+    display: block;
+
+    color: #888;
+
+    font-size: 0.75rem;
+
+    margin-bottom: 0.25rem;
+}
+
+.detail-box strong {
+    color: #222;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   PERKS
+========================================================= */
+
+.perks-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.8rem;
+}
+
+.perk-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.45rem;
+
+    padding:
+        0.65rem
+        0.9rem;
+
+    background-color: #f8f8f8;
+
+    border-radius: 0.6rem;
+
+    color: #444;
+
+    font-size: 0.88rem;
+
+    border: 1px solid #ececec;
+}
+
+.perk-item svg {
+    color: #f97316;
+}
+
+
+/* =========================================================
+   APPLY SECTION
+========================================================= */
+
+.apply-section {
+    margin-top: 2.3rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #e7e7e7;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.apply-label {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 0.8rem;
+}
+
+.apply-match {
+    display: block;
+
+    margin-top: 0.2rem;
+
+    color: #f97316;
+
+    font-size: 1.2rem;
+}
+
+.apply-btn {
+    min-width: 170px;
+
+    height: 3.2rem;
+
+    border: none;
+
+    border-radius: 0.6rem;
+
+    background-color: #ff7412;
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.apply-btn:hover {
+    background-color: #e86509;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 14px rgba(249, 115, 22, 0.2);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .internship-details-page {
+        padding:
+            1.5rem
+            1.5rem
+            3rem;
+    }
+
+    .internship-details-card {
+        padding:
+            1.7rem;
+    }
+
+    .quick-info {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .title-row h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .internship-details-page {
+        padding:
+            1.2rem
+            1rem
+            2.5rem;
+    }
+
+    .internship-details-card {
+        padding:
+            1.3rem;
+        
+        border-radius: 0.85rem;
+    }
+
+    .details-header {
+        align-items: flex-start;
+    }
+
+    .company-logo {
+        width: 62px;
+        height: 62px;
+
+        min-width: 62px;
+
+        font-size: 1.05rem;
+    }
+
+    .title-row {
+        flex-direction: column;
+
+        gap: 0.8rem;
+    }
+
+    .title-row h1 {
+        font-size: 1.5rem;
+    }
+
+    .company-name {
+        font-size: 0.9rem;
+    }
+
+    .match-badge {
+        font-size: 0.8rem;
+
+        padding:
+            0.45rem
+            0.7rem;
+    }
+
+    .quick-info {
+        grid-template-columns:
+            1fr 1fr;
+
+        margin-top: 1.5rem;
+    }
+
+    .info-item {
+        padding:
+            0.8rem;
+    }
+
+    .date-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .apply-section {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .apply-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .internship-details-page {
+        padding:
+            1rem
+            0.6rem
+            2rem;
+    }
+
+    .back-btn {
+        font-size: 0.85rem;
+
+        margin-bottom: 0.9rem;
+    }
+
+    .internship-details-card {
+        padding:
+            1rem;
+    }
+
+    .details-header {
+        gap: 0.8rem;
+    }
+
+    .company-logo {
+        width: 54px;
+        height: 54px;
+
+        min-width: 54px;
+
+        border-radius: 0.7rem;
+
+        font-size: 0.9rem;
+    }
+
+    .title-row h1 {
+        font-size: 1.3rem;
+    }
+
+    .company-name {
+        font-size: 0.82rem;
+    }
+
+    .match-badge {
+        font-size: 0.75rem;
+    }
+
+    .quick-info {
+        grid-template-columns:
+            1fr;
+
+        gap: 0.7rem;
+    }
+
+    .info-item {
+        padding:
+            0.75rem;
+    }
+
+    .details-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .details-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .skill-tag {
+        font-size: 0.78rem;
+
+        padding:
+            0.4rem
+            0.65rem;
+    }
+
+    .detail-box {
+        padding:
+            0.8rem;
+    }
+
+    .perk-item {
+        font-size: 0.8rem;
+
+        padding:
+            0.55rem
+            0.7rem;
+    }
+
+    .apply-section {
+        margin-top: 1.5rem;
+
+        padding-top: 1.2rem;
+    }
+
+    .apply-match {
+        font-size: 1.05rem;
+    }
+
+    .apply-btn {
+        height: 3rem;
+
+        font-size: 0.95rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .internship-details-card {
+        padding:
+            0.85rem;
+    }
+
+    .company-logo {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 0.8rem;
+    }
+
+    .title-row h1 {
+        font-size: 1.15rem;
+    }
+
+    .company-name {
+        font-size: 0.75rem;
+    }
+
+    .info-item span {
+        font-size: 0.68rem;
+    }
+
+    .info-item strong {
+        font-size: 0.82rem;
+    }
+
+    .details-section h2 {
+        font-size: 1rem;
+    }
+
+    .apply-btn {
+        height: 2.8rem;
+
+        font-size: 0.9rem;
+    }
+}

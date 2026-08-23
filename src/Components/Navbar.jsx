@@ -1,74 +1,186 @@
 import React from 'react';
-import './Navbar2.css'
-import '../index2.css'
+import './Navbar.css';
+import '../index2.css';
+
 import stateEmble from "../assets/stateEmble.png";
-import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+
 import { Menu } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+
   const navigate = useNavigate();
+
+  const {
+    language,
+    setLanguage,
+    t
+  } = useLanguage();
 
   return (
     <>
+
+      {/* =====================================================
+          NAV 1
+      ===================================================== */}
+
       <div className='nav-1 flex gap'>
-          
-          <div className='flex gap-1 m'>
-            
-            <img className='logo' src={logo}/>
-           
-            <img className='satymev m-auto' src={stateEmble}/>
-            <div className=''>
-              भारत सरकार<br></br>
-              Government Of India
-            </div>
-          </div>
-          
-          <div className='flex gap-2 m-r'>
-            <div className='pd t'>
-              Skip main content
-            </div>
-          
-          <select className="language-select m-auto">
-             <option value="en">English</option>
-             <option value="hi">हिन्दी</option>
-             <option value="mr">मराठी</option>
-             <option value="ta">தமிழ்</option>
-          </select> 
 
-          
-             <button className="btn t" onClick={() => navigate("/login")}>
-                 Login/Register
-              </button>
-          
+        <div className='flex gap-1 m'>
 
-          
+          <img
+            className='logo'
+            src={logo}
+            alt="InternSetu"
+          />
+
+          <img
+            className='satymev m-auto'
+            src={stateEmble}
+            alt="Government Emblem"
+          />
+
+          <div>
+            भारत सरकार
+            <br />
+            Government Of India
           </div>
 
-          
+        </div>
+
+
+        <div className='flex gap-2 m-r'>
+
+          <div className='pd t'>
+            {t.skipMain}
+          </div>
+
+
+          <select
+            className="language-select m-auto"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          >
+
+            <option value="en">
+              English
+            </option>
+
+            <option value="hi">
+              हिन्दी
+            </option>
+
+            <option value="mr">
+              मराठी
+            </option>
+
+            <option value="ta">
+              தமிழ்
+            </option>
+
+          </select>
+
+
+          <button
+            className="btn t"
+            onClick={() => navigate("/login")}
+          >
+            {t.loginRegister}
+          </button>
+
+        </div>
 
       </div>
+
+
+      {/* =====================================================
+          NAV 2
+      ===================================================== */}
 
       <div className='nav-2 flex gap-c'>
 
+
+        {/* DASHBOARD MENU */}
+
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? 'link nav-menu-link active'
+              : 'link nav-menu-link'
+          }
+        >
+          <Menu size={24} />
+        </NavLink>
+
+
+        {/* MAIN NAVIGATION */}
+
         <div className='nav-link flex gap-4 m'>
-          <div className='link flex hv-cnt t' onClick={() => navigate("/")}>Home</div>
-          <div className='link flex hv-cnt t'>Internship</div>
-          <div className='link flex hv-cnt t'>Documents</div>
-          <div className='link flex hv-cnt t'>How it works</div>
-          <div className='link flex hv-cnt t'onClick={() => navigate("/about")}>About</div>
-          
+
+
+          {/* HOME */}
+
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? 'link t active'
+                : 'link t'
+            }
+          >
+            {t.home}
+          </NavLink>
+
+
+          {/* INTERNSHIP */}
+
+          <NavLink
+            to="/dashboard/internships"
+            className={({ isActive }) =>
+              isActive
+                ? 'link t active'
+                : 'link t'
+            }
+          >
+            {t.internship}
+          </NavLink>
+
+
+          {/* DOCUMENTS */}
+
+          <div className='link t'>
+            {t.documents}
+          </div>
+
+
+          {/* HOW IT WORKS */}
+
+          <div className='link t'>
+            {t.howItWorks}
+          </div>
+
+
+          {/* ABOUT */}
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? 'link t active'
+                : 'link t'
+            }
+          >
+            {t.about}
+          </NavLink>
+
+
         </div>
 
-        <div className='link flex hv-cnt'
-         onClick={() => navigate("/dashboard")}
-         >
-          <Menu size={24} />
-        </div>
-         
       </div>
-      
+
     </>
-  )
+  );
 }

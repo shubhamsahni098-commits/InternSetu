@@ -1,31 +1,124 @@
-import React from 'react'
+import React from "react";
 import {
   Search,
   MapPin,
   BriefcaseBusiness,
   Clock3,
   Sparkles
-} from 'lucide-react'
+} from "lucide-react";
 
-import './Internships.css'
+import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+
+import "./Internships.css";
 
 export default function Internships() {
+
+  const navigate = useNavigate();
+
+  const { t } = useLanguage();
+
+
+  /* =====================================================
+     TOP RECOMMENDED INTERNSHIPS
+  ===================================================== */
+
+  const internships = [
+
+    {
+      id: 1,
+      title: "Software Developer Intern",
+      company: "ABC Technologies",
+      location: "Mumbai",
+      domain: "Software Development",
+      duration: "3 Months",
+      stipend: "₹15,000 / month",
+      skills: [
+        "React",
+        "JavaScript",
+        "Python",
+        "SQL"
+      ],
+      match: 92
+    },
+
+    {
+      id: 2,
+      title: "AI / ML Intern",
+      company: "XYZ Innovations",
+      location: "Bangalore",
+      domain: "Artificial Intelligence",
+      duration: "6 Months",
+      stipend: "₹20,000 / month",
+      skills: [
+        "Python",
+        "Machine Learning",
+        "TensorFlow"
+      ],
+      match: 88
+    },
+
+    {
+      id: 3,
+      title: "Data Analyst Intern",
+      company: "DEF Analytics",
+      location: "Pune",
+      domain: "Data Analytics",
+      duration: "3 Months",
+      stipend: "₹12,000 / month",
+      skills: [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Excel"
+      ],
+      match: 84
+    }
+
+  ];
+
+
+  /* =====================================================
+     VIEW DETAILS
+  ===================================================== */
+
+  const handleViewDetails = (id) => {
+
+    navigate(`/dashboard/internships/${id}`);
+
+  };
+
+
   return (
+
     <div className="internships-page">
 
-      {/* Heading */}
+
+      {/* =====================================================
+          HEADING
+      ===================================================== */}
+
       <div className="internships-heading">
-        <h1>Find Internships</h1>
+
+        <h1>
+          {t.findInternships}
+        </h1>
 
         <p>
-          Discover internship opportunities matched with your
-          skills and preferences.
+          {t.recommendedDesc}
         </p>
+
       </div>
 
 
-      {/* Search & Filters */}
+      {/* =====================================================
+          SEARCH & FILTERS
+      ===================================================== */}
+
       <div className="internship-filters">
+
+
+        {/* Search */}
 
         <div className="search-box">
 
@@ -33,281 +126,283 @@ export default function Internships() {
 
           <input
             type="text"
-            placeholder="Search internships, skills or companies..."
+            placeholder={t.searchInternships}
           />
 
         </div>
 
 
+        {/* Domain */}
+
         <select>
-          <option>All Domains</option>
-          <option>Software Development</option>
-          <option>AI / Machine Learning</option>
-          <option>Data Science</option>
-          <option>Web Development</option>
-          <option>Cyber Security</option>
+
+          <option>
+            {t.allDomains}
+          </option>
+
+          <option>
+            Software Development
+          </option>
+
+          <option>
+            Artificial Intelligence
+          </option>
+
+          <option>
+            Data Science
+          </option>
+
+          <option>
+            Web Development
+          </option>
+
+          <option>
+            Cyber Security
+          </option>
+
         </select>
 
 
+        {/* Location */}
+
         <select>
-          <option>All Locations</option>
+
+          <option>
+            {t.allLocations}
+          </option>
+
           <option>Mumbai</option>
           <option>Pune</option>
           <option>Bangalore</option>
           <option>Delhi</option>
           <option>Hyderabad</option>
           <option>Remote</option>
+
         </select>
 
 
+        {/* Work Mode */}
+
         <select>
-          <option>Work Mode</option>
-          <option>On-site</option>
-          <option>Remote</option>
-          <option>Hybrid</option>
+
+          <option>
+            {t.workMode}
+          </option>
+
+          <option>
+            On-site
+          </option>
+
+          <option>
+            Remote
+          </option>
+
+          <option>
+            Hybrid
+          </option>
+
         </select>
 
       </div>
 
 
-      {/* Result Heading */}
+      {/* =====================================================
+          RESULT HEADING
+      ===================================================== */}
+
       <div className="results-heading">
 
         <div>
-          <h2>Recommended Internships</h2>
 
-          <p>24 opportunities found</p>
+          <h2>
+            {t.recommendedInternships}
+          </h2>
+
+          <p>
+            {t.topRecommendations}
+          </p>
+
         </div>
 
+
         <select className="sort-select">
-          <option>Best Match</option>
-          <option>Latest</option>
-          <option>Highest Stipend</option>
+
+          <option>
+            {t.bestMatch}
+          </option>
+
+          <option>
+            {t.latest}
+          </option>
+
+          <option>
+            {t.highestStipend}
+          </option>
+
         </select>
 
       </div>
 
 
-      {/* Internship List */}
+      {/* =====================================================
+          TOP 3 INTERNSHIPS
+      ===================================================== */}
+
       <div className="internship-list">
 
+        {internships.map((internship) => (
 
-        {/* Card 1 */}
-        <div className="internship-box">
-
-          <div className="company-logo">
-            ABC
-          </div>
+          <div
+            className="internship-box"
+            key={internship.id}
+          >
 
 
-          <div className="internship-details">
+            {/* Company Logo */}
 
-            <div className="title-row">
+            <div className="company-logo">
 
-              <div>
-                <h3>Software Developer Intern</h3>
-                <h4>ABC Technologies</h4>
+              {internship.company
+                .substring(0, 3)
+                .toUpperCase()}
+
+            </div>
+
+
+            {/* Internship Details */}
+
+            <div className="internship-details">
+
+
+              {/* Title */}
+
+              <div className="title-row">
+
+                <div>
+
+                  <h3>
+                    {internship.title}
+                  </h3>
+
+                  <h4>
+                    {internship.company}
+                  </h4>
+
+                </div>
+
+
+                <div className="ai-match">
+
+                  <Sparkles size={15} />
+
+                  {internship.match}%
+                  {t.match}
+
+                </div>
+
               </div>
 
-              <div className="ai-match">
-                <Sparkles size={15} />
-                92% Match
+
+              {/* Meta */}
+
+              <div className="internship-meta">
+
+                <span>
+
+                  <MapPin size={16} />
+
+                  {internship.location}
+
+                </span>
+
+
+                <span>
+
+                  <BriefcaseBusiness size={16} />
+
+                  {internship.domain}
+
+                </span>
+
+
+                <span>
+
+                  <Clock3 size={16} />
+
+                  {internship.duration}
+
+                </span>
+
               </div>
 
-            </div>
 
+              {/* Skills */}
 
-            <div className="internship-meta">
+              <div className="skills">
 
-              <span>
-                <MapPin size={16} />
-                Mumbai
-              </span>
+                {internship.skills.map(
+                  (skill, index) => (
 
-              <span>
-                <BriefcaseBusiness size={16} />
-                Software Development
-              </span>
+                    <span key={index}>
+                      {skill}
+                    </span>
 
-              <span>
-                <Clock3 size={16} />
-                3 Months
-              </span>
+                  )
+                )}
 
-            </div>
-
-
-            <div className="skills">
-
-              <span>React</span>
-              <span>JavaScript</span>
-              <span>Python</span>
-              <span>SQL</span>
-
-            </div>
-
-
-            <div className="card-bottom">
-
-              <strong>
-                ₹15,000 / month
-              </strong>
-
-              <button>
-                View Details
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* Card 2 */}
-        <div className="internship-box">
-
-          <div className="company-logo">
-            XYZ
-          </div>
-
-
-          <div className="internship-details">
-
-            <div className="title-row">
-
-              <div>
-                <h3>AI / ML Intern</h3>
-                <h4>XYZ Innovations</h4>
               </div>
 
-              <div className="ai-match">
-                <Sparkles size={15} />
-                88% Match
+
+              {/* Bottom */}
+
+              <div className="card-bottom">
+
+                <strong>
+                  {internship.stipend}
+                </strong>
+
+
+                <button
+                  onClick={() =>
+                    handleViewDetails(
+                      internship.id
+                    )
+                  }
+                >
+                  {t.viewDetails}
+                </button>
+
               </div>
-
-            </div>
-
-
-            <div className="internship-meta">
-
-              <span>
-                <MapPin size={16} />
-                Bangalore
-              </span>
-
-              <span>
-                <BriefcaseBusiness size={16} />
-                Artificial Intelligence
-              </span>
-
-              <span>
-                <Clock3 size={16} />
-                6 Months
-              </span>
-
-            </div>
-
-
-            <div className="skills">
-
-              <span>Python</span>
-              <span>Machine Learning</span>
-              <span>TensorFlow</span>
-
-            </div>
-
-
-            <div className="card-bottom">
-
-              <strong>
-                ₹20,000 / month
-              </strong>
-
-              <button>
-                View Details
-              </button>
 
             </div>
 
           </div>
 
-        </div>
+        ))}
+
+      </div>
 
 
-        {/* Card 3 */}
-        <div className="internship-box">
+      {/* =====================================================
+          VIEW ALL
+      ===================================================== */}
 
-          <div className="company-logo">
-            DEF
-          </div>
+      <div className="view-all-wrapper">
 
-
-          <div className="internship-details">
-
-            <div className="title-row">
-
-              <div>
-                <h3>Data Analyst Intern</h3>
-                <h4>DEF Analytics</h4>
-              </div>
-
-              <div className="ai-match">
-                <Sparkles size={15} />
-                84% Match
-              </div>
-
-            </div>
-
-
-            <div className="internship-meta">
-
-              <span>
-                <MapPin size={16} />
-                Pune
-              </span>
-
-              <span>
-                <BriefcaseBusiness size={16} />
-                Data Analytics
-              </span>
-
-              <span>
-                <Clock3 size={16} />
-                3 Months
-              </span>
-
-            </div>
-
-
-            <div className="skills">
-
-              <span>Python</span>
-              <span>SQL</span>
-              <span>Power BI</span>
-              <span>Excel</span>
-
-            </div>
-
-
-            <div className="card-bottom">
-
-              <strong>
-                ₹12,000 / month
-              </strong>
-
-              <button>
-                View Details
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
+        <button
+          className="view-all-btn"
+          onClick={() =>
+            navigate(
+              "/dashboard/internships/all"
+            )
+          }
+        >
+          {t.viewAll}
+          →
+        </button>
 
       </div>
 
     </div>
-  )
+  );
 }

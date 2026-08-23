@@ -1,0 +1,607 @@
+/* =========================================================
+   GLOBAL PAGE
+========================================================= */
+
+.comp-reg-page {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: #fff8ed;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 4rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
+    padding-left: 1rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.comp-reg-card {
+    width: 85%;
+    max-width: 1200px;
+
+    display: flex;
+
+    background-color: white;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.10);
+
+    position: relative;
+}
+
+
+/* =========================================================
+   LEFT IMAGE
+========================================================= */
+
+.comp-reg-left {
+    width: 40%;
+    min-height: 42rem;
+
+    background-image: url("../assets/rf.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LEFT OVERLAY
+========================================================= */
+
+.comp-reg-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.42);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 2rem;
+
+    box-sizing: border-box;
+}
+
+.comp-reg-overlay h1 {
+    margin: 0 0 0.7rem;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 2.7rem;
+
+    line-height: 1.2;
+}
+
+.comp-reg-overlay p {
+    margin: 0;
+
+    max-width: 25rem;
+
+    font-size: 1.1rem;
+
+    line-height: 1.5;
+}
+
+.comp-line {
+    width: 4rem;
+    height: 2px;
+
+    background-color: white;
+
+    margin: 1.5rem 0;
+}
+
+.comp-reg-overlay span {
+    max-width: 24rem;
+
+    font-size: 0.95rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RIGHT SECTION
+========================================================= */
+
+.comp-reg-right {
+    width: 60%;
+
+    padding: 2.5rem 3rem;
+
+    box-sizing: border-box;
+
+    background-color: white;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.comp-reg-heading {
+    margin-bottom: 1.5rem;
+}
+
+.comp-reg-heading h1 {
+    margin: 0;
+
+    color: #073f3f;
+
+    font-family:
+        "Gill Sans",
+        "Gill Sans MT",
+        Calibri,
+        sans-serif;
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+}
+
+.comp-reg-heading p {
+    margin-top: 0.5rem;
+
+    color: #666;
+
+    font-size: 1rem;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.comp-reg-form {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1.2rem 1.3rem;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.comp-field {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.comp-field label {
+    margin-bottom: 0.4rem;
+
+    color: #444;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+.comp-field input,
+.comp-field select {
+    width: 100%;
+
+    height: 2.8rem;
+
+    padding:
+        0 0.8rem;
+
+    box-sizing: border-box;
+
+    border: 1px solid #bbb;
+
+    border-radius: 7px;
+
+    background-color: white;
+
+    outline: none;
+
+    font-size: 0.9rem;
+
+    color: #222;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.comp-field input:focus,
+.comp-field select:focus {
+    border-color: orange;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 165, 0, 0.12);
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.comp-reg-btn {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    height: 3.2rem;
+
+    margin-top: 0.8rem;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: rgb(214, 142, 9);
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.comp-reg-btn:hover {
+    background-color: green;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   LOGIN TEXT
+========================================================= */
+
+.comp-login-text {
+    margin-top: 1.5rem;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 0.9rem;
+
+    line-height: 1.4;
+}
+
+.comp-login-link {
+    margin-left: 0.35rem;
+
+    color: green;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.comp-login-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   LARGE TABLET <= 1024px
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .comp-reg-page {
+        padding-top: 3.5rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .comp-reg-card {
+        width: 90%;
+    }
+
+    .comp-reg-left {
+        width: 38%;
+        min-height: 40rem;
+    }
+
+    .comp-reg-right {
+        width: 62%;
+
+        padding:
+            2rem 2.2rem;
+    }
+
+    .comp-reg-heading h1 {
+        font-size: 1.8rem;
+    }
+
+    .comp-reg-form {
+        gap: 1rem;
+    }
+}
+
+
+/* =========================================================
+   TABLET <= 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .comp-reg-card {
+        width: 94%;
+    }
+
+    .comp-reg-left {
+        width: 36%;
+    }
+
+    .comp-reg-right {
+        width: 64%;
+
+        padding:
+            2rem 1.8rem;
+    }
+
+    .comp-reg-form {
+        grid-template-columns: 1fr;
+    }
+
+    .comp-reg-btn {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE <= 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .comp-reg-page {
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding-top: 2.5rem;
+        padding-right: 0.8rem;
+        padding-bottom: 3.5rem;
+        padding-left: 0.8rem;
+
+        align-items: flex-start;
+    }
+
+    .comp-reg-card {
+        width: 100%;
+
+        flex-direction: column;
+
+        border-radius: 0.9rem;
+    }
+
+    .comp-reg-left {
+        width: 100%;
+
+        min-height: 15rem;
+
+        height: 15rem;
+    }
+
+    .comp-reg-right {
+        width: 100%;
+
+        padding:
+            2rem 1.5rem 2.2rem;
+    }
+
+    .comp-reg-heading h1 {
+        font-size: 1.55rem;
+    }
+
+    .comp-reg-heading p {
+        font-size: 0.88rem;
+    }
+
+    .comp-reg-form {
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+    }
+
+    .comp-reg-btn {
+        grid-column: auto;
+
+        margin-top: 0.5rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE <= 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .comp-reg-page {
+        padding-top: 1.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 3rem;
+        padding-left: 0.5rem;
+    }
+
+    .comp-reg-card {
+        width: 100%;
+
+        border-radius: 0.8rem;
+    }
+
+    .comp-reg-left {
+        min-height: 13rem;
+
+        height: 13rem;
+    }
+
+    .comp-reg-overlay {
+        padding: 1rem;
+    }
+
+    .comp-reg-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .comp-reg-overlay p {
+        font-size: 0.85rem;
+    }
+
+    .comp-reg-overlay span {
+        font-size: 0.75rem;
+
+        max-width: 90%;
+    }
+
+    .comp-reg-right {
+        padding:
+            1.5rem 1rem 2rem;
+    }
+
+    .comp-reg-heading {
+        margin-bottom: 1.2rem;
+    }
+
+    .comp-reg-heading h1 {
+        font-size: 1.35rem;
+    }
+
+    .comp-reg-heading p {
+        font-size: 0.8rem;
+    }
+
+    .comp-field label {
+        font-size: 0.82rem;
+    }
+
+    .comp-field input,
+    .comp-field select {
+        height: 2.7rem;
+
+        font-size: 0.82rem;
+
+        padding:
+            0 0.7rem;
+    }
+
+    .comp-reg-btn {
+        height: 3rem;
+
+        font-size: 0.9rem;
+    }
+
+    .comp-login-text {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE <= 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .comp-reg-page {
+        padding-top: 1.2rem;
+        padding-right: 0.35rem;
+        padding-bottom: 2.5rem;
+        padding-left: 0.35rem;
+    }
+
+    .comp-reg-left {
+        min-height: 12rem;
+
+        height: 12rem;
+    }
+
+    .comp-reg-overlay h1 {
+        font-size: 1.7rem;
+    }
+
+    .comp-reg-overlay p {
+        font-size: 0.76rem;
+    }
+
+    .comp-reg-overlay span {
+        font-size: 0.68rem;
+    }
+
+    .comp-reg-right {
+        padding:
+            1.3rem 0.85rem 1.8rem;
+    }
+
+    .comp-reg-heading h1 {
+        font-size: 1.2rem;
+    }
+
+    .comp-reg-heading p {
+        font-size: 0.74rem;
+    }
+
+    .comp-field label {
+        font-size: 0.78rem;
+    }
+
+    .comp-field input,
+    .comp-field select {
+        height: 2.6rem;
+
+        font-size: 0.78rem;
+    }
+
+    .comp-login-text {
+        font-size: 0.72rem;
+    }
+}

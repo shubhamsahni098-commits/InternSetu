@@ -1,182 +1,70 @@
-/*.log-left-mid{
-    height: 30rem;
-    width: 70%;
-    margin-top: 4rem;
-    background-color: aqua;
-}
-.img-div{
-    background-color: pink;
-    height: 100%;
-    width: 40%;
-}*/
-/*
-.log-left-mid {
-   
-    border-radius: 1rem;
-    height: 30rem;
-    width: 70%;
-    margin-top: 4rem;
-    display: flex;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
-    box-shadow:
-        0 8px 15px rgba(0, 0, 0, 0.15),
-        0 15px 30px rgba(0, 0, 0, 0.12);
-    margin-bottom: 5rem;    
-}
-
-.img-div {
-    height: 100%;
-    width: 40%;
-    background-image: url('../assets/rf.png');
-    border-radius: 1rem;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
-}
-
-
-
-.img-overlay {
-    position: absolute;
-    inset: 0;
-    border-radius: 1rem;
-    background: rgba(0, 0, 0, 0.35);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
-}
-
-.img-overlay h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.img-overlay p {
-    font-size: 1.1rem;
-}
-.right{
-    height: 100%;
-    width: 60%;
-   
-}
-.email{
-    height: 3.5rem;
-    width: 60%;
-    margin-top: 3rem;
-    margin-left: 5rem;
-    
-}
-.e-txt{
-    margin-bottom: 0.2rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(71, 70, 70);
-}
-.input{
-    height: 2.7rem;
-    width: 90%;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -ms-border-radius: 7px;
-    -o-border-radius: 7px;
-    border: 1px solid gray;
-}
-.btn-div{
-  
-    margin-top: 8rem;
-    margin-left: 8rem;
-    height: 3.3rem;
-}
-.log-btn{
-    height: 3.3rem;
-    width: 70%;
-    background-color: rgb(214, 142, 9);
-    border: 1px solid gray;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -ms-border-radius: 7px;
-    -o-border-radius: 7px;
-}
-.log-btn:hover{
-    background-color: green;
-    cursor: pointer;
-}
-.login{
-    color: white;
-    font-size: 1rem;
-}
-.acc{
-    margin-left: 11rem;
-    margin-top: 2rem;
-    color: rgb(61, 61, 61);
-}*/
-
-/* =========================
+/* =========================================================
    LOGIN MAIN CARD
-========================= */
+========================================================= */
 
 .log-left-mid {
-    border-radius: 1rem;
 
-    min-height: 30rem;
     width: 70%;
+    min-height: 35rem;
 
+    /* Important:
+       Explicit margins so global .m-auto cannot interfere */
     margin-top: 4rem;
+    margin-right: auto;
     margin-bottom: 5rem;
+    margin-left: auto;
 
     display: flex;
 
-    box-shadow:
-        0 8px 15px rgba(0, 0, 0, 0.15),
-        0 15px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
 
     overflow: hidden;
+
+    background-color: white;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.15),
+        0 15px 30px rgba(0, 0, 0, 0.12);
+
+    position: relative;
 }
 
 
-/* =========================
+/* =========================================================
    LEFT IMAGE
-========================= */
+========================================================= */
 
 .img-div {
-    height: 30rem;
-    width: 40%;
 
-    background-image: url('../assets/rf.png');
+    width: 40%;
+    height: 35rem;
+
+    background-image: url("../assets/rf.png");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     position: relative;
+
+    flex-shrink: 0;
 }
 
 
-/* Overlay */
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
 
 .img-overlay {
+
     position: absolute;
+
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.38);
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
@@ -185,331 +73,656 @@
     text-align: center;
 
     color: white;
+
+    padding: 2rem;
+
+    box-sizing: border-box;
 }
 
 .img-overlay h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+
+    font-size: 2.7rem;
+
+    margin: 0 0 0.5rem;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .img-overlay p {
-    font-size: 1.1rem;
+
+    font-size: 1.15rem;
+
+    margin: 0;
+
+    line-height: 1.4;
+}
+
+.overlay-line {
+
+    width: 4rem;
+    height: 2px;
+
+    background-color: white;
+
+    margin-top: 1.5rem;
+}
+
+.overlay-small-text {
+
+    margin-top: 1.5rem;
+
+    font-size: 1rem;
+
+    line-height: 1.5;
+
+    max-width: 90%;
+
+    overflow-wrap: break-word;
 }
 
 
-/* =========================
+/* =========================================================
    RIGHT LOGIN SECTION
-========================= */
+========================================================= */
 
 .right {
-    min-height: 30rem;
+
     width: 60%;
+    min-height: 35rem;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
+    justify-content: flex-start;
+
+    background-color: white;
+
+    padding: 2.5rem 0 2rem;
+
+    box-sizing: border-box;
+
+    flex-shrink: 1;
 }
 
 
-/* =========================
-   INPUT SECTION
-========================= */
+/* =========================================================
+   HEADING
+========================================================= */
 
-.email {
+.login-heading {
+
     width: 70%;
 
-    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-heading h1 {
+
+    margin: 0;
+
+    color: #073f3f;
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+
+    font-family:
+        "Gill Sans",
+        "Gill Sans MT",
+        Calibri,
+        sans-serif;
+}
+
+.login-heading p {
+
+    margin-top: 0.5rem;
+
+    color: #555;
+
+    font-size: 1rem;
+
+    line-height: 1.4;
+
+    font-family:
+        "Gill Sans",
+        "Gill Sans MT",
+        Calibri,
+        sans-serif;
+}
+
+
+/* =========================================================
+   ROLE SWITCH
+========================================================= */
+
+.role-switch {
+
+    width: 70%;
+
+    height: 3rem;
+
+    display: flex;
+
+    margin-bottom: 0.5rem;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background-color: #fafafa;
+
+    flex-shrink: 0;
+}
+
+.role-btn {
+
+    width: 50%;
+    height: 100%;
+
+    border: none;
+
+    background-color: #fafafa;
+
+    color: #173b4a;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.role-btn:hover {
+
+    background-color: #f2f2f2;
+}
+
+.role-btn.active {
+
+    background-color: rgb(214, 142, 9);
+
+    color: white;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   INPUT SECTION
+========================================================= */
+
+.email {
+
+    width: 70%;
+
+    margin-top: 1.5rem;
+
+    flex-shrink: 0;
 }
 
 .e-txt {
-    margin-bottom: 0.2rem;
+
+    margin-bottom: 0.4rem;
 
     font-family:
-        'Gill Sans',
-        'Gill Sans MT',
+        "Gill Sans",
+        "Gill Sans MT",
         Calibri,
-        'Trebuchet MS',
         sans-serif;
 
     color: rgb(71, 70, 70);
+
+    font-size: 1rem;
 }
 
 .input {
-    height: 2.7rem;
+
     width: 100%;
+
+    height: 2.9rem;
+
+    padding: 0 0.8rem;
+
+    box-sizing: border-box;
 
     border-radius: 7px;
 
-    border: 1px solid gray;
-
-    padding: 0 0.7rem;
+    border: 1px solid #bcbcbc;
 
     outline: none;
+
+    font-size: 0.95rem;
+
+    transition: 0.2s ease;
 }
 
 .input:focus {
-    border-color: #f97316;
+
+    border-color: orange;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 165, 0, 0.12);
 }
 
 
-/* =========================
+/* =========================================================
    LOGIN BUTTON
-========================= */
+========================================================= */
 
 .btn-div {
+
     width: 70%;
 
-    margin-top: 5rem;
+    margin-top: 2.8rem;
 
     height: 3.3rem;
+
+    flex-shrink: 0;
 }
 
 .log-btn {
-    height: 3.3rem;
+
     width: 100%;
 
-    background-color: rgb(214, 142, 9);
+    height: 3.3rem;
 
-    border: 1px solid gray;
+    border: none;
 
     border-radius: 7px;
 
+    background-color: rgb(214, 142, 9);
+
+    cursor: pointer;
+
     transition: 0.3s ease;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .log-btn:hover {
-    background-color: green;
 
-    cursor: pointer;
+    background-color: green;
 
     transform: translateY(-2px);
 }
 
 .login {
+
     color: white;
 
-    font-size: 1rem;
-}
+    font-size: 1.1rem;
 
-
-/* =========================
-   CREATE ACCOUNT
-========================= */
-
-.acc {
-    margin-top: 2rem;
-
-    color: rgb(61, 61, 61);
-
-    text-align: center;
-}
-
-.acc span {
-    color: green;
-
-    margin-left: 0.3rem;
-
-    text-decoration: none;
-}
-
-.acc span:hover {
-    text-decoration: underline;
-    cursor: pointer;
+    font-weight: 600;
 }
 
 
 /* =========================================================
-   TABLET
+   CREATE ACCOUNT
+========================================================= */
+
+.acc {
+
+    margin-top: 1.8rem;
+
+    margin-bottom: 0;
+
+    color: rgb(61, 61, 61);
+
+    text-align: center;
+
+    font-size: 0.95rem;
+
+    line-height: 1.4;
+}
+
+.create-link {
+
+    margin-left: 0.35rem;
+
+    color: green;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.create-link:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   LARGE TABLET <= 1024px
 ========================================================= */
 
 @media (max-width: 1024px) {
 
     .log-left-mid {
+
         width: 85%;
 
-        min-height: 28rem;
+        min-height: 33rem;
+
+        margin-top: 3.5rem;
+        margin-bottom: 4.5rem;
     }
 
     .img-div {
-        height: 28rem;
+
+        height: 33rem;
     }
 
     .right {
-        min-height: 28rem;
+
+        min-height: 33rem;
+
+        padding-top: 2rem;
     }
 
-    .email {
-        width: 75%;
-    }
-
+    .login-heading,
+    .role-switch,
+    .email,
     .btn-div {
+
         width: 75%;
     }
 
     .img-overlay h1 {
-        font-size: 2.2rem;
+
+        font-size: 2.3rem;
     }
 
     .img-overlay p {
+
         font-size: 1rem;
+    }
+
+    .overlay-small-text {
+
+        font-size: 0.95rem;
     }
 }
 
 
 /* =========================================================
-   MOBILE
+   MOBILE <= 768px
 ========================================================= */
 
 @media (max-width: 768px) {
 
     .log-left-mid {
+
         width: 90%;
 
         min-height: auto;
 
-        margin-top: 3rem;
+        margin-top: 2.5rem;
+        margin-right: auto;
         margin-bottom: 4rem;
+        margin-left: auto;
 
         flex-direction: column;
     }
 
-
-    /* Image becomes top section */
-
     .img-div {
+
         width: 100%;
+
         height: 16rem;
 
         flex-shrink: 0;
     }
 
-
-    .img-overlay h1 {
-        font-size: 2.2rem;
-    }
-
-    .img-overlay p {
-        font-size: 1rem;
-    }
-
-
-    /* Login section */
-
     .right {
+
         width: 100%;
 
         min-height: auto;
 
-        padding: 1rem 0 2rem;
+        padding:
+            2rem
+            0
+            2rem;
     }
 
+    .login-heading {
 
-    /* Inputs */
-
-    .email {
-        width: 80%;
-
-        margin-top: 1.5rem;
+        width: 82%;
     }
 
+    .login-heading h1 {
 
-    /* Button */
-
-    .btn-div {
-        width: 80%;
-
-        margin-top: 3rem;
+        font-size: 1.7rem;
     }
 
-
-    /* Account */
-
-    .acc {
-        margin-top: 1.5rem;
+    .login-heading p {
 
         font-size: 0.9rem;
     }
+
+    .role-switch {
+
+        width: 82%;
+
+        height: 2.8rem;
+    }
+
+    .role-btn {
+
+        font-size: 0.95rem;
+    }
+
+    .email {
+
+        width: 82%;
+
+        margin-top: 1.3rem;
+    }
+
+    .btn-div {
+
+        width: 82%;
+
+        margin-top: 2.5rem;
+    }
+
+    .acc {
+
+        font-size: 0.85rem;
+    }
+
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   SMALL MOBILE <= 480px
 ========================================================= */
 
 @media (max-width: 480px) {
 
     .log-left-mid {
+
         width: 94%;
 
-        margin-top: 2rem;
-        margin-bottom: 3rem;
+        min-height: auto;
+
+        margin-top: 1.5rem;
+        margin-right: auto;
+        margin-bottom: 3.5rem;
+        margin-left: auto;
 
         border-radius: 0.8rem;
     }
 
-
-    /* Smaller image */
-
     .img-div {
+
         height: 13rem;
     }
 
+    .img-overlay {
+
+        padding: 1rem;
+    }
 
     .img-overlay h1 {
-        font-size: 1.8rem;
+
+        font-size: 1.9rem;
     }
 
     .img-overlay p {
+
         font-size: 0.85rem;
     }
 
+    .overlay-small-text {
 
-    /* Login section */
+        font-size: 0.78rem;
 
-    .right {
-        padding-top: 0.5rem;
-        padding-bottom: 1.5rem;
+        max-width: 90%;
     }
 
+    .right {
 
-    /* Inputs */
+        padding:
+            1.5rem
+            0
+            2rem;
+    }
 
-    .email {
+    .login-heading {
+
+        width: 88%;
+    }
+
+    .login-heading h1 {
+
+        font-size: 1.45rem;
+    }
+
+    .login-heading p {
+
+        font-size: 0.8rem;
+    }
+
+    .role-switch {
+
         width: 88%;
 
-        margin-top: 1.3rem;
+        height: 2.7rem;
+    }
+
+    .role-btn {
+
+        font-size: 0.85rem;
+    }
+
+    .email {
+
+        width: 88%;
+
+        margin-top: 1.2rem;
     }
 
     .e-txt {
-        font-size: 0.9rem;
-    }
-
-    .input {
-        height: 2.6rem;
 
         font-size: 0.85rem;
     }
 
+    .input {
 
-    /* Button */
+        height: 2.7rem;
+
+        font-size: 0.85rem;
+    }
 
     .btn-div {
+
         width: 88%;
 
-        margin-top: 2.5rem;
+        margin-top: 2.3rem;
     }
 
     .log-btn {
+
         height: 3rem;
     }
 
+    .login {
 
-    /* Account */
+        font-size: 1rem;
+    }
 
     .acc {
-        font-size: 0.8rem;
 
-        margin-top: 1.3rem;
+        font-size: 0.75rem;
+
+        margin-top: 1.2rem;
     }
-    
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE <= 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .log-left-mid {
+
+        width: 95%;
+
+        margin-top: 1.2rem;
+        margin-right: auto;
+        margin-bottom: 3rem;
+        margin-left: auto;
+    }
+
+    .login-heading {
+
+        width: 92%;
+    }
+
+    .role-switch {
+
+        width: 92%;
+    }
+
+    .email {
+
+        width: 92%;
+    }
+
+    .btn-div {
+
+        width: 92%;
+    }
+
+    .img-overlay h1 {
+
+        font-size: 1.6rem;
+    }
+
+    .img-overlay p {
+
+        font-size: 0.75rem;
+    }
+
+    .overlay-small-text {
+
+        font-size: 0.7rem;
+
+        line-height: 1.4;
+    }
+
 }

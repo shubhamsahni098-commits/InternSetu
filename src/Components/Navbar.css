@@ -1,68 +1,356 @@
-*{
-   
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-.nav-1{
-    
-    min-height: 45px;
+
+
+/* =========================================================
+   NAV 1
+========================================================= */
+
+.t {
+    font-family:
+        'Times New Roman',
+        Times,
+        serif;
 }
-.logo{
+
+.nav-1 {
+    min-height: 70px;
+}
+
+.logo {
     height: 55px;
+    width: auto;
 }
-.satymev{
+
+.satymev {
     height: 55px;
+    width: auto;
 }
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
 .language-select {
-  height: 35px;
-  padding: 4px 2px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: white;
-  font-size: 14px;
-  cursor: pointer;
+    height: 35px;
+
+    padding: 4px 8px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    background: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
 }
-.gap-2{
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.gap-2 {
     gap: 2rem;
 }
-.gap-1{
+
+.gap-1 {
     gap: 0.4rem;
 }
-.gap{
+
+.gap {
     gap: 55%;
 }
-.pd{
+
+.pd {
     padding: 12px;
 }
-.m{
+
+.m {
     margin-left: 1rem;
 }
-.m-r{
+
+.m-r {
     margin-right: 3rem;
 }
 
-/*    Nav 2  */
 
-.nav-2{
+/* =========================================================
+   NAV 2
+========================================================= */
+
+.nav-2 {
     background-color: orange;
-    height: 50px;
+
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
 }
-.nav-link{
-    height: 50px;
+
+
+/* =========================================================
+   NAVIGATION CONTAINER
+========================================================= */
+
+.nav-link {
+    min-height: 50px;
+
     width: 60%;
-    
+
+    display: flex;
+    align-items: center;
 }
-.link{
-    height: inherit;
-    width: 6rem;  
+
+
+/* =========================================================
+   NAV LINK
+========================================================= */
+
+.link {
+    height: 50px;
+
+    width: max-content;
+
+    min-width: 6rem;
+
+    padding: 0 0.8rem;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    color: black;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
-.link:hover{
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.link:hover {
     background-color: green;
+
     color: white;
 }
-.gap-4{
+
+
+/* =========================================================
+   ACTIVE PAGE
+========================================================= */
+
+.link.active {
+    background-color: green;
+
+    color: white;
+}
+
+
+/* =========================================================
+   DASHBOARD MENU LINK
+========================================================= */
+
+.nav-menu-link {
+    min-width: 50px;
+
+    width: 50px;
+
+    padding: 0;
+}
+
+.nav-menu-link.active {
+    background-color: green;
+
+    color: white;
+}
+
+
+/* =========================================================
+   GAPS
+========================================================= */
+
+.gap-4 {
     gap: 4rem;
 }
-.gap-c{
+
+.gap-c {
     gap: 34rem;
+}
+
+
+/* =========================================================
+   TABLET <= 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .gap {
+        gap: 15%;
+    }
+
+    .gap-c {
+        gap: 8rem;
+    }
+
+    .nav-link {
+        width: 75%;
+    }
+
+    .gap-4 {
+        gap: 1.5rem;
+    }
+
+    .m-r {
+        margin-right: 1rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE <= 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .nav-1 {
+        min-height: auto;
+
+        padding: 8px 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        height: 42px;
+    }
+
+    .satymev {
+        height: 42px;
+    }
+
+    .gap {
+        gap: 0.5rem;
+    }
+
+    .gap-2 {
+        gap: 0.7rem;
+    }
+
+    .m {
+        margin-left: 0;
+    }
+
+    .m-r {
+        margin-right: 0;
+    }
+
+    .pd {
+        padding: 6px;
+    }
+
+    .language-select {
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+
+    /* NAV 2 */
+
+    .nav-2 {
+        min-height: 50px;
+
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+
+        gap: 0;
+
+        justify-content: space-between;
+    }
+
+    .link {
+        width: auto;
+
+        min-width: auto;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+    }
+
+    .nav-menu-link {
+        width: 50px;
+
+        min-width: 50px;
+
+        padding: 0;
+    }
+
+    .gap-4 {
+        gap: 0;
+    }
+
+    .gap-c {
+        gap: 0;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE <= 400px
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .nav-1 {
+        padding: 6px 8px;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    .satymev {
+        height: 35px;
+    }
+
+    .language-select {
+        height: 30px;
+
+        font-size: 12px;
+    }
+
+    .link {
+        padding: 0 7px;
+
+        font-size: 12px;
+    }
+
+    .nav-menu-link {
+        width: 45px;
+
+        min-width: 45px;
+
+        padding: 0;
+    }
 }

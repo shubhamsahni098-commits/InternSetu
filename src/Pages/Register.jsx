@@ -1,8 +1,9 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-import rf from '../assets/rf.png'
+
 import LogFooter from '../Components/LogFooter'
 import { useNavigate } from "react-router-dom";
+import rf from '../assets/rf.png'
 import './Register.css'
 import '../index2.css'
 
@@ -12,7 +13,7 @@ export default function Register() {
     <>
       <Navbar />
 
-      <div className="register-container m-auto">
+      <div className="register-container m-ato">
 
         {/* LEFT SIDE */}
         <div className="register-left">
