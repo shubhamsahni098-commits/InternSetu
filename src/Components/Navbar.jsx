@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import '../index2.css';
 
 import stateEmble from "../assets/stateEmble.png";
 import logo from "../assets/logo.png";
 
-import { Menu } from "lucide-react";
+import {
+  Menu,
+  X
+} from "lucide-react";
+
+import {
+  NavLink,
+  useNavigate
+} from "react-router-dom";
+
 import { useLanguage } from "../context/LanguageContext";
-import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 
   const navigate = useNavigate();
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const {
     language,
@@ -19,30 +29,38 @@ export default function Navbar() {
     t
   } = useLanguage();
 
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+
   return (
     <>
 
       {/* =====================================================
-          NAV 1
+          TOP NAV
       ===================================================== */}
 
-      <div className='nav-1 flex gap'>
+      <div className="nav-1 flex gap">
 
-        <div className='flex gap-1 m'>
+        {/* LEFT SECTION */}
+
+        <div className="flex gap-1 m">
 
           <img
-            className='logo'
+            className="logo"
             src={logo}
             alt="InternSetu"
           />
 
           <img
-            className='satymev m-auto'
+            className="satymev m-auto"
             src={stateEmble}
             alt="Government Emblem"
           />
 
-          <div>
+          <div className="gov-text">
             भारत सरकार
             <br />
             Government Of India
@@ -51,12 +69,16 @@ export default function Navbar() {
         </div>
 
 
-        <div className='flex gap-2 m-r'>
+        {/* RIGHT SECTION */}
 
-          <div className='pd t'>
+        <div className="flex gap-2 m-r">
+
+          <div className="pd t skip-text">
             {t.skipMain}
           </div>
 
+
+          {/* LANGUAGE */}
 
           <select
             className="language-select m-auto"
@@ -83,6 +105,8 @@ export default function Navbar() {
           </select>
 
 
+          {/* LOGIN */}
+
           <button
             className="btn t"
             onClick={() => navigate("/login")}
@@ -96,29 +120,30 @@ export default function Navbar() {
 
 
       {/* =====================================================
-          NAV 2
+          SECOND NAV
       ===================================================== */}
 
-      <div className='nav-2 flex gap-c'>
+      <div className="nav-2">
 
 
-        {/* DASHBOARD MENU */}
+        {/* =================================================
+            DESKTOP DASHBOARD BUTTON
+        ================================================= */}
 
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? 'link nav-menu-link active'
-              : 'link nav-menu-link'
-          }
+        <button
+          className="desktop-dashboard-btn"
+          onClick={() => navigate("/dashboard")}
+          aria-label="Open Dashboard"
         >
           <Menu size={24} />
-        </NavLink>
+        </button>
 
 
-        {/* MAIN NAVIGATION */}
+        {/* =================================================
+            DESKTOP NAV LINKS
+        ================================================= */}
 
-        <div className='nav-link flex gap-4 m'>
+        <div className="nav-link desktop-nav">
 
 
           {/* HOME */}
@@ -127,8 +152,8 @@ export default function Navbar() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? 'link t active'
-                : 'link t'
+                ? "link t active"
+                : "link t"
             }
           >
             {t.home}
@@ -141,8 +166,8 @@ export default function Navbar() {
             to="/dashboard/internships"
             className={({ isActive }) =>
               isActive
-                ? 'link t active'
-                : 'link t'
+                ? "link t active"
+                : "link t"
             }
           >
             {t.internship}
@@ -151,14 +176,14 @@ export default function Navbar() {
 
           {/* DOCUMENTS */}
 
-          <div className='link t'>
+          <div className="link t">
             {t.documents}
           </div>
 
 
           {/* HOW IT WORKS */}
 
-          <div className='link t'>
+          <div className="link t">
             {t.howItWorks}
           </div>
 
@@ -169,15 +194,117 @@ export default function Navbar() {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? 'link t active'
-                : 'link t'
+                ? "link t active"
+                : "link t"
             }
           >
             {t.about}
           </NavLink>
 
-
         </div>
+
+
+        {/* =================================================
+            MOBILE MENU BUTTON
+        ================================================= */}
+
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+        >
+          {menuOpen
+            ? <X size={24} />
+            : <Menu size={24} />
+          }
+        </button>
+
+
+        {/* =================================================
+            MOBILE MENU
+        ================================================= */}
+
+        {menuOpen && (
+
+          <div className="mobile-nav">
+
+
+            {/* DASHBOARD */}
+
+            <NavLink
+              to="/dashboard"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                isActive
+                  ? "mobile-link active"
+                  : "mobile-link"
+              }
+            >
+              {t.dashboard}
+            </NavLink>
+
+
+            {/* HOME */}
+
+            <NavLink
+              to="/"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                isActive
+                  ? "mobile-link active"
+                  : "mobile-link"
+              }
+            >
+              {t.home}
+            </NavLink>
+
+
+            {/* INTERNSHIP */}
+
+            <NavLink
+              to="/dashboard/internships"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                isActive
+                  ? "mobile-link active"
+                  : "mobile-link"
+              }
+            >
+              {t.internship}
+            </NavLink>
+
+
+            {/* DOCUMENTS */}
+
+            <div className="mobile-link">
+              {t.documents}
+            </div>
+
+
+            {/* HOW IT WORKS */}
+
+            <div className="mobile-link">
+              {t.howItWorks}
+            </div>
+
+
+            {/* ABOUT */}
+
+            <NavLink
+              to="/about"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                isActive
+                  ? "mobile-link active"
+                  : "mobile-link"
+              }
+            >
+              {t.about}
+            </NavLink>
+
+          </div>
+
+        )}
 
       </div>
 
