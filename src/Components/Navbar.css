@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+/* Prevent horizontal overflow */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#root {
+    width: 100%;
+    max-width: 100%;
+}
+
 
 /* =========================================================
    COMMON
@@ -22,25 +35,35 @@
 ========================================================= */
 
 .nav-1 {
+    width: 100%;
     min-height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 1.5rem;
+
+    gap: 1rem;
+
+    overflow: hidden;
 }
 
 .logo {
     height: 55px;
     width: auto;
+    flex-shrink: 0;
 }
 
 .satymev {
     height: 55px;
     width: auto;
+    flex-shrink: 0;
 }
 
 .gov-text {
     line-height: 1.2;
-    white-space: nowrap;
-}
-
-.skip-text {
     white-space: nowrap;
 }
 
@@ -63,23 +86,26 @@
     font-size: 14px;
 
     cursor: pointer;
+
+    flex-shrink: 0;
 }
 
 
 /* =========================================================
-   TOP NAV UTILITIES
+   TOP NAV SECTIONS
 ========================================================= */
 
-.gap-2 {
-    gap: 2rem;
+.nav-1 > .flex {
+    display: flex;
+    align-items: center;
 }
 
-.gap-1 {
+.nav-1 .gap-1 {
     gap: 0.4rem;
 }
 
-.gap {
-    gap: 55%;
+.nav-1 .gap-2 {
+    gap: 1rem;
 }
 
 .pd {
@@ -87,16 +113,16 @@
 }
 
 .m {
-    margin-left: 1rem;
+    margin-left: 0;
 }
 
 .m-r {
-    margin-right: 3rem;
+    margin-right: 0;
 }
 
 
 /* =========================================================
-   NAV 2
+   SECOND NAV
 ========================================================= */
 
 .nav-2 {
@@ -111,6 +137,8 @@
     position: relative;
 
     z-index: 100;
+
+    overflow: visible;
 }
 
 
@@ -158,9 +186,11 @@
     display: flex;
     align-items: center;
 
-    gap: 4rem;
+    gap: 2rem;
 
     margin-left: 1rem;
+
+    margin-right: auto;
 }
 
 .link {
@@ -185,26 +215,30 @@
 
     cursor: pointer;
 
+    flex-shrink: 0;
+
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
 }
 
 
-/* HOVER */
+/* =========================================================
+   HOVER
+========================================================= */
 
 .link:hover {
     background-color: green;
-
     color: white;
 }
 
 
-/* ACTIVE */
+/* =========================================================
+   ACTIVE
+========================================================= */
 
 .link.active {
     background-color: green;
-
     color: white;
 }
 
@@ -229,6 +263,8 @@
     justify-content: center;
 
     cursor: pointer;
+
+    flex-shrink: 0;
 
     transition:
         background-color 0.2s ease,
@@ -256,26 +292,25 @@
 
 @media (max-width: 900px) {
 
-    .gap {
-        gap: 15%;
+    .nav-1 {
+        padding: 0 1rem;
     }
 
-    .gap-2 {
-        gap: 1rem;
+    .gov-text {
+        font-size: 0.9rem;
     }
 
-    .m-r {
-        margin-right: 1rem;
+    .nav-1 .gap-2 {
+        gap: 0.7rem;
     }
 
     .desktop-nav {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .link {
         min-width: 5.5rem;
-
-        padding: 0 0.6rem;
+        padding: 0 0.5rem;
     }
 }
 
@@ -299,6 +334,8 @@
 
         flex-wrap: wrap;
 
+        justify-content: space-between;
+
         gap: 0.5rem;
     }
 
@@ -311,32 +348,19 @@
     }
 
     .gov-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
-    .gap {
-        gap: 0.5rem;
+    .nav-1 > .flex {
+        gap: 0.4rem;
     }
 
-    .gap-2 {
-        gap: 0.5rem;
-    }
-
-    .m {
-        margin-left: 0;
-    }
-
-    .m-r {
-        margin-right: 0;
-    }
-
-    .pd {
-        padding: 6px;
+    .skip-text {
+        font-size: 0.85rem;
     }
 
     .language-select {
         height: 32px;
-
         font-size: 13px;
     }
 
@@ -347,26 +371,15 @@
 
     .nav-2 {
         min-height: 50px;
-
-        width: 100%;
     }
-
-
-    /* Hide desktop dashboard */
 
     .desktop-dashboard-btn {
         display: none;
     }
 
-
-    /* Hide desktop navigation */
-
     .desktop-nav {
         display: none;
     }
-
-
-    /* Show mobile menu button */
 
     .mobile-menu-btn {
         display: flex;
@@ -381,7 +394,6 @@
         position: absolute;
 
         top: 50px;
-
         left: 0;
 
         width: 100%;
@@ -399,7 +411,6 @@
 
         z-index: 9999;
     }
-
 
     .mobile-link {
         width: 100%;
@@ -434,17 +445,13 @@
             color 0.2s ease;
     }
 
-
     .mobile-link:hover {
         background-color: #fff3e8;
-
         color: green;
     }
 
-
     .mobile-link.active {
         background-color: green;
-
         color: white;
     }
 }
@@ -471,17 +478,16 @@
     }
 
     .gov-text {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .language-select {
         height: 30px;
-
         font-size: 12px;
     }
 
     .skip-text {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .mobile-menu-btn {
