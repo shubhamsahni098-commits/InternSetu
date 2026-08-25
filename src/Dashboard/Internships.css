@@ -328,7 +328,28 @@
 .card-bottom button:hover {
     background-color: green;
 }
+.find {
+    padding: 0.65rem 1.1rem;
 
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: #f97316;
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.find:hover {
+    background-color: green;
+}
 
 /* ========================= */
 /* TABLET */
@@ -403,6 +424,9 @@
     }
 
     .card-bottom button {
+        width: 100%;
+    }
+    .find{
         width: 100%;
     }
 

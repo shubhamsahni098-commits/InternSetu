@@ -60,10 +60,10 @@ const translations = {
             "Work Mode",
 
         recommendedInternships:
-            "Recommended Internships",
+            "Recently Posted Internships",/*ye dono pahle recently poste intn rahenge and ek baar btn press hua phur top recomd*/
 
         topRecommendations:
-            "Top recommendations based on your profile",
+            "",
 
         bestMatch:
             "Best Match",

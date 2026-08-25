@@ -225,7 +225,7 @@ export default function Internships() {
         </div>
 
 
-        <select className="sort-select">
+        {/*<select className="sort-select">
 
           <option>
             {t.bestMatch}
@@ -239,7 +239,13 @@ export default function Internships() {
             {t.highestStipend}
           </option>
 
-        </select>
+        </select>*/}
+
+        <button  className="find"
+                  
+                >
+                 <Sparkles size={15} /> Recommend
+                </button>
 
       </div>
 
