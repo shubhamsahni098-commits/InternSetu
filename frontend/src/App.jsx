@@ -38,9 +38,9 @@ export default function App() {
     <>
       <Routes>
 
-        {/* ===================== */}
+       
         {/* HOME */}
-        {/* ===================== */}
+       
 
         <Route
           path="/"
@@ -57,9 +57,9 @@ export default function App() {
         />
 
 
-        {/* ===================== */}
+        
         {/* LOGIN */}
-        {/* ===================== */}
+        
 
         <Route
           path="/login"
@@ -67,9 +67,9 @@ export default function App() {
         />
 
 
-        {/* ===================== */}
+       
         {/* REGISTER */}
-        {/* ===================== */}
+       
 
         <Route
           path="/register"
@@ -77,9 +77,9 @@ export default function App() {
         />
 
 
-        {/* ===================== */}
+       
         {/* ABOUT */}
-        {/* ===================== */}
+       
 
         <Route
           path="/about"
@@ -87,9 +87,9 @@ export default function App() {
         />
 
 
-        {/* ===================== */}
+
         {/* DASHBOARD */}
-        {/* ===================== */}
+       
 
         <Route
           path="/dashboard"
