@@ -4,7 +4,6 @@
 
 .internship-details-page {
     width: 100%;
-
     min-height: 100vh;
 
     background-color: #f7f7f7;
@@ -46,6 +45,7 @@
     transition: 0.2s ease;
 }
 
+
 .back-btn:hover {
     color: #f97316;
 
@@ -68,12 +68,15 @@
 
     border-radius: 1rem;
 
-    padding: 2rem 2.2rem;
+    padding:
+        2rem
+        2.2rem;
 
     box-sizing: border-box;
 
     box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.08);
+        0 8px 24px
+        rgba(0, 0, 0, 0.08);
 }
 
 
@@ -89,8 +92,10 @@
     gap: 1.2rem;
 }
 
+
 .company-logo {
     width: 76px;
+
     height: 76px;
 
     min-width: 76px;
@@ -104,6 +109,7 @@
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     font-size: 1.3rem;
@@ -111,9 +117,11 @@
     font-weight: 700;
 }
 
+
 .header-content {
     width: 100%;
 }
+
 
 .title-row {
     width: 100%;
@@ -126,6 +134,7 @@
 
     gap: 1rem;
 }
+
 
 .title-row h1 {
     margin: 0;
@@ -142,6 +151,7 @@
         serif;
 }
 
+
 .company-name {
     margin-top: 0.5rem;
 
@@ -150,24 +160,6 @@
     color: #6a6a6a;
 
     font-size: 1rem;
-}
-
-.match-badge {
-    white-space: nowrap;
-
-    background-color: #fff3e8;
-
-    color: #f97316;
-
-    border-radius: 999px;
-
-    padding:
-        0.55rem
-        0.9rem;
-
-    font-size: 0.9rem;
-
-    font-weight: 600;
 }
 
 
@@ -186,6 +178,7 @@
     gap: 1rem;
 }
 
+
 .info-item {
     display: flex;
 
@@ -202,11 +195,13 @@
     color: #666;
 }
 
+
 .info-item svg {
     color: #f97316;
 
     flex-shrink: 0;
 }
+
 
 .info-item div {
     display: flex;
@@ -216,16 +211,202 @@
     gap: 0.2rem;
 }
 
+
 .info-item span {
     font-size: 0.75rem;
 
     color: #888;
 }
 
+
 .info-item strong {
     font-size: 0.92rem;
 
     color: #222;
+}
+
+
+/* =========================================================
+   MATCH SUMMARY
+========================================================= */
+
+.match-summary-section {
+    margin-top: 1.5rem;
+
+    padding:
+        1rem
+        1.1rem;
+
+    border-radius: 0.8rem;
+
+    background-color: #fff6ef;
+
+    border: 1px solid #ffe0cd;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+
+.match-summary-content {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.85rem;
+}
+
+
+.match-summary-icon {
+    width: 42px;
+
+    height: 42px;
+
+    min-width: 42px;
+
+    border-radius: 0.7rem;
+
+    background-color: #ffeadc;
+
+    color: #f97316;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.match-summary-content > div:last-child {
+    display: flex;
+
+    align-items: baseline;
+
+    flex-wrap: wrap;
+
+    column-gap: 0.4rem;
+
+    row-gap: 0.1rem;
+}
+
+
+.match-summary-label {
+    width: 100%;
+
+    color: #777;
+
+    font-size: 0.76rem;
+}
+
+
+.match-summary-score {
+    color: #f97316;
+
+    font-size: 1.45rem;
+}
+
+
+.match-summary-text {
+    color: #777;
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   MATCH INFO BUTTON
+========================================================= */
+
+.match-info-wrapper {
+    position: relative;
+}
+
+
+.match-info-button {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: 1px solid #ffd2b7;
+
+    background-color: white;
+
+    color: #f97316;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.match-info-button:hover {
+    background-color: #fff1e7;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.match-info-button::after {
+    content: attr(title);
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: calc(100% + 8px);
+
+    padding:
+        0.45rem
+        0.65rem;
+
+    background-color: #222;
+
+    color: white;
+
+    border-radius: 0.4rem;
+
+    font-size: 0.72rem;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateY(4px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+    z-index: 100;
+}
+
+
+.match-info-button:hover::after {
+    opacity: 1;
+
+    transform: translateY(0);
 }
 
 
@@ -254,6 +435,7 @@
     margin-bottom: 2rem;
 }
 
+
 .details-section h2 {
     margin:
         0 0
@@ -271,6 +453,29 @@
 
 
 /* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description-box {
+    padding:
+        1rem
+        1.1rem;
+
+    border-radius: 0.75rem;
+
+    background-color: #fcfcfc;
+
+    border: 1px solid #ededed;
+
+    color: #444;
+
+    line-height: 1.75;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
    SKILLS
 ========================================================= */
 
@@ -281,6 +486,7 @@
 
     gap: 0.6rem;
 }
+
 
 .skill-tag {
     background-color: #f5f5f5;
@@ -310,8 +516,7 @@
 
     gap: 0.7rem;
 
-    padding:
-        1rem;
+    padding: 1rem;
 
     border-radius: 0.7rem;
 
@@ -321,6 +526,7 @@
 
     color: #333;
 }
+
 
 .detail-box svg {
     color: #f97316;
@@ -342,6 +548,7 @@
     gap: 1rem;
 }
 
+
 .small-label {
     display: block;
 
@@ -351,6 +558,7 @@
 
     margin-bottom: 0.25rem;
 }
+
 
 .detail-box strong {
     color: #222;
@@ -370,6 +578,7 @@
 
     gap: 0.8rem;
 }
+
 
 .perk-item {
     display: flex;
@@ -392,6 +601,7 @@
 
     border: 1px solid #ececec;
 }
+
 
 .perk-item svg {
     color: #f97316;
@@ -418,6 +628,7 @@
     gap: 1rem;
 }
 
+
 .apply-label {
     margin: 0;
 
@@ -425,6 +636,7 @@
 
     font-size: 0.8rem;
 }
+
 
 .apply-match {
     display: block;
@@ -435,6 +647,7 @@
 
     font-size: 1.2rem;
 }
+
 
 .apply-btn {
     min-width: 170px;
@@ -461,13 +674,542 @@
         box-shadow 0.2s ease;
 }
 
+
 .apply-btn:hover {
     background-color: #e86509;
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 6px 14px rgba(249, 115, 22, 0.2);
+        0 6px 14px
+        rgba(249, 115, 22, 0.2);
+}
+
+
+/* =========================================================
+   LOADING / ERROR
+========================================================= */
+
+.details-loading,
+.details-error {
+    text-align: center;
+
+    padding:
+        4rem
+        2rem;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   DETAILS LOADER
+========================================================= */
+
+.details-loading {
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    box-sizing: border-box;
+}
+
+
+.details-spinner {
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 5px solid #ffe1cc;
+
+    border-top-color: #ff7412;
+
+    box-sizing: border-box;
+
+    animation:
+        detailsSpin
+        0.85s
+        linear
+        infinite;
+}
+
+
+@keyframes detailsSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+.details-loading p {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+.details-error h2 {
+    margin-bottom: 0.5rem;
+
+    color: #222;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =========================================================
+   MATCH ANALYSIS OVERLAY
+========================================================= */
+
+.match-analysis-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1.2rem;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   ANALYSIS MODAL
+========================================================= */
+
+.match-analysis-modal {
+    width: 100%;
+
+    max-width: 720px;
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 1rem;
+
+    padding: 1.5rem;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.22);
+}
+
+
+/* =========================================================
+   ANALYSIS HEADER
+========================================================= */
+
+.analysis-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin-bottom: 1.3rem;
+}
+
+
+.analysis-eyebrow {
+    margin:
+        0 0
+        0.3rem;
+
+    color: #f97316;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+}
+
+
+.analysis-header h2 {
+    margin: 0;
+
+    color: #171717;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.45rem;
+}
+
+
+.analysis-close {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background-color: #f5f5f5;
+
+    color: #555;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+
+.analysis-close:hover {
+    background-color: #eeeeee;
+}
+
+
+/* =========================================================
+   SCORE CARD
+========================================================= */
+
+.analysis-score-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.9rem;
+
+    padding: 1rem;
+
+    margin-bottom: 1.4rem;
+
+    border-radius: 0.8rem;
+
+    background-color: #fff6ef;
+
+    border: 1px solid #ffe0cb;
+}
+
+
+.analysis-score-icon {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 0.7rem;
+
+    background-color: #ffeadb;
+
+    color: #f97316;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.analysis-score-card div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.1rem;
+}
+
+
+.analysis-score-card span {
+    color: #777;
+
+    font-size: 0.8rem;
+}
+
+
+.analysis-score-card strong {
+    color: #f97316;
+
+    font-size: 1.55rem;
+}
+
+
+/* =========================================================
+   ANALYSIS SECTION
+========================================================= */
+
+.analysis-section {
+    padding:
+        1.15rem
+        0;
+
+    border-top:
+        1px solid #eeeeee;
+}
+
+
+.analysis-section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    margin-bottom: 0.9rem;
+
+    color: #f97316;
+}
+
+
+.analysis-section-title h3 {
+    margin: 0;
+
+    color: #222;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   WHY MATCH
+========================================================= */
+
+.analysis-reasons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.7rem;
+}
+
+
+.analysis-reason {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 0.6rem;
+
+    padding: 0.75rem;
+
+    border-radius: 0.6rem;
+
+    background-color: #fafafa;
+
+    color: #444;
+
+    line-height: 1.5;
+}
+
+
+ .analysis-reason svg {
+    flex-shrink: 0;
+
+    margin-top: 0.12rem;
+}
+
+.analysis-reason.match svg {
+    color: #2fa84f;
+}
+
+.analysis-reason.partial svg {
+    color: #f97316;
+}
+
+.analysis-reason.mismatch svg {
+    color: #d84d36;
+}
+
+.analysis-reason.neutral svg {
+    color: #777;
+}
+
+
+/* =========================================================
+   SKILL ANALYSIS
+========================================================= */
+
+.skill-analysis-summary {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 0.45rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.skill-analysis-summary strong {
+    color: #f97316;
+
+    font-size: 1.5rem;
+}
+
+
+.skill-analysis-summary span {
+    color: #777;
+
+    font-size: 0.85rem;
+}
+
+
+.analysis-skill-group {
+    margin-top: 1rem;
+}
+
+
+.analysis-skill-group h4 {
+    margin:
+        0 0
+        0.6rem;
+
+    color: #444;
+
+    font-size: 0.86rem;
+}
+
+
+.analysis-skill-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.55rem;
+}
+
+
+.matched-skill,
+.missing-skill {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.35rem;
+
+    padding:
+        0.45rem
+        0.65rem;
+
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+}
+
+
+.matched-skill {
+    background-color: #eef9f0;
+
+    color: #25803b;
+}
+
+
+.missing-skill {
+    background-color: #fff2ef;
+
+    color: #d84d36;
+}
+
+
+.skill-gap-note {
+    margin:
+        0.6rem
+        0
+        0;
+
+    color: #888;
+
+    font-size: 0.75rem;
+
+    line-height: 1.45;
+}
+
+
+.no-skill-data {
+    color: #888;
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   PROFILE FIT
+========================================================= */
+
+.fit-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 0.8rem;
+}
+
+
+.fit-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.25rem;
+
+    padding: 0.8rem;
+
+    background-color: #fafafa;
+
+    border-radius: 0.65rem;
+
+    border: 1px solid #eeeeee;
+}
+
+
+.fit-item span {
+    color: #888;
+
+    font-size: 0.72rem;
+}
+
+
+.fit-item strong {
+    color: #333;
+
+    font-size: 0.88rem;
+
+    line-height: 1.35;
 }
 
 
@@ -484,19 +1226,22 @@
             3rem;
     }
 
+
     .internship-details-card {
-        padding:
-            1.7rem;
+        padding: 1.7rem;
     }
+
 
     .quick-info {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
+
     .title-row h1 {
         font-size: 1.8rem;
     }
+
 }
 
 
@@ -513,19 +1258,22 @@
             2.5rem;
     }
 
+
     .internship-details-card {
-        padding:
-            1.3rem;
-        
+        padding: 1.3rem;
+
         border-radius: 0.85rem;
     }
+
 
     .details-header {
         align-items: flex-start;
     }
 
+
     .company-logo {
         width: 62px;
+
         height: 62px;
 
         min-width: 62px;
@@ -533,27 +1281,23 @@
         font-size: 1.05rem;
     }
 
+
     .title-row {
         flex-direction: column;
 
         gap: 0.8rem;
     }
 
+
     .title-row h1 {
         font-size: 1.5rem;
     }
+
 
     .company-name {
         font-size: 0.9rem;
     }
 
-    .match-badge {
-        font-size: 0.8rem;
-
-        padding:
-            0.45rem
-            0.7rem;
-    }
 
     .quick-info {
         grid-template-columns:
@@ -562,15 +1306,22 @@
         margin-top: 1.5rem;
     }
 
+
     .info-item {
-        padding:
-            0.8rem;
+        padding: 0.8rem;
     }
+
+
+    .match-summary-section {
+        align-items: flex-start;
+    }
+
 
     .date-grid {
         grid-template-columns:
             1fr;
     }
+
 
     .apply-section {
         flex-direction: column;
@@ -578,9 +1329,31 @@
         align-items: stretch;
     }
 
+
     .apply-btn {
         width: 100%;
     }
+
+
+    .fit-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .match-analysis-modal {
+        max-height: 92vh;
+
+        padding: 1.2rem;
+    }
+
+
+    .details-spinner {
+        width: 46px;
+
+        height: 46px;
+    }
+
 }
 
 
@@ -597,23 +1370,27 @@
             2rem;
     }
 
+
     .back-btn {
         font-size: 0.85rem;
 
         margin-bottom: 0.9rem;
     }
 
+
     .internship-details-card {
-        padding:
-            1rem;
+        padding: 1rem;
     }
+
 
     .details-header {
         gap: 0.8rem;
     }
 
+
     .company-logo {
         width: 54px;
+
         height: 54px;
 
         min-width: 54px;
@@ -623,17 +1400,16 @@
         font-size: 0.9rem;
     }
 
+
     .title-row h1 {
         font-size: 1.3rem;
     }
+
 
     .company-name {
         font-size: 0.82rem;
     }
 
-    .match-badge {
-        font-size: 0.75rem;
-    }
 
     .quick-info {
         grid-template-columns:
@@ -642,18 +1418,31 @@
         gap: 0.7rem;
     }
 
+
     .info-item {
-        padding:
-            0.75rem;
+        padding: 0.75rem;
     }
+
+
+    .match-summary-section {
+        padding: 0.85rem;
+    }
+
+
+    .match-summary-score {
+        font-size: 1.3rem;
+    }
+
 
     .details-section {
         margin-bottom: 1.5rem;
     }
 
+
     .details-section h2 {
         font-size: 1.1rem;
     }
+
 
     .skill-tag {
         font-size: 0.78rem;
@@ -663,10 +1452,11 @@
             0.65rem;
     }
 
+
     .detail-box {
-        padding:
-            0.8rem;
+        padding: 0.8rem;
     }
+
 
     .perk-item {
         font-size: 0.8rem;
@@ -676,21 +1466,47 @@
             0.7rem;
     }
 
+
     .apply-section {
         margin-top: 1.5rem;
 
         padding-top: 1.2rem;
     }
 
+
     .apply-match {
         font-size: 1.05rem;
     }
+
 
     .apply-btn {
         height: 3rem;
 
         font-size: 0.95rem;
     }
+
+
+    .match-analysis-overlay {
+        padding: 0.7rem;
+    }
+
+
+    .match-analysis-modal {
+        border-radius: 0.8rem;
+
+        padding: 1rem;
+    }
+
+
+    .analysis-header h2 {
+        font-size: 1.15rem;
+    }
+
+
+    .analysis-score-card strong {
+        font-size: 1.3rem;
+    }
+
 }
 
 
@@ -701,12 +1517,13 @@
 @media (max-width: 360px) {
 
     .internship-details-card {
-        padding:
-            0.85rem;
+        padding: 0.85rem;
     }
+
 
     .company-logo {
         width: 48px;
+
         height: 48px;
 
         min-width: 48px;
@@ -714,29 +1531,36 @@
         font-size: 0.8rem;
     }
 
+
     .title-row h1 {
         font-size: 1.15rem;
     }
+
 
     .company-name {
         font-size: 0.75rem;
     }
 
+
     .info-item span {
         font-size: 0.68rem;
     }
+
 
     .info-item strong {
         font-size: 0.82rem;
     }
 
+
     .details-section h2 {
         font-size: 1rem;
     }
+
 
     .apply-btn {
         height: 2.8rem;
 
         font-size: 0.9rem;
     }
+
 }

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import './Navbar.css';
-import '../index2.css';
+import React, { useState } from "react";
+
+import "./Navbar.css";
+import "../index2.css";
 
 import stateEmble from "../assets/stateEmble.png";
 import logo from "../assets/logo.png";
@@ -12,14 +13,18 @@ import {
 
 import {
   NavLink,
+  useLocation,
   useNavigate
 } from "react-router-dom";
 
 import { useLanguage } from "../context/LanguageContext";
 
+
 export default function Navbar() {
 
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,13 +35,114 @@ export default function Navbar() {
   } = useLanguage();
 
 
+  // ==========================================================
+  // CLOSE MOBILE MENU
+  // ==========================================================
+
   const closeMenu = () => {
+
     setMenuOpen(false);
+
+  };
+
+
+  // ==========================================================
+  // DASHBOARD / LOGIN NAVIGATION
+  // ==========================================================
+
+  const handleDashboardNavigation = () => {
+
+    const token =
+      localStorage.getItem("token") ||
+      localStorage.getItem("authToken") ||
+      localStorage.getItem("accessToken");
+
+
+    if (token) {
+
+      navigate("/dashboard");
+
+    } else {
+
+      navigate("/login");
+
+    }
+
+  };
+
+
+  // ==========================================================
+  // HOW IT WORKS NAVIGATION
+  // ==========================================================
+
+  const handleHowItWorks = () => {
+
+    // Close mobile menu
+    closeMenu();
+
+
+    // ========================================================
+    // If already on Home page
+    // ========================================================
+
+    if (location.pathname === "/") {
+
+      const section =
+        document.getElementById(
+          "how-it-works"
+        );
+
+
+      if (section) {
+
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+
+      return;
+
+    }
+
+
+    // ========================================================
+    // If on another page
+    // First go to Home
+    // Then scroll to section
+    // ========================================================
+
+    navigate("/");
+
+
+    // Wait for Home page to render
+    setTimeout(() => {
+
+      const section =
+        document.getElementById(
+          "how-it-works"
+        );
+
+
+      if (section) {
+
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+
+    }, 100);
+
   };
 
 
   return (
+
     <>
+
 
       {/* =====================================================
           TOP NAV
@@ -44,9 +150,15 @@ export default function Navbar() {
 
       <div className="nav-1 flex gap">
 
-        {/* LEFT SECTION */}
+
+        {/* =================================================
+            LEFT SECTION
+        ================================================= */}
 
         <div className="flex gap-1 m">
+
+
+          {/* Logo */}
 
           <img
             className="logo"
@@ -54,36 +166,59 @@ export default function Navbar() {
             alt="InternSetu"
           />
 
+
+          {/* Government Emblem */}
+
           <img
             className="satymev m-auto"
             src={stateEmble}
             alt="Government Emblem"
           />
 
+
+          {/* Government Text */}
+
           <div className="gov-text">
+
             भारत सरकार
+
             <br />
+
             Government Of India
+
           </div>
 
         </div>
 
 
-        {/* RIGHT SECTION */}
+        {/* =================================================
+            RIGHT SECTION
+        ================================================= */}
 
         <div className="flex gap-2 m-r">
 
+
+          {/* Skip Main Content */}
+
           <div className="pd t skip-text">
+
             {t.skipMain}
+
           </div>
 
 
-          {/* LANGUAGE */}
+          {/* =================================================
+              LANGUAGE
+          ================================================= */}
 
           <select
             className="language-select m-auto"
             value={language}
-            onChange={(e) => setLanguage(e.target.value)}
+            onChange={(e) =>
+              setLanguage(
+                e.target.value
+              )
+            }
           >
 
             <option value="en">
@@ -105,14 +240,22 @@ export default function Navbar() {
           </select>
 
 
-          {/* LOGIN */}
+          {/* =================================================
+              LOGIN
+          ================================================= */}
 
           <button
             className="btn t"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              navigate("/login")
+            }
+            type="button"
           >
+
             {t.loginRegister}
+
           </button>
+
 
         </div>
 
@@ -127,15 +270,20 @@ export default function Navbar() {
 
 
         {/* =================================================
-            DESKTOP DASHBOARD BUTTON
+            DESKTOP DASHBOARD / LOGIN BUTTON
         ================================================= */}
 
         <button
           className="desktop-dashboard-btn"
-          onClick={() => navigate("/dashboard")}
+          onClick={
+            handleDashboardNavigation
+          }
           aria-label="Open Dashboard"
+          type="button"
         >
+
           <Menu size={24} />
+
         </button>
 
 
@@ -146,7 +294,9 @@ export default function Navbar() {
         <div className="nav-link desktop-nav">
 
 
-          {/* HOME */}
+          {/* =================================================
+              HOME
+          ================================================= */}
 
           <NavLink
             to="/"
@@ -156,11 +306,15 @@ export default function Navbar() {
                 : "link t"
             }
           >
+
             {t.home}
+
           </NavLink>
 
 
-          {/* INTERNSHIP */}
+          {/* =================================================
+              INTERNSHIP
+          ================================================= */}
 
           <NavLink
             to="/dashboard/internships"
@@ -170,25 +324,43 @@ export default function Navbar() {
                 : "link t"
             }
           >
+
             {t.internship}
+
           </NavLink>
 
 
-          {/* DOCUMENTS */}
+          {/* =================================================
+              DOCUMENTS
+          ================================================= */}
 
           <div className="link t">
+
             {t.documents}
+
           </div>
 
 
-          {/* HOW IT WORKS */}
+          {/* =================================================
+              HOW IT WORKS
+          ================================================= */}
 
-          <div className="link t">
+          <button
+            type="button"
+            className="link t how-it-works-link"
+            onClick={
+              handleHowItWorks
+            }
+          >
+
             {t.howItWorks}
-          </div>
+
+          </button>
 
 
-          {/* ABOUT */}
+          {/* =================================================
+              ABOUT
+          ================================================= */}
 
           <NavLink
             to="/about"
@@ -198,8 +370,11 @@ export default function Navbar() {
                 : "link t"
             }
           >
+
             {t.about}
+
           </NavLink>
+
 
         </div>
 
@@ -210,13 +385,20 @@ export default function Navbar() {
 
         <button
           className="mobile-menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() =>
+            setMenuOpen(
+              !menuOpen
+            )
+          }
           aria-label="Toggle navigation"
+          type="button"
         >
+
           {menuOpen
             ? <X size={24} />
             : <Menu size={24} />
           }
+
         </button>
 
 
@@ -229,22 +411,30 @@ export default function Navbar() {
           <div className="mobile-nav">
 
 
-            {/* DASHBOARD */}
+            {/* =================================================
+                DASHBOARD
+            ================================================= */}
 
-            <NavLink
-              to="/dashboard"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-link active"
-                  : "mobile-link"
-              }
+            <button
+              type="button"
+              className="mobile-link"
+              onClick={() => {
+
+                closeMenu();
+
+                handleDashboardNavigation();
+
+              }}
             >
+
               {t.dashboard}
-            </NavLink>
+
+            </button>
 
 
-            {/* HOME */}
+            {/* =================================================
+                HOME
+            ================================================= */}
 
             <NavLink
               to="/"
@@ -255,11 +445,15 @@ export default function Navbar() {
                   : "mobile-link"
               }
             >
+
               {t.home}
+
             </NavLink>
 
 
-            {/* INTERNSHIP */}
+            {/* =================================================
+                INTERNSHIP
+            ================================================= */}
 
             <NavLink
               to="/dashboard/internships"
@@ -270,25 +464,43 @@ export default function Navbar() {
                   : "mobile-link"
               }
             >
+
               {t.internship}
+
             </NavLink>
 
 
-            {/* DOCUMENTS */}
+            {/* =================================================
+                DOCUMENTS
+            ================================================= */}
 
             <div className="mobile-link">
+
               {t.documents}
+
             </div>
 
 
-            {/* HOW IT WORKS */}
+            {/* =================================================
+                HOW IT WORKS
+            ================================================= */}
 
-            <div className="mobile-link">
+            <button
+              type="button"
+              className="mobile-link how-it-works-link"
+              onClick={
+                handleHowItWorks
+              }
+            >
+
               {t.howItWorks}
-            </div>
+
+            </button>
 
 
-            {/* ABOUT */}
+            {/* =================================================
+                ABOUT
+            ================================================= */}
 
             <NavLink
               to="/about"
@@ -299,8 +511,11 @@ export default function Navbar() {
                   : "mobile-link"
               }
             >
+
               {t.about}
+
             </NavLink>
+
 
           </div>
 
@@ -309,5 +524,7 @@ export default function Navbar() {
       </div>
 
     </>
+
   );
+
 }

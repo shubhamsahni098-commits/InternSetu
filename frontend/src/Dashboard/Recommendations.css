@@ -1,0 +1,320 @@
+/* ============================================================
+   Recommendations Page
+   ============================================================ */
+
+.recommendations-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+
+  padding: 10px 0 40px;
+}
+
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.recommendations-header {
+  margin-bottom: 28px;
+}
+
+
+/* ============================================================
+   Back Button
+   ============================================================ */
+
+.back-btn {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+
+  background: transparent;
+
+  padding: 7px 0;
+
+  margin-bottom: 22px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  opacity: 0.72;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.back-btn:hover {
+  opacity: 1;
+
+  transform: translateX(-2px);
+}
+
+
+/* ============================================================
+   Page Title
+   ============================================================ */
+
+.recommendations-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+.recommendations-icon {
+  width: 52px;
+
+  min-width: 52px;
+
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #fff0e6;
+}
+
+
+.recommendations-title h1 {
+  margin: 0 0 7px;
+
+  font-size: 28px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+}
+
+
+.recommendations-title p {
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   Recommendation List
+   ============================================================ */
+
+.recommendations-list {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+/* ============================================================
+   Loading
+   ============================================================ */
+
+.recommendation-loading {
+  min-height: 260px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  color: #666;
+
+  font-size: 16px;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   Orange Spinner
+   ============================================================ */
+
+.recommendation-spinner {
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  border: 5px solid #ffe1cc;
+
+  border-top-color: #ff7412;
+
+  box-sizing: border-box;
+
+  animation:
+    recommendationSpin
+    0.85s
+    linear
+    infinite;
+}
+
+
+@keyframes recommendationSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* ============================================================
+   Loading Text
+   ============================================================ */
+
+.recommendation-loading p {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   Error
+   ============================================================ */
+
+.recommendations-error {
+  margin-bottom: 22px;
+
+  padding: 14px 18px;
+
+  border-radius: 10px;
+
+  background: #fff0f0;
+
+  border: 1px solid #f0caca;
+
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   Empty State
+   ============================================================ */
+
+.recommendations-empty {
+  min-height: 260px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 40px 20px;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0, 0, 0, 0.06);
+
+  box-sizing: border-box;
+}
+
+
+.recommendations-empty h3 {
+  margin: 15px 0 8px;
+
+  font-size: 19px;
+}
+
+
+.recommendations-empty p {
+  max-width: 500px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .recommendations-title {
+    align-items: flex-start;
+  }
+
+
+  .recommendations-icon {
+    width: 45px;
+
+    min-width: 45px;
+
+    height: 45px;
+  }
+
+
+  .recommendations-title h1 {
+    font-size: 23px;
+  }
+
+
+  .recommendations-title p {
+    font-size: 14px;
+  }
+
+
+  .recommendation-loading {
+    min-height: 240px;
+  }
+
+
+  .recommendation-spinner {
+    width: 46px;
+
+    height: 46px;
+
+    border-width: 5px;
+  }
+
+}

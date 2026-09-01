@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {
   Search,
@@ -15,17 +15,6 @@ import "./Internships.css";
 
 const API_BASE_URL =
   "http://localhost:5000/api";
-
-
-// ==========================================================
-// SESSION STORAGE KEYS
-// ==========================================================
-
-const RECOMMENDATIONS_CACHE_KEY =
-  "recommendedInternships";
-
-const RECOMMENDATIONS_CONTEXT_KEY =
-  "recommendationsContext";
 
 
 export default function Internships() {
@@ -45,9 +34,6 @@ export default function Internships() {
 
   const [hasRecommended, setHasRecommended] =
     useState(false);
-
-  const [checkingRecommendations, setCheckingRecommendations] =
-    useState(true);
 
   const [error, setError] =
     useState("");
@@ -80,490 +66,10 @@ export default function Internships() {
 
 
   // ==========================================================
-  // RECOMMENDATION CACHE HELPERS
-  // ==========================================================
-
-  const getCachedRecommendations = () => {
-
-    try {
-
-      const cached =
-        sessionStorage.getItem(
-          RECOMMENDATIONS_CACHE_KEY
-        );
-
-
-      if (!cached) {
-        return [];
-      }
-
-
-      const parsed =
-        JSON.parse(cached);
-
-
-      return Array.isArray(parsed)
-        ? parsed
-        : [];
-
-    } catch (error) {
-
-      console.error(
-        "Failed to read recommendation cache:",
-        error
-      );
-
-      return [];
-
-    }
-
-  };
-
-
-  const saveRecommendationsToCache = (
-    recommendationList
-  ) => {
-
-    try {
-
-      sessionStorage.setItem(
-        RECOMMENDATIONS_CACHE_KEY,
-        JSON.stringify(
-          recommendationList
-        )
-      );
-
-    } catch (error) {
-
-      console.error(
-        "Failed to save recommendation cache:",
-        error
-      );
-
-    }
-
-  };
-
-
-  const clearRecommendationCache = () => {
-
-    try {
-
-      sessionStorage.removeItem(
-        RECOMMENDATIONS_CACHE_KEY
-      );
-
-      sessionStorage.removeItem(
-        RECOMMENDATIONS_CONTEXT_KEY
-      );
-
-    } catch (error) {
-
-      console.error(
-        "Failed to clear recommendation cache:",
-        error
-      );
-
-    }
-
-  };
-
-
-  const getCachedRecommendationContext = () => {
-
-    try {
-
-      const cached =
-        sessionStorage.getItem(
-          RECOMMENDATIONS_CONTEXT_KEY
-        );
-
-
-      if (!cached) {
-        return null;
-      }
-
-
-      return JSON.parse(cached);
-
-    } catch (error) {
-
-      console.error(
-        "Failed to read recommendation context:",
-        error
-      );
-
-      return null;
-
-    }
-
-  };
-
-
-  // ==========================================================
-  // STABLE OBJECT STRING
-  // ==========================================================
-
-  const stableStringify = (value) => {
-
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return JSON.stringify(value);
-    }
-
-
-    if (
-      typeof value !== "object"
-    ) {
-      return JSON.stringify(value);
-    }
-
-
-    if (Array.isArray(value)) {
-
-      return `[${value
-        .map(
-          (item) =>
-            stableStringify(item)
-        )
-        .join(",")}]`;
-
-    }
-
-
-    const keys =
-      Object.keys(value).sort();
-
-
-    return `{${keys
-      .map(
-        (key) =>
-          `${JSON.stringify(key)}:${stableStringify(
-            value[key]
-          )}`
-      )
-      .join(",")}}`;
-
-  };
-
-
-  // ==========================================================
-  // BUILD RECOMMENDATION CONTEXT
-  // ==========================================================
-
-  const buildRecommendationContext = (
-    profile,
-    description
-  ) => {
-
-    const preferences =
-      profile?.preferences || {};
-
-
-    const skills =
-      Array.isArray(
-        profile?.skills
-      )
-        ? [...profile.skills]
-            .map(
-              (skill) =>
-                String(skill)
-                  .trim()
-                  .toLowerCase()
-            )
-            .filter(Boolean)
-            .sort()
-        : [];
-
-
-    return {
-
-      skills,
-
-      preferredRole:
-        profile?.preferredRole ||
-        profile?.preferred_role ||
-        "",
-
-      education:
-        profile?.education ||
-        "",
-
-      preferredLocation:
-        profile?.preferredLocation ||
-        profile?.preferred_location ||
-        profile?.location ||
-        "",
-
-      location:
-        profile?.location ||
-        "",
-
-      preferences,
-
-      interestDescription:
-        description || "",
-
-    };
-
-  };
-
-
-  // ==========================================================
-  // SAVE RECOMMENDATION CONTEXT
-  // ==========================================================
-
-  const saveRecommendationContext = (
-    profile,
-    description
-  ) => {
-
-    try {
-
-      const context =
-        buildRecommendationContext(
-          profile,
-          description
-        );
-
-
-      sessionStorage.setItem(
-        RECOMMENDATIONS_CONTEXT_KEY,
-        stableStringify(context)
-      );
-
-    } catch (error) {
-
-      console.error(
-        "Failed to save recommendation context:",
-        error
-      );
-
-    }
-
-  };
-
-
-  // ==========================================================
-  // FETCH CURRENT STUDENT PROFILE
-  // ==========================================================
-
-  const fetchCurrentStudentProfile =
-    async () => {
-
-      const token = getToken();
-
-
-      if (!token) {
-        return null;
-      }
-
-
-      try {
-
-        let response =
-          await fetch(
-            `${API_BASE_URL}/student/profile`,
-            {
-              headers: {
-                Authorization:
-                  `Bearer ${token}`,
-              },
-            }
-          );
-
-
-        if (!response.ok) {
-
-          response =
-            await fetch(
-              `${API_BASE_URL}/students/profile`,
-              {
-                headers: {
-                  Authorization:
-                    `Bearer ${token}`,
-                },
-              }
-            );
-
-        }
-
-
-        if (!response.ok) {
-
-          return null;
-
-        }
-
-
-        const result =
-          await response.json();
-
-
-        return result?.data || null;
-
-      } catch (error) {
-
-        console.error(
-          "Failed to fetch current student profile:",
-          error
-        );
-
-        return null;
-
-      }
-
-    };
-
-
-  // ==========================================================
-  // CHECK WHETHER CACHED RECOMMENDATIONS ARE STILL VALID
-  // ==========================================================
-
-  const checkRecommendationValidity =
-    async () => {
-
-      const cachedRecommendations =
-        getCachedRecommendations();
-
-      const cachedContext =
-        getCachedRecommendationContext();
-
-
-      // No previous recommendation
-      if (
-        cachedRecommendations.length === 0 ||
-        !cachedContext
-      ) {
-
-        clearRecommendationCache();
-
-        setRecommendations([]);
-
-        setHasRecommended(false);
-
-        setCheckingRecommendations(false);
-
-        return;
-
-      }
-
-
-      const currentProfile =
-        await fetchCurrentStudentProfile();
-
-
-      // If the profile cannot be checked,
-      // do not trust an old recommendation snapshot.
-      if (!currentProfile) {
-
-        setRecommendations([]);
-
-        setHasRecommended(false);
-
-        setError(
-          "Unable to verify your profile. Please click Recommend to generate fresh recommendations."
-        );
-
-        setCheckingRecommendations(false);
-
-        return;
-
-      }
-
-
-      const currentDescription =
-        localStorage.getItem(
-          "studentInterestDescription"
-        ) || "";
-
-
-      const currentContext =
-        buildRecommendationContext(
-          currentProfile,
-          currentDescription
-        );
-
-
-      let previousContext;
-
-
-      try {
-
-        previousContext =
-          JSON.parse(
-            stableStringify(
-              cachedContext
-            )
-          );
-
-      } catch {
-
-        previousContext =
-          cachedContext;
-
-      }
-
-
-      const currentSignature =
-        stableStringify(
-          currentContext
-        );
-
-      const previousSignature =
-        stableStringify(
-          previousContext
-        );
-
-
-      // ========================================================
-      // PROFILE / PREFERENCE / DESCRIPTION CHANGED
-      // ========================================================
-
-      if (
-        currentSignature !==
-        previousSignature
-      ) {
-
-        clearRecommendationCache();
-
-        setRecommendations([]);
-
-        setHasRecommended(false);
-
-        setError("");
-
-        setCheckingRecommendations(false);
-
-        return;
-
-      }
-
-
-      // ========================================================
-      // NOTHING CHANGED → USE CACHE
-      // ========================================================
-
-      setRecommendations(
-        cachedRecommendations
-      );
-
-      setHasRecommended(
-        cachedRecommendations.length > 0
-      );
-
-      setCheckingRecommendations(false);
-
-    };
-
-
-  // ==========================================================
   // FETCH RECOMMENDATIONS
   // ==========================================================
 
-  const fetchRecommendations = async (description = "") => {
+  const fetchRecommendations = async () => {
 
     try {
 
@@ -589,22 +95,6 @@ export default function Internships() {
       }
 
 
-      // ------------------------------------------------------
-      // Get description
-      // ------------------------------------------------------
-
-      const finalDescription =
-        description.trim() ||
-        localStorage.getItem(
-          "studentInterestDescription"
-        ) ||
-        "";
-
-
-      // ------------------------------------------------------
-      // API REQUEST
-      // ------------------------------------------------------
-
       const response = await fetch(
         `${API_BASE_URL}/recommendations`,
         {
@@ -617,12 +107,6 @@ export default function Internships() {
             "Content-Type":
               "application/json",
           },
-
-          // IMPORTANT:
-          // Send user's interest description to backend
-          body: JSON.stringify({
-            description: finalDescription,
-          }),
         }
       );
 
@@ -667,47 +151,6 @@ export default function Internships() {
 
       setHasRecommended(true);
 
-      saveRecommendationsToCache(
-        recommendationList
-      );
-
-
-      // Save the exact profile/preferences state
-      // used when this recommendation was generated.
-      const currentProfile =
-        await fetchCurrentStudentProfile();
-
-
-      if (currentProfile) {
-
-        saveRecommendationContext(
-          currentProfile,
-          finalDescription
-        );
-
-      } else {
-
-        // No trustworthy profile snapshot:
-        // remove any previous snapshot so stale
-        // recommendations won't survive a later visit.
-        try {
-
-          sessionStorage.removeItem(
-            RECOMMENDATIONS_CONTEXT_KEY
-          );
-
-        } catch (cacheError) {
-
-          console.error(
-            "Failed to clear invalid recommendation context:",
-            cacheError
-          );
-
-        }
-
-      }
-
-
     } catch (err) {
 
       console.error(
@@ -722,7 +165,6 @@ export default function Internships() {
       );
 
       setRecommendations([]);
-
 
     } finally {
 
@@ -771,10 +213,8 @@ export default function Internships() {
       interestDescription.trim();
 
 
-    // ------------------------------------------------------
-    // Save description locally
-    // ------------------------------------------------------
-
+    // Save description locally for now.
+    // Backend/NLP integration will consume this field later.
     if (trimmedDescription) {
 
       localStorage.setItem(
@@ -794,14 +234,7 @@ export default function Internships() {
     setShowInterestPopup(false);
 
 
-    // ------------------------------------------------------
-    // IMPORTANT:
-    // Send description to recommendation API
-    // ------------------------------------------------------
-
-    await fetchRecommendations(
-      trimmedDescription
-    );
+    await fetchRecommendations();
 
   };
 
@@ -814,11 +247,11 @@ export default function Internships() {
 
     setInterestDescription("");
 
+
     setShowInterestPopup(false);
 
 
-    // No description when skipped
-    await fetchRecommendations("");
+    await fetchRecommendations();
 
   };
 
@@ -902,15 +335,7 @@ export default function Internships() {
 
 
       // Refresh recommendations
-      const savedDescription =
-        localStorage.getItem(
-          "studentInterestDescription"
-        ) || "";
-
-      await fetchRecommendations(
-        savedDescription
-      );
-
+      await fetchRecommendations();
 
     } catch (err) {
 
@@ -941,17 +366,6 @@ export default function Internships() {
     );
 
   };
-
-
-  // ==========================================================
-  // CHECK CACHED RECOMMENDATIONS WHEN PAGE OPENS
-  // ==========================================================
-
-  useEffect(() => {
-
-    checkRecommendationValidity();
-
-  }, []);
 
 
   return (
@@ -1152,7 +566,6 @@ export default function Internships() {
       ===================================================== */}
 
       {!loading &&
-        !checkingRecommendations &&
         !hasRecommended && (
 
           <div className="recommendation-empty">
@@ -1198,7 +611,6 @@ export default function Internships() {
       ===================================================== */}
 
       {!loading &&
-        !checkingRecommendations &&
         hasRecommended &&
         recommendations.length > 0 && (
 
@@ -1213,11 +625,9 @@ export default function Internships() {
                     key={
                       internship.internship_id
                     }
-
                     internship={
                       internship
                     }
-
                     onFeedback={
                       handleFeedback
                     }
@@ -1236,7 +646,6 @@ export default function Internships() {
       ===================================================== */}
 
       {!loading &&
-        !checkingRecommendations &&
         hasRecommended &&
         recommendations.length === 0 &&
         !error && (
@@ -1264,7 +673,6 @@ export default function Internships() {
       ===================================================== */}
 
       {!loading &&
-        !checkingRecommendations &&
         hasRecommended &&
         recommendations.length > 0 && (
 
@@ -1367,7 +775,7 @@ export default function Internships() {
                   event.target.value
                 )
               }
-              placeholder="For example: I want to work on web development projects involving HTML, CSS, JavaScript, React and Node.js..."
+              placeholder="For example: I want to work on AI/ML projects involving Python, machine learning, deep learning and real-world data..."
               rows={6}
               maxLength={1000}
             />
