@@ -1,83 +1,3 @@
-/*
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-
-import {
-  LayoutDashboard,
-  UserRound,
-  Settings,
-  BriefcaseBusiness,
-  FileText
-} from 'lucide-react'
-
-import './DashboardSidebar.css'
-
-export default function DashboardSidebar() {
-
-  return (
-    <aside className="dashboard-sidebar">
-
-      <div className="sidebar-title">
-        <h2>
-            <span className="intern-text">Intern</span>
-            <span className="setu-text">Setu</span>
-        </h2>
-      </div>
-
-
-      <nav className="sidebar-nav">
-
-        <NavLink
-          to="/dashboard"
-          end
-          className="sidebar-link"
-        >
-          <LayoutDashboard size={20} />
-          <span>Dashboard</span>
-        </NavLink>
-
-
-        <NavLink
-          to="/dashboard/profile"
-          className="sidebar-link"
-        >
-          <UserRound size={20} />
-          <span>My Profile</span>
-        </NavLink>
-
-
-        <NavLink
-          to="/dashboard/preferences"
-          className="sidebar-link"
-        >
-          <Settings size={20} />
-          <span>Preferences</span>
-        </NavLink>
-
-
-        <NavLink
-          to="/dashboard/internships"
-          className="sidebar-link"
-        >
-          <BriefcaseBusiness size={20} />
-          <span>Internships</span>
-        </NavLink>
-
-
-        <NavLink
-          to="/dashboard/applications"
-          className="sidebar-link"
-        >
-          <FileText size={20} />
-          <span>Applications</span>
-        </NavLink>
-
-      </nav>
-
-    </aside>
-  )
-}*/
-
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
@@ -101,12 +21,28 @@ export default function DashboardSidebar() {
 
   const { t } = useLanguage();
 
+
+  // ==========================================================
+  // LOGOUT
+  // ==========================================================
+
   const handleLogout = () => {
 
-    // Backend/auth integration baad me
+    // Remove authentication tokens
+    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("accessToken");
+
+    // Also clear session storage if anything auth-related
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("accessToken");
+
+    // Go to login
     navigate("/login");
 
   };
+
 
   return (
 
@@ -120,6 +56,7 @@ export default function DashboardSidebar() {
       <div className="sidebar-title">
 
         <h2>
+
           <span className="intern-text">
             Intern
           </span>
@@ -127,6 +64,7 @@ export default function DashboardSidebar() {
           <span className="setu-text">
             Setu
           </span>
+
         </h2>
 
       </div>
@@ -138,64 +76,85 @@ export default function DashboardSidebar() {
 
       <nav className="sidebar-nav">
 
+
+        {/* DASHBOARD */}
+
         <NavLink
           to="/dashboard"
           end
           className="sidebar-link"
         >
+
           <LayoutDashboard size={20} />
 
           <span>
             {t.dashboard}
           </span>
+
         </NavLink>
 
+
+        {/* PROFILE */}
 
         <NavLink
           to="/dashboard/profile"
           className="sidebar-link"
         >
+
           <UserRound size={20} />
 
           <span>
             {t.myProfile}
           </span>
+
         </NavLink>
 
+
+        {/* PREFERENCES */}
 
         <NavLink
           to="/dashboard/preferences"
           className="sidebar-link"
         >
+
           <Settings size={20} />
 
           <span>
             {t.preferences}
           </span>
+
         </NavLink>
 
+
+        {/* INTERNSHIPS */}
 
         <NavLink
           to="/dashboard/internships"
           className="sidebar-link"
         >
+
           <BriefcaseBusiness size={20} />
 
           <span>
             {t.internship}
           </span>
+
         </NavLink>
 
+
+        {/* APPLICATIONS */}
 
         <NavLink
           to="/dashboard/applications"
           className="sidebar-link"
         >
+
           <FileText size={20} />
 
           <span>
             {t.applications}
           </span>
+
         </NavLink>
 
       </nav>
@@ -208,35 +167,40 @@ export default function DashboardSidebar() {
       <div className="sidebar-bottom">
 
 
-        {/* Return Home */}
+        {/* RETURN HOME */}
 
         <div
           className="sidebar-action"
           onClick={() => navigate("/")}
         >
+
           <Home size={20} />
 
           <span>
             {t.returnToHome}
           </span>
+
         </div>
 
 
-        {/* Logout */}
+        {/* LOGOUT */}
 
         <div
           className="sidebar-action logout-action"
           onClick={handleLogout}
         >
+
           <LogOut size={20} />
 
           <span>
             {t.logout}
           </span>
+
         </div>
 
       </div>
 
     </aside>
-  )
+
+  );
 }

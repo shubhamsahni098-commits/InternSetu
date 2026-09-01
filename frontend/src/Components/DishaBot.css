@@ -218,6 +218,52 @@
     border-radius: 50%;
 }
 
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.disha-header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.disha-reset {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: white;
+
+    color: #222;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.disha-reset:hover {
+    background-color: #f3f3f3;
+}
+
+.disha-reset:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
 .disha-close {
     border: none;
 
@@ -250,7 +296,11 @@
 
     overflow-y: auto;
 
+    overflow-x: hidden;
+
     background-color: #f5f7fb;
+
+    box-sizing: border-box;
 }
 
 
@@ -389,6 +439,187 @@
 
 
 /* =========================================================
+   CHAT MESSAGES
+========================================================= */
+
+.disha-messages {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding: 18px 14px 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
+
+.disha-message {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 8px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   USER MESSAGE
+========================================================= */
+
+.disha-message.user-message {
+    justify-content: flex-end;
+}
+
+
+/* =========================================================
+   MESSAGE AVATAR
+========================================================= */
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background-color: orange;
+
+    align-self: flex-end;
+}
+
+.message-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================================
+   MESSAGE CONTENT
+========================================================= */
+
+.message-content {
+    max-width: 78%;
+
+    padding: 11px 14px;
+
+    border-radius: 16px;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+    box-sizing: border-box;
+}
+
+
+/* Disha */
+
+.disha-message:not(.user-message) .message-content {
+    background-color: white;
+
+    color: #222;
+
+    border: 1px solid #e5e5e5;
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.05);
+}
+
+
+/* User */
+
+.disha-message.user-message .message-content {
+    background-color: orange;
+
+    color: white;
+
+    border-bottom-right-radius: 5px;
+
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   TYPING INDICATOR
+========================================================= */
+
+.disha-typing {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    min-width: 58px;
+
+    padding: 13px 14px;
+}
+
+.disha-typing span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background-color: #999;
+
+    animation: dishaTyping 1.2s infinite ease-in-out;
+}
+
+.disha-typing span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.disha-typing span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes dishaTyping {
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.35;
+
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+
+        transform: translateY(-3px);
+    }
+
+}
+
+
+/* =========================================================
    INPUT AREA
 ========================================================= */
 
@@ -435,6 +666,12 @@
         0 0 0 2px rgba(255, 165, 0, 0.12);
 }
 
+.disha-input input:disabled {
+    background-color: #f5f5f5;
+
+    cursor: not-allowed;
+}
+
 .disha-input button {
     width: 45px;
     min-width: 45px;
@@ -457,6 +694,18 @@
 
     align-items: center;
     justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.disha-input button:hover:not(:disabled) {
+    transform: scale(1.04);
+}
+
+.disha-input button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
 }
 
 
@@ -596,7 +845,6 @@
 
     /* =========================
        WELCOME
-       Avatar + Text side by side
     ========================= */
 
     .disha-welcome {
@@ -645,11 +893,6 @@
         text-align: left;
     }
 
-
-    /* =========================
-       TRY ASKING
-    ========================= */
-
     .disha-welcome p {
         grid-column: 1 / -1;
 
@@ -697,6 +940,32 @@
 
 
     /* =========================
+       CHAT MESSAGES
+    ========================= */
+
+    .disha-messages {
+        padding: 14px 10px 18px;
+
+        gap: 11px;
+    }
+
+    .message-content {
+        max-width: 82%;
+
+        padding: 10px 12px;
+
+        font-size: 13px;
+    }
+
+    .message-avatar {
+        width: 29px;
+        height: 29px;
+
+        min-width: 29px;
+    }
+
+
+    /* =========================
        INPUT
     ========================= */
 
@@ -731,6 +1000,7 @@
 
         padding: 4px 8px 6px;
     }
+
 }
 
 
@@ -817,4 +1087,5 @@
     .disha-input input {
         font-size: 0.85rem;
     }
+
 }

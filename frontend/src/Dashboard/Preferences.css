@@ -312,10 +312,210 @@
 }
 
 
-.save-preference-btn:hover {
+.save-preference-btn:hover:not(:disabled) {
     background-color: green;
 
     transform: translateY(-2px);
+}
+
+
+.save-preference-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* ========================= */
+/* SUCCESS POPUP */
+/* ========================= */
+
+.preference-success-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.42);
+
+    z-index: 9999;
+
+    box-sizing: border-box;
+}
+
+
+.preference-success-popup {
+    position: relative;
+
+    width: min(440px, 100%);
+
+    padding: 2.2rem 2rem 2rem;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.20);
+
+    animation: preferencePopupIn 0.22s ease-out;
+}
+
+
+@keyframes preferencePopupIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ========================= */
+/* POPUP CLOSE */
+/* ========================= */
+
+.preference-popup-close {
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f5f5f5;
+
+    color: #555;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.preference-popup-close:hover {
+    background: #eeeeee;
+
+    color: #222;
+}
+
+
+/* ========================= */
+/* POPUP ICON */
+/* ========================= */
+
+.preference-success-icon {
+    width: 72px;
+
+    height: 72px;
+
+    margin: 0 auto 1rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf8ed;
+
+    color: #1a9b35;
+}
+
+
+/* ========================= */
+/* POPUP TEXT */
+/* ========================= */
+
+.preference-success-popup h2 {
+    margin: 0 0 0.6rem;
+
+    font-size: 1.45rem;
+
+    color: #222;
+}
+
+
+.preference-success-popup p {
+    margin: 0 0 1.5rem;
+
+    color: #777;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+}
+
+
+/* ========================= */
+/* FIND INTERNSHIP BUTTON */
+/* ========================= */
+
+.preference-next-btn {
+    width: 100%;
+
+    min-height: 45px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #f97316;
+
+    color: white;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.preference-next-btn:hover {
+    background-color: green;
+
+    transform: translateY(-1px);
 }
 
 
@@ -329,21 +529,26 @@
         padding: 1.5rem;
     }
 
+
     .option-grid {
         grid-template-columns: 1fr;
     }
+
 
     .mode-options {
         grid-template-columns: repeat(2, 1fr);
     }
 
+
     .preference-grid {
         grid-template-columns: 1fr;
     }
 
+
     .domain-grid {
         grid-template-columns: 1fr;
     }
+
 }
 
 
@@ -357,24 +562,46 @@
         font-size: 1.6rem;
     }
 
+
     .preferences-card {
         padding: 1rem;
     }
+
 
     .mode-options {
         grid-template-columns: 1fr 1fr;
     }
 
+
     .preference-section {
         padding-bottom: 1.3rem;
+
         margin-bottom: 1.3rem;
     }
+
 
     .preference-save {
         justify-content: stretch;
     }
 
+
     .save-preference-btn {
         width: 100%;
     }
+
+
+    .preference-success-popup {
+        width: 100%;
+
+        padding:
+            2rem
+            1.2rem
+            1.3rem;
+    }
+
+
+    .preference-success-popup h2 {
+        font-size: 1.2rem;
+    }
+
 }
