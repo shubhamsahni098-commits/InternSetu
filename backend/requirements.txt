@@ -1,0 +1,6 @@
+Flask
+numpy
+requests
+sentence-transformers
+scikit-learn
+gunicorn
