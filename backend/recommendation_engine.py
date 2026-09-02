@@ -25,7 +25,8 @@ def get_model() -> SentenceTransformer:
     global _model
 
     if _model is None:
-        _model = SentenceTransformer(MODEL_NAME)
+        _model = SentenceTransformer(MODEL_NAME, device="cpu")
+        
 
     return _model
 
