@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import "./DashboardHome.css";
 
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://internsetubackend.onrender.com/api";
 
 
 export default function DashboardHome() {

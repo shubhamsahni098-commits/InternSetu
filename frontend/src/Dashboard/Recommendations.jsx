@@ -12,9 +12,7 @@ import InternshipCard from "../Dashboard/InternshipCard";
 import "./Recommendations.css";
 
 
-const API_BASE_URL =
-  "http://localhost:5000/api";
-
+const API_BASE_URL = "https://internsetubackend.onrender.com/api";
 
 // ==========================================================
 // SESSION STORAGE CACHE KEY

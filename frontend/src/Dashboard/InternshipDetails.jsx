@@ -29,8 +29,7 @@ import "./InternshipDetail.css";
 
 
 const API_BASE_URL =
-    "http://localhost:5000/api";
-
+    "https://internsetubackend.onrender.com/api";
 
 // =========================================================
 // SESSION STORAGE CACHE KEY

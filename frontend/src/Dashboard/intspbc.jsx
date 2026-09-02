@@ -13,9 +13,7 @@ import InternshipCard from "../Dashboard/InternshipCard";
 import "./Internships.css";
 
 
-const API_BASE_URL =
-  "http://localhost:5000/api";
-
+const API_BASE_URL = "https://internsetubackend.onrender.com/api";
 
 export default function Internships() {
 
