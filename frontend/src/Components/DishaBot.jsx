@@ -8,8 +8,8 @@ import "./DishaBot.css";
 import Disha from "../assets/Disha.png";
 
 
-const DISHA_API_URL =
-    "http://localhost:5001/disha";
+const DISHA_API_URL = "https://shubhamsahni098-commits--internsetu-disha-disha-service.modal.run/disha";
+    
 
 
 export default function DishaBot() {
