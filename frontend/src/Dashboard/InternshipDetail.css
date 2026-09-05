@@ -1564,3 +1564,18 @@
     }
 
 }
+
+/* =========================================================
+   MATCH REASON TYPOGRAPHY
+========================================================= */
+
+.analysis-reason,
+.analysis-reason span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
