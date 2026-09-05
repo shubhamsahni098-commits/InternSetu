@@ -443,6 +443,31 @@ export default function InternshipDetails() {
 
 
     // =========================================================
+    // LOCATION SCORE DETAILS
+    // =========================================================
+
+    const locationScore =
+        recommendation?.location_score_100 ??
+        null;
+
+    const distanceKm =
+        recommendation?.distance_km ??
+        null;
+
+    const isRemoteLocation =
+        String(internshipLocation || "")
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, " ")
+        === "remote" ||
+        String(internshipLocation || "")
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, " ")
+        === "work from home";
+
+
+    // =========================================================
     // NORMALIZE TEXT
     // =========================================================
 
@@ -1073,7 +1098,7 @@ export default function InternshipDetails() {
 
 
             // =====================================================
-            // 6. LOCATION
+            // 6. LOCATION SCORE
             // =====================================================
 
             const preferredLocation =
@@ -1084,35 +1109,53 @@ export default function InternshipDetails() {
 
 
             if (
-                preferredLocation &&
+                locationScore !== null &&
+                locationScore !== undefined &&
                 internshipLocation !== "Not specified"
             ) {
 
-                if (
-                    profileMatches.location
-                ) {
+                const formattedLocationScore =
+                    Number(locationScore).toFixed(0);
+
+                if (isRemoteLocation) {
 
                     addReason(
                         "match",
-                        `Location matches your preference (${internshipLocation})`
+                        `Location Score: ${formattedLocationScore}/100 | Preferred: ${preferredLocation || "Not specified"} | Internship: ${internshipLocation} | Distance: Not applicable`
                     );
 
                 } else {
 
+                    const formattedDistance =
+                        distanceKm !== null &&
+                        distanceKm !== undefined &&
+                        Number.isFinite(Number(distanceKm))
+                            ? `${Number(distanceKm).toFixed(0)} km`
+                            : "Not available";
+
                     addReason(
-                        "mismatch",
-                        `Location does not match your preference (Preferred: ${preferredLocation}, Internship: ${internshipLocation})`
+                        locationScore >= 70
+                            ? "match"
+                            : locationScore >= 40
+                                ? "partial"
+                                : "mismatch",
+                        `Location Score: ${formattedLocationScore}/100 | Preferred: ${preferredLocation || "Not specified"} | Internship: ${internshipLocation} | Distance: ${formattedDistance}`
                     );
 
                 }
+
+            } else if (preferredLocation) {
+
+                addReason(
+                    "neutral",
+                    `Preferred Location: ${preferredLocation} | Internship: ${internshipLocation}`
+                );
 
             } else {
 
                 addReason(
                     "neutral",
-                    preferredLocation
-                        ? `Your preferred location is ${preferredLocation}`
-                        : "No location preference specified"
+                    "No location preference specified"
                 );
 
             }
@@ -1285,7 +1328,11 @@ export default function InternshipDetails() {
             domain,
             internshipLocation,
             workMode,
-            stipend
+            stipend,
+            recommendation,
+            locationScore,
+            distanceKm,
+            isRemoteLocation
         ]);
 
 
