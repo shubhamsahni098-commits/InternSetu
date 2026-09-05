@@ -33,6 +33,64 @@ export default function DashboardHome() {
   const [loadingStudent, setLoadingStudent] =
     useState(true);
 
+  // ==========================================================
+  // Recently Viewed Internships
+  // ==========================================================
+
+  const [
+    recentlyViewedInternships,
+    setRecentlyViewedInternships
+  ] = useState([]);
+
+  useEffect(() => {
+    const loadRecentlyViewed = () => {
+      try {
+        const stored =
+          localStorage.getItem(
+            "recentlyViewedInternships"
+          );
+
+        if (!stored) {
+          setRecentlyViewedInternships([]);
+          return;
+        }
+
+        const parsed = JSON.parse(stored);
+
+        setRecentlyViewedInternships(
+          Array.isArray(parsed)
+            ? parsed.slice(0, 3)
+            : []
+        );
+      } catch (error) {
+        console.error(
+          "Failed to load recently viewed internships:",
+          error
+        );
+
+        setRecentlyViewedInternships([]);
+      }
+    };
+
+    loadRecentlyViewed();
+
+    const handleStorageChange = () => {
+      loadRecentlyViewed();
+    };
+
+    window.addEventListener(
+      "storage",
+      handleStorageChange
+    );
+
+    return () => {
+      window.removeEventListener(
+        "storage",
+        handleStorageChange
+      );
+    };
+  }, []);
+
 
   // ==========================================================
   // Get token
@@ -405,7 +463,7 @@ export default function DashboardHome() {
 
 
       {/* =====================================================
-          RECOMMENDATIONS
+          RECENTLY VIEWED INTERNSHIPS
       ===================================================== */}
 
       <div className="section-heading recommendation-heading">
@@ -413,315 +471,197 @@ export default function DashboardHome() {
         <div>
 
           <h2>
-            AI Recommended Internships
+            Recently Viewed Internships
           </h2>
 
           <p>
-            Opportunities selected based on your profile and preferences.
+            Internships you recently viewed from your recommendations.
           </p>
 
         </div>
 
-
         <button
           className="view-all-btn"
-          onClick={
-            handleViewAllRecommendations
-          }
+          onClick={handleViewAllRecommendations}
           type="button"
         >
-
           View All
-
           <ArrowRight size={17} />
-
         </button>
 
       </div>
 
 
-      <div className="recommendation-grid">
+      {recentlyViewedInternships.length === 0 ? (
 
+        <div className="recommendation-empty">
 
-        {/* =================================================
-            CARD 1
-        ================================================= */}
-
-        <div className="recommendation-card">
-
-          <div className="recommendation-top">
-
-            <div className="company-logo-home">
-              ABC
-            </div>
-
-            <span className="match">
-
-              <Sparkles size={14} />
-
-              92% Match
-
-            </span>
-
-          </div>
-
+          <BriefcaseBusiness size={28} />
 
           <h3>
-            Software Developer Intern
+            No recently viewed internships
           </h3>
 
-
-          <p className="company-name">
-            ABC Technologies
+          <p>
+            View an internship to see it here.
           </p>
-
-
-          <div className="recommendation-meta">
-
-            <span>
-
-              <MapPin size={15} />
-
-              Mumbai
-
-            </span>
-
-
-            <span>
-
-              <Clock3 size={15} />
-
-              3 Months
-
-            </span>
-
-          </div>
-
-
-          <div className="home-skills">
-
-            <span>
-              React
-            </span>
-
-            <span>
-              JavaScript
-            </span>
-
-            <span>
-              Python
-            </span>
-
-          </div>
-
-
-          <div className="recommendation-bottom">
-
-            <strong>
-              ₹15,000 / month
-            </strong>
-
-
-            <button
-              type="button"
-              onClick={() =>
-                handleViewInternship(1)
-              }
-            >
-              View
-            </button>
-
-          </div>
 
         </div>
 
+      ) : (
 
-        {/* =================================================
-            CARD 2
-        ================================================= */}
+        <div className="recommendation-grid">
 
-        <div className="recommendation-card">
+          {recentlyViewedInternships.map(
+            (internship) => {
 
-          <div className="recommendation-top">
+              const internshipId =
+                internship?.id;
 
-            <div className="company-logo-home">
-              XYZ
-            </div>
+              const companyName =
+                internship?.company ||
+                "Company";
 
-            <span className="match">
+              const companyInitials =
+                companyName
+                  .substring(0, 3)
+                  .toUpperCase();
 
-              <Sparkles size={14} />
+              const title =
+                internship?.title ||
+                "Internship";
 
-              88% Match
+              const location =
+                internship?.location ||
+                "Not specified";
 
-            </span>
+              const duration =
+                internship?.duration ||
+                "Not specified";
 
-          </div>
+              const stipend =
+                internship?.stipend ||
+                "Stipend not specified";
 
+              const skills =
+                Array.isArray(
+                  internship?.skills
+                )
+                  ? internship.skills
+                  : [];
 
-          <h3>
-            AI / ML Intern
-          </h3>
+              const matchScore =
+                internship?.matchScore;
 
+              return (
 
-          <p className="company-name">
-            XYZ Innovations
-          </p>
+                <div
+                  className="recommendation-card"
+                  key={String(internshipId)}
+                >
 
+                  <div className="recommendation-top">
 
-          <div className="recommendation-meta">
+                    <div className="company-logo-home">
+                      {companyInitials}
+                    </div>
 
-            <span>
+                    {matchScore !== null &&
+                      matchScore !== undefined && (
+                        <span className="match">
 
-              <MapPin size={15} />
+                          <Sparkles size={14} />
 
-              Bangalore
+                          {Number(
+                            matchScore
+                          ).toFixed(0)}% Match
 
-            </span>
+                        </span>
+                      )}
 
-
-            <span>
-
-              <Clock3 size={15} />
-
-              6 Months
-
-            </span>
-
-          </div>
-
-
-          <div className="home-skills">
-
-            <span>
-              Python
-            </span>
-
-            <span>
-              ML
-            </span>
-
-            <span>
-              TensorFlow
-            </span>
-
-          </div>
-
-
-          <div className="recommendation-bottom">
-
-            <strong>
-              ₹20,000 / month
-            </strong>
+                  </div>
 
 
-            <button
-              type="button"
-              onClick={() =>
-                handleViewInternship(2)
-              }
-            >
-              View
-            </button>
+                  <h3>
+                    {title}
+                  </h3>
 
-          </div>
+
+                  <p className="company-name">
+                    {companyName}
+                  </p>
+
+
+                  <div className="recommendation-meta">
+
+                    <span>
+
+                      <MapPin size={15} />
+
+                      {location}
+
+                    </span>
+
+
+                    <span>
+
+                      <Clock3 size={15} />
+
+                      {duration}
+
+                    </span>
+
+                  </div>
+
+
+                  {skills.length > 0 && (
+                    <div className="home-skills">
+
+                      {skills
+                        .slice(0, 3)
+                        .map(
+                          (skill, index) => (
+                            <span
+                              key={`${skill}-${index}`}
+                            >
+                              {skill}
+                            </span>
+                          )
+                        )}
+
+                    </div>
+                  )}
+
+
+                  <div className="recommendation-bottom">
+
+                    <strong>
+                      {stipend}
+                    </strong>
+
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleViewInternship(
+                          internshipId
+                        )
+                      }
+                    >
+                      View
+                    </button>
+
+                  </div>
+
+                </div>
+
+              );
+            }
+          )}
 
         </div>
 
-
-        {/* =================================================
-            CARD 3
-        ================================================= */}
-
-        <div className="recommendation-card">
-
-          <div className="recommendation-top">
-
-            <div className="company-logo-home">
-              DEF
-            </div>
-
-            <span className="match">
-
-              <Sparkles size={14} />
-
-              84% Match
-
-            </span>
-
-          </div>
-
-
-          <h3>
-            Data Analyst Intern
-          </h3>
-
-
-          <p className="company-name">
-            DEF Analytics
-          </p>
-
-
-          <div className="recommendation-meta">
-
-            <span>
-
-              <MapPin size={15} />
-
-              Pune
-
-            </span>
-
-
-            <span>
-
-              <Clock3 size={15} />
-
-              3 Months
-
-            </span>
-
-          </div>
-
-
-          <div className="home-skills">
-
-            <span>
-              Python
-            </span>
-
-            <span>
-              SQL
-            </span>
-
-            <span>
-              Power BI
-            </span>
-
-          </div>
-
-
-          <div className="recommendation-bottom">
-
-            <strong>
-              ₹12,000 / month
-            </strong>
-
-
-            <button
-              type="button"
-              onClick={() =>
-                handleViewInternship(3)
-              }
-            >
-              View
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
+      )}
 
 
       {/* =====================================================

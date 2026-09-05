@@ -176,6 +176,88 @@ export default function InternshipDetails() {
                     internshipData
                 );
 
+                // =========================================================
+                // SAVE RECENTLY VIEWED INTERNSHIP
+                // =========================================================
+
+                try {
+                    const storedRecentlyViewed =
+                        localStorage.getItem(
+                            "recentlyViewedInternships"
+                        );
+
+                    const recentlyViewed =
+                        storedRecentlyViewed
+                            ? JSON.parse(
+                                  storedRecentlyViewed
+                              )
+                            : [];
+
+                    const viewedInternship = {
+                        id:
+                            internshipData?.internship_id ??
+                            internshipData?.id ??
+                            id,
+
+                        title:
+                            internshipData?.title ??
+                            internshipData?.role ??
+                            "Internship",
+
+                        company:
+                            internshipData?.company?.companyName ??
+                            internshipData?.company ??
+                            "Company",
+
+                        location:
+                            internshipData?.location ??
+                            "Not specified",
+
+                        duration:
+                            internshipData?.duration ??
+                            "Not specified",
+
+                        stipend:
+                            internshipData?.stipend ??
+                            "Stipend not specified",
+
+                        skills:
+                            Array.isArray(
+                                internshipData?.skills
+                            )
+                                ? internshipData.skills
+                                : [],
+
+                        viewedAt:
+                            new Date().toISOString()
+                    };
+
+                    const filteredRecentlyViewed =
+                        recentlyViewed.filter(
+                            (item) =>
+                                String(item?.id) !==
+                                String(viewedInternship.id)
+                        );
+
+                    const updatedRecentlyViewed = [
+                        viewedInternship,
+                        ...filteredRecentlyViewed
+                    ].slice(0, 3);
+
+                    localStorage.setItem(
+                        "recentlyViewedInternships",
+                        JSON.stringify(
+                            updatedRecentlyViewed
+                        )
+                    );
+
+                } catch (recentError) {
+                    console.error(
+                        "Failed to save recently viewed internship:",
+                        recentError
+                    );
+                }
+
 
                 // =================================================
                 // 2. CURRENT STUDENT TOKEN
