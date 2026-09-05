@@ -463,9 +463,32 @@ export default function InternshipDetails() {
     // NORMALIZE SKILL
     // =========================================================
 
+    const SKILL_ALIASES = {
+        "ml": "machinelearning",
+        "aiml": "machinelearning",
+        "machinelearning": "machinelearning",
+
+        "js": "javascript",
+        "javascript": "javascript",
+
+        "node": "nodejs",
+        "nodejs": "nodejs",
+
+        "reactjs": "react",
+        "react": "react",
+
+        "cpp": "c++",
+        "c++": "c++",
+    };
+
     const normalizeSkill = (skill) => {
 
-        return normalizeText(skill);
+        const normalized = normalizeText(skill);
+
+        return (
+            SKILL_ALIASES[normalized] ||
+            normalized
+        );
 
     };
 
