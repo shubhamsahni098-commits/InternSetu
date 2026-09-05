@@ -26,8 +26,6 @@ def get_model() -> SentenceTransformer:
 
     if _model is None:
         _model = SentenceTransformer(MODEL_NAME, device="cpu")
-        
-
     return _model
 
 
@@ -1327,7 +1325,22 @@ def recommend_internships(
         # Location
         # ----------------------------------------------------
 
-        if (
+        # Remote / Work From Home is a perfect location match
+        # because the student is not required to be physically
+        # present in the internship city.
+        internship_location = str(
+            internship.get("location") or ""
+        ).strip().lower()
+
+        if internship_location in {
+            "remote",
+            "work from home"
+        }:
+            internship[
+                "location_score_100"
+            ] = 100.0
+
+        elif (
             student_lat is not None
             and student_lon is not None
             and internship["location"]
