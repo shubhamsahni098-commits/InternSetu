@@ -1360,6 +1360,12 @@ def recommend_internships(
                 internship_lon
             )
 
+            internship["distance_km"] = (
+                round(float(distance), 2)
+                if not np.isnan(distance)
+                else None
+            )
+
             internship[
                 "location_score_100"
             ] = distance_to_score(
@@ -1675,6 +1681,16 @@ def recommend_internships(
             "location":
                 internship.get(
                     "location"
+                ),
+
+            "location_score_100":
+                internship.get(
+                    "location_score_100"
+                ),
+
+            "distance_km":
+                internship.get(
+                    "distance_km"
                 ),
 
             "work_mode":
