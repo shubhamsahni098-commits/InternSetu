@@ -29,7 +29,8 @@ import "./InternshipDetail.css";
 
 
 const API_BASE_URL =
-    "https://internsetubackend.onrender.com/api";
+    "http://localhost:5000/api";
+
 
 // =========================================================
 // SESSION STORAGE CACHE KEY
@@ -659,138 +660,6 @@ export default function InternshipDetails() {
 
 
     // =========================================================
-    // LOCATION HELPERS
-    // =========================================================
-
-    const CITY_COORDINATES = {
-        mumbai: { lat: 19.0760, lon: 72.8777 },
-        pune: { lat: 18.5204, lon: 73.8567 },
-        bangalore: { lat: 12.9716, lon: 77.5946 },
-        bengaluru: { lat: 12.9716, lon: 77.5946 },
-        delhi: { lat: 28.6139, lon: 77.2090 },
-        hyderabad: { lat: 17.3850, lon: 78.4867 },
-        chennai: { lat: 13.0827, lon: 80.2707 },
-        kolkata: { lat: 22.5726, lon: 88.3639 },
-        ahmedabad: { lat: 23.0225, lon: 72.5714 },
-        jaipur: { lat: 26.9124, lon: 75.7873 },
-        nagpur: { lat: 21.1458, lon: 79.0882 },
-        nashik: { lat: 19.9975, lon: 73.7898 },
-        surat: { lat: 21.1702, lon: 72.8311 }
-    };
-
-
-    const normalizeCity = (value) => {
-        return String(value || "")
-            .trim()
-            .toLowerCase()
-            .replace(/[\s._-]+/g, "");
-    };
-
-
-    const calculateHaversineDistance = (
-        lat1,
-        lon1,
-        lat2,
-        lon2
-    ) => {
-
-        const R = 6371;
-
-        const toRadians = (degrees) =>
-            (degrees * Math.PI) / 180;
-
-        const dLat =
-            toRadians(lat2 - lat1);
-
-        const dLon =
-            toRadians(lon2 - lon1);
-
-        const latitude1 =
-            toRadians(lat1);
-
-        const latitude2 =
-            toRadians(lat2);
-
-        const a =
-            Math.sin(dLat / 2) ** 2 +
-            Math.cos(latitude1) *
-            Math.cos(latitude2) *
-            Math.sin(dLon / 2) ** 2;
-
-        const c =
-            2 *
-            Math.atan2(
-                Math.sqrt(a),
-                Math.sqrt(1 - a)
-            );
-
-        return R * c;
-    };
-
-
-    const calculateLocationDetails = (
-        preferredLocation,
-        internshipLocationValue
-    ) => {
-
-        if (
-            !preferredLocation ||
-            !internshipLocationValue
-        ) {
-            return null;
-        }
-
-        const preferredCity =
-            normalizeCity(preferredLocation);
-
-        const internshipCity =
-            normalizeCity(internshipLocationValue);
-
-        if (
-            preferredCity === "remote" ||
-            internshipCity === "remote"
-        ) {
-            return null;
-        }
-
-        const studentCoordinates =
-            CITY_COORDINATES[preferredCity];
-
-        const internshipCoordinates =
-            CITY_COORDINATES[internshipCity];
-
-        if (
-            !studentCoordinates ||
-            !internshipCoordinates
-        ) {
-            return null;
-        }
-
-        const distance =
-            calculateHaversineDistance(
-                studentCoordinates.lat,
-                studentCoordinates.lon,
-                internshipCoordinates.lat,
-                internshipCoordinates.lon
-            );
-
-        const score =
-            100 *
-            Math.exp(-distance / 500);
-
-        return {
-            distance: Number(distance.toFixed(0)),
-            score: Number(
-                Math.max(
-                    0,
-                    Math.min(100, score)
-                ).toFixed(1)
-            )
-        };
-    };
-
-
-    // =========================================================
     // DYNAMIC PROFILE MATCHES
     // =========================================================
 
@@ -907,7 +776,8 @@ export default function InternshipDetails() {
             domain,
             internshipLocation,
             workMode,
-            stipend
+            stipend,
+            internship?.duration
         ]);
 
 
@@ -920,6 +790,20 @@ export default function InternshipDetails() {
 
             const reasons = [];
 
+            // =====================================================
+            // HELPER
+            // =====================================================
+
+            const addReason = (
+                type,
+                text
+            ) => {
+                reasons.push({
+                    type,
+                    text
+                });
+            };
+
 
             // =====================================================
             // 1. SKILL MATCH
@@ -928,59 +812,54 @@ export default function InternshipDetails() {
             const coverage =
                 skillAnalysis.coverage;
 
+
             if (skills.length === 0) {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        "No skill requirements were provided for this internship"
-                });
+                addReason(
+                    "neutral",
+                    "No skill requirements were provided for this internship"
+                );
 
             } else if (coverage === 100) {
 
-                reasons.push({
-                    type: "match",
-                    text:
-                        `Excellent skill match — all ${skills.length} required skills match your profile`
-                });
+                addReason(
+                    "match",
+                    `Excellent skill match — all ${skills.length} required skills match your profile`
+                );
 
             } else if (coverage >= 80) {
 
-                reasons.push({
-                    type: "match",
-                    text:
-                        `Strong skill match — ${coverage}% of required skills match your profile`
-                });
+                addReason(
+                    "match",
+                    `Strong skill match — ${coverage}% of required skills match your profile`
+                );
 
             } else if (coverage >= 50) {
 
-                reasons.push({
-                    type: "match",
-                    text:
-                        `Good skill match — ${coverage}% of required skills match your profile`
-                });
+                addReason(
+                    "match",
+                    `Good skill match — ${coverage}% of required skills match your profile`
+                );
 
             } else if (coverage > 0) {
 
-                reasons.push({
-                    type: "partial",
-                    text:
-                        `Partial skill match — ${coverage}% of required skills match your profile`
-                });
+                addReason(
+                    "partial",
+                    `Partial skill match — ${coverage}% of required skills match your profile`
+                );
 
             } else {
 
-                reasons.push({
-                    type: "mismatch",
-                    text:
-                        "No required skills currently match your profile"
-                });
+                addReason(
+                    "mismatch",
+                    "No required skills currently match your profile"
+                );
 
             }
 
 
             // =====================================================
-            // 2. ROLE
+            // 2. ROLE MATCH
             // =====================================================
 
             const preferredRole =
@@ -988,49 +867,44 @@ export default function InternshipDetails() {
                 student?.preferred_role ||
                 "";
 
+
             const internshipRole =
                 internship?.role ||
                 internship?.title ||
                 "";
+
 
             if (
                 preferredRole &&
                 internshipRole
             ) {
 
-                if (profileMatches.role) {
+                if (
+                    profileMatches.role
+                ) {
 
-                    reasons.push({
-                        type: "match",
-                        text:
-                            `Role matches your preference (${internshipRole})`
-                    });
+                    addReason(
+                        "match",
+                        `Role matches your preference (${internshipRole})`
+                    );
 
                 } else {
 
-                    reasons.push({
-                        type: "mismatch",
-                        text:
-                            `Role does not match your preference (Preferred: ${preferredRole}, Internship: ${internshipRole})`
-                    });
+                    addReason(
+                        "mismatch",
+                        `Role does not match your preference (Preferred: ${preferredRole}, Internship: ${internshipRole})`
+                    );
 
                 }
 
-            } else if (preferredRole) {
-
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Your preferred role is ${preferredRole}`
-                });
-
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship role: ${internshipRole || "Not specified"}`
-                });
+                addReason(
+                    "neutral",
+                    preferredRole
+                        ? `Your preferred role is ${preferredRole}`
+                        : "No role preference specified"
+                );
 
             }
 
@@ -1044,50 +918,45 @@ export default function InternshipDetails() {
                 student?.preferred_internship_type ||
                 "";
 
+
             const internshipType =
                 internship?.internshipType ||
                 internship?.internship_type ||
                 internship?.type ||
                 "";
 
+
             if (
                 preferredInternshipType &&
                 internshipType
             ) {
 
-                if (profileMatches.internshipType) {
+                if (
+                    profileMatches.internshipType
+                ) {
 
-                    reasons.push({
-                        type: "match",
-                        text:
-                            `Internship type matches your preference (${internshipType})`
-                    });
+                    addReason(
+                        "match",
+                        `Internship type matches your preference (${internshipType})`
+                    );
 
                 } else {
 
-                    reasons.push({
-                        type: "mismatch",
-                        text:
-                            `Internship type does not match your preference (Preferred: ${preferredInternshipType}, Internship: ${internshipType})`
-                    });
+                    addReason(
+                        "mismatch",
+                        `Internship type does not match your preference (Preferred: ${preferredInternshipType}, Internship: ${internshipType})`
+                    );
 
                 }
 
-            } else if (preferredInternshipType) {
-
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Your preferred internship type is ${preferredInternshipType}`
-                });
-
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship type: ${internshipType || "Not specified"}`
-                });
+                addReason(
+                    "neutral",
+                    preferredInternshipType
+                        ? `Your preferred internship type is ${preferredInternshipType}`
+                        : "No internship type preference specified"
+                );
 
             }
 
@@ -1101,44 +970,38 @@ export default function InternshipDetails() {
                 student?.preferred_work_mode ||
                 "";
 
+
             if (
                 preferredWorkMode &&
                 workMode !== "Not specified"
             ) {
 
-                if (profileMatches.workMode) {
+                if (
+                    profileMatches.workMode
+                ) {
 
-                    reasons.push({
-                        type: "match",
-                        text:
-                            `Work mode matches your preference (${workMode})`
-                    });
+                    addReason(
+                        "match",
+                        `Work mode matches your preference (${workMode})`
+                    );
 
                 } else {
 
-                    reasons.push({
-                        type: "mismatch",
-                        text:
-                            `Work mode does not match your preference (Preferred: ${preferredWorkMode}, Internship: ${workMode})`
-                    });
+                    addReason(
+                        "mismatch",
+                        `Work mode does not match your preference (Preferred: ${preferredWorkMode}, Internship: ${workMode})`
+                    );
 
                 }
 
-            } else if (preferredWorkMode) {
-
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Your preferred work mode is ${preferredWorkMode}`
-                });
-
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship work mode: ${workMode}`
-                });
+                addReason(
+                    "neutral",
+                    preferredWorkMode
+                        ? `Your preferred work mode is ${preferredWorkMode}`
+                        : "No work mode preference specified"
+                );
 
             }
 
@@ -1152,44 +1015,38 @@ export default function InternshipDetails() {
                 student?.preferred_domain ||
                 "";
 
+
             if (
                 preferredDomain &&
                 domain !== "Not specified"
             ) {
 
-                if (profileMatches.domain) {
+                if (
+                    profileMatches.domain
+                ) {
 
-                    reasons.push({
-                        type: "match",
-                        text:
-                            `Domain matches your preference (${domain})`
-                    });
+                    addReason(
+                        "match",
+                        `Domain matches your preference (${domain})`
+                    );
 
                 } else {
 
-                    reasons.push({
-                        type: "mismatch",
-                        text:
-                            `Domain does not match your preference (Preferred: ${preferredDomain}, Internship: ${domain})`
-                    });
+                    addReason(
+                        "mismatch",
+                        `Domain does not match your preference (Preferred: ${preferredDomain}, Internship: ${domain})`
+                    );
 
                 }
 
-            } else if (preferredDomain) {
-
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Your preferred domain is ${preferredDomain}`
-                });
-
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship domain: ${domain}`
-                });
+                addReason(
+                    "neutral",
+                    preferredDomain
+                        ? `Your preferred domain is ${preferredDomain}`
+                        : "No domain preference specified"
+                );
 
             }
 
@@ -1204,69 +1061,38 @@ export default function InternshipDetails() {
                 student?.location ||
                 "";
 
-            const locationDetails =
-                calculateLocationDetails(
-                    preferredLocation,
-                    internshipLocation
-                );
 
             if (
                 preferredLocation &&
                 internshipLocation !== "Not specified"
             ) {
 
-                if (locationDetails) {
+                if (
+                    profileMatches.location
+                ) {
 
-                    const locationText =
-                        `${preferredLocation} → ${internshipLocation} • Distance: ${locationDetails.distance} km • Location Score: ${locationDetails.score}/100`;
-
-                    if (profileMatches.location) {
-
-                        reasons.push({
-                            type: "match",
-                            text:
-                                `Location matches your preference (${locationText})`
-                        });
-
-                    } else {
-
-                        reasons.push({
-                            type: "mismatch",
-                            text:
-                                `Location does not match your preference (${locationText})`
-                        });
-
-                    }
+                    addReason(
+                        "match",
+                        `Location matches your preference (${internshipLocation})`
+                    );
 
                 } else {
 
-                    if (profileMatches.location) {
-
-                        reasons.push({
-                            type: "match",
-                            text:
-                                `Location matches your preference (${internshipLocation}) • Exact distance unavailable`
-                        });
-
-                    } else {
-
-                        reasons.push({
-                            type: "mismatch",
-                            text:
-                                `Location does not match your preference (Preferred: ${preferredLocation}, Internship: ${internshipLocation}) • Exact distance unavailable`
-                        });
-
-                    }
+                    addReason(
+                        "mismatch",
+                        `Location does not match your preference (Preferred: ${preferredLocation}, Internship: ${internshipLocation})`
+                    );
 
                 }
 
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Location: ${internshipLocation}`
-                });
+                addReason(
+                    "neutral",
+                    preferredLocation
+                        ? `Your preferred location is ${preferredLocation}`
+                        : "No location preference specified"
+                );
 
             }
 
@@ -1282,54 +1108,38 @@ export default function InternshipDetails() {
                 student?.minimum_stipend ||
                 "";
 
-            const stipendValue =
-                getNumericValue(stipend);
-
-            const preferredStipendValue =
-                getNumericValue(preferredStipend);
 
             if (
                 preferredStipend &&
-                stipendValue !== null &&
-                preferredStipendValue !== null
+                stipend !== "Stipend not specified"
             ) {
 
                 if (
-                    stipendValue >=
-                    preferredStipendValue
+                    profileMatches.stipend
                 ) {
 
-                    reasons.push({
-                        type: "match",
-                        text:
-                            `Stipend meets your preference (${stipend} • Minimum preferred: ${preferredStipend})`
-                    });
+                    addReason(
+                        "match",
+                        `Stipend meets your preference (${stipend})`
+                    );
 
                 } else {
 
-                    reasons.push({
-                        type: "mismatch",
-                        text:
-                            `Stipend does not meet your preference (${stipend} • Minimum preferred: ${preferredStipend})`
-                    });
+                    addReason(
+                        "mismatch",
+                        `Stipend is below your preference (Preferred minimum: ${preferredStipend}, Internship: ${stipend})`
+                    );
 
                 }
 
-            } else if (preferredStipend) {
-
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Stipend: ${stipend} • Minimum preferred: ${preferredStipend}`
-                });
-
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship stipend: ${stipend}`
-                });
+                addReason(
+                    "neutral",
+                    preferredStipend
+                        ? `Your minimum stipend preference is ${preferredStipend}`
+                        : "No minimum stipend preference specified"
+                );
 
             }
 
@@ -1344,34 +1154,43 @@ export default function InternshipDetails() {
                 student?.duration ||
                 "";
 
+
             const internshipDuration =
                 internship?.duration ||
                 "";
+
 
             if (
                 preferredDuration &&
                 internshipDuration
             ) {
 
-                const preferredMatch =
+                const preferredDurationMatch =
                     String(preferredDuration).match(
                         /\d+(?:\.\d+)?/
                     );
 
-                const internshipMatch =
+                const internshipDurationMatch =
                     String(internshipDuration).match(
                         /\d+(?:\.\d+)?/
                     );
 
+
                 const preferredMonths =
-                    preferredMatch
-                        ? Number(preferredMatch[0])
+                    preferredDurationMatch
+                        ? Number(
+                            preferredDurationMatch[0]
+                        )
                         : null;
 
+
                 const internshipMonths =
-                    internshipMatch
-                        ? Number(internshipMatch[0])
+                    internshipDurationMatch
+                        ? Number(
+                            internshipDurationMatch[0]
+                        )
                         : null;
+
 
                 if (
                     preferredMonths !== null &&
@@ -1383,47 +1202,53 @@ export default function InternshipDetails() {
                         internshipMonths
                     ) {
 
-                        reasons.push({
-                            type: "match",
-                            text:
-                                `Duration matches your preference (${internshipDuration})`
-                        });
+                        addReason(
+                            "match",
+                            `Duration matches your preference (${internshipDuration})`
+                        );
 
                     } else {
 
-                        reasons.push({
-                            type: "partial",
-                            text:
-                                `Duration differs from your preference (Preferred: ${preferredDuration}, Internship: ${internshipDuration})`
-                        });
+                        addReason(
+                            "partial",
+                            `Duration differs from your preference (Preferred: ${preferredDuration}, Internship: ${internshipDuration})`
+                        );
 
                     }
 
                 } else {
 
-                    reasons.push({
-                        type: "neutral",
-                        text:
-                            `Internship duration: ${internshipDuration}`
-                    });
+                    addReason(
+                        "neutral",
+                        `Internship duration is ${internshipDuration}`
+                    );
 
                 }
 
-            } else if (preferredDuration) {
+            } else if (
+                preferredDuration
+            ) {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Your preferred duration is ${preferredDuration}`
-                });
+                addReason(
+                    "neutral",
+                    `Your preferred duration is ${preferredDuration}`
+                );
+
+            } else if (
+                internshipDuration
+            ) {
+
+                addReason(
+                    "neutral",
+                    `Internship duration is ${internshipDuration}`
+                );
 
             } else {
 
-                reasons.push({
-                    type: "neutral",
-                    text:
-                        `Internship duration: ${internshipDuration || "Not specified"}`
-                });
+                addReason(
+                    "neutral",
+                    "No duration preference specified"
+                );
 
             }
 
