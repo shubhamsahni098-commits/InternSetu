@@ -1440,13 +1440,14 @@ export default function InternshipDetails() {
             return;
         }
 
-        const internshipId =
-            internship?.internship_id ??
-            internship?.id ??
-            id;
+        // The backend expects the real Prisma Internship UUID.
+        // The route parameter may be a display/custom identifier.
+        const internshipId = internship?.id;
 
         if (!internshipId) {
-            setApplyMessage("Internship ID is missing.");
+            setApplyMessage(
+                "Unable to apply: internship identifier is missing."
+            );
             setApplyMessageType("error");
             return;
         }
@@ -2101,9 +2102,12 @@ export default function InternshipDetails() {
                         className="apply-btn"
                         onClick={handleApply}
                         type="button"
+                        disabled={applying}
                     >
 
-                        Apply Now
+                        {applying
+                            ? "Submitting..."
+                            : "Apply Now"}
 
                     </button>
 
@@ -2183,17 +2187,17 @@ export default function InternshipDetails() {
 
 
                             <button
-                        className="apply-btn"
-                        onClick={handleApply}
-                        type="button"
-                        disabled={applying}
-                    >
+                                type="button"
+                                className="analysis-close"
+                                onClick={() =>
+                                    setAnalysisOpen(false)
+                                }
+                                aria-label="Close analysis"
+                            >
 
-                        {applying
-                            ? "Submitting..."
-                            : "Apply Now"}
+                                <X size={20} />
 
-                    </button>
+                            </button>
 
                         </div>
 
