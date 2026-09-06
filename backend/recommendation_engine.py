@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
-from math import radians, sin, cos, sqrt, atan2
+from math import radians, sin, cos, sqrt, atan2, isfinite
 
 import numpy as np
 import requests
@@ -629,7 +629,7 @@ def calculate_interest_scores(
 
 FINAL_SCORE_WEIGHTS = {
     "skill_match_score_100": 0.20,
-    "role_similarity_100": 0.20,
+    "role_similarity_100": 0.40,
     "domain_match_100": 0.15,
     "interest_score_100": 0.15,
     "work_mode_match_100": 0.10,
@@ -929,6 +929,38 @@ def generate_reasons(
         )
 
     return reasons
+
+
+def make_json_safe(value: Any) -> Any:
+    """
+    Convert NaN and Infinity values to None so Flask emits valid JSON nulls.
+    Recursively handles dictionaries and lists.
+    """
+    if isinstance(value, (float, np.floating)):
+        numeric_value = float(value)
+        if not isfinite(numeric_value):
+            return None
+        return numeric_value
+
+    if isinstance(value, dict):
+        return {
+            key: make_json_safe(item)
+            for key, item in value.items()
+        }
+
+    if isinstance(value, list):
+        return [
+            make_json_safe(item)
+            for item in value
+        ]
+
+    if isinstance(value, tuple):
+        return tuple(
+            make_json_safe(item)
+            for item in value
+        )
+
+    return value
 
 
 # ============================================================
@@ -1751,7 +1783,7 @@ def recommend_internships(
 
         results.append(result)
 
-    return results
+    return make_json_safe(results)
 
 
 # ============================================================
