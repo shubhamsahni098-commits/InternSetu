@@ -1422,26 +1422,92 @@ export default function InternshipDetails() {
     // APPLY
     // =========================================================
 
-    const handleApply = () => {
+    const [applying, setApplying] = useState(false);
 
-        if (
-            internship?.applicationLink
-        ) {
+    const [applyMessage, setApplyMessage] = useState("");
+    const [applyMessageType, setApplyMessageType] = useState("");
 
-            window.open(
-                internship.applicationLink,
-                "_blank",
-                "noopener,noreferrer"
-            );
+    const handleApply = async () => {
 
+        const token =
+            localStorage.getItem("token") ||
+            localStorage.getItem("authToken") ||
+            localStorage.getItem("accessToken");
+
+        if (!token) {
+            setApplyMessage("Please login before applying.");
+            setApplyMessageType("error");
             return;
-
         }
 
+        const internshipId =
+            internship?.internship_id ??
+            internship?.id ??
+            id;
 
-        alert(
-            "Application link is not available for this internship."
-        );
+        if (!internshipId) {
+            setApplyMessage("Internship ID is missing.");
+            setApplyMessageType("error");
+            return;
+        }
+
+        try {
+
+            setApplying(true);
+            setApplyMessage("");
+            setApplyMessageType("");
+
+            const response = await fetch(
+                `${API_BASE_URL}/applications`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+
+                    body: JSON.stringify({
+                        internshipId,
+                    }),
+                }
+            );
+
+            const result =
+                await response.json();
+
+            if (!response.ok || !result?.success) {
+                throw new Error(
+                    result?.message ||
+                    "Failed to submit application."
+                );
+            }
+
+            setApplyMessage(
+                "Application submitted successfully!"
+            );
+
+            setApplyMessageType("success");
+
+        } catch (applyError) {
+
+            console.error(
+                "Application submission error:",
+                applyError
+            );
+
+            setApplyMessage(
+                applyError?.message ||
+                "Unable to submit application."
+            );
+
+            setApplyMessageType("error");
+
+        } finally {
+
+            setApplying(false);
+
+        }
 
     };
 
@@ -2043,6 +2109,33 @@ export default function InternshipDetails() {
 
                 </div>
 
+                {applyMessage && (
+                    <div
+                        role="status"
+                        style={{
+                            marginTop: "16px",
+                            padding: "12px 16px",
+                            borderRadius: "10px",
+                            background:
+                                applyMessageType === "success"
+                                    ? "#FFF1E6"
+                                    : "#FEF2F2",
+                            color:
+                                applyMessageType === "success"
+                                    ? "#C2410C"
+                                    : "#B91C1C",
+                            border:
+                                applyMessageType === "success"
+                                    ? "1px solid #FDBA74"
+                                    : "1px solid #FCA5A5",
+                            fontWeight: 600,
+                            textAlign: "center",
+                        }}
+                    >
+                        {applyMessage}
+                    </div>
+                )}
+
 
             </div>
 
@@ -2090,17 +2183,17 @@ export default function InternshipDetails() {
 
 
                             <button
-                                type="button"
-                                className="analysis-close"
-                                onClick={() =>
-                                    setAnalysisOpen(false)
-                                }
-                                aria-label="Close analysis"
-                            >
+                        className="apply-btn"
+                        onClick={handleApply}
+                        type="button"
+                        disabled={applying}
+                    >
 
-                                <X size={20} />
+                        {applying
+                            ? "Submitting..."
+                            : "Apply Now"}
 
-                            </button>
+                    </button>
 
                         </div>
 
