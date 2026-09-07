@@ -516,9 +516,10 @@ export default function InternshipDetails() {
 
     // =========================================================
     // RECOMMENDATION SCORE
+    // FRONTEND-ONLY SKILL PENALTY
     // =========================================================
 
-    const matchScore =
+    const originalMatchScore =
         recommendation?.personalized_score_100 ??
         recommendation?.final_score_100 ??
         null;
@@ -685,6 +686,44 @@ export default function InternshipDetails() {
             skills,
             studentSkills
         ]);
+
+
+    // =========================================================
+    // FRONTEND MATCH SCORE WITH SKILL PENALTY
+    // =========================================================
+
+    const getSkillPenaltyMultiplier = (coverage) => {
+
+        if (coverage <= 20) return 0.20;
+        if (coverage <= 40) return 0.40;
+        if (coverage <= 60) return 0.60;
+        if (coverage < 80) return 0.80;
+        return 1;
+    };
+
+    const skillCoverage = skillAnalysis?.coverage ?? 0;
+
+    const skillPenaltyMultiplier =
+        getSkillPenaltyMultiplier(skillCoverage);
+
+    const matchScore =
+        originalMatchScore === null ||
+        originalMatchScore === undefined
+            ? null
+            : Math.round(
+                  Number(originalMatchScore) *
+                      skillPenaltyMultiplier
+              );
+
+    // Badge/message color based on the FINAL ADJUSTED score.
+    const matchScoreLevel =
+        matchScore === null
+            ? ''
+            : matchScore <= 40
+                ? 'red'
+                : matchScore < 80
+                    ? 'yellow'
+                    : 'green';
 
 
     // =========================================================
@@ -1801,7 +1840,17 @@ export default function InternshipDetails() {
                                 </span>
 
 
-                                <strong className="match-summary-score">
+                                <strong
+                                    className={`match-summary-score ${matchScoreLevel}`}
+                                    style={{
+                                        color:
+                                            matchScoreLevel === "red"
+                                                ? "#dc2626"
+                                                : matchScoreLevel === "yellow"
+                                                    ? "#ca8a04"
+                                                    : "#16a34a"
+                                    }}
+                                >
 
                                     {Number(
                                         matchScore
@@ -2067,7 +2116,17 @@ export default function InternshipDetails() {
                                 </p>
 
 
-                                <strong className="apply-match">
+                                <strong
+                                    className={`apply-match ${matchScoreLevel}`}
+                                    style={{
+                                        color:
+                                            matchScoreLevel === "red"
+                                                ? "#dc2626"
+                                                : matchScoreLevel === "yellow"
+                                                    ? "#ca8a04"
+                                                    : "#16a34a"
+                                    }}
+                                >
 
                                     {Number(
                                         matchScore
@@ -2224,7 +2283,16 @@ export default function InternshipDetails() {
                                     </span>
 
 
-                                    <strong>
+                                    <strong
+                                        style={{
+                                            color:
+                                                matchScoreLevel === "red"
+                                                    ? "#dc2626"
+                                                    : matchScoreLevel === "yellow"
+                                                        ? "#ca8a04"
+                                                        : "#16a34a"
+                                        }}
+                                    >
                                         {Number(
                                             matchScore
                                         ).toFixed(0)}%
