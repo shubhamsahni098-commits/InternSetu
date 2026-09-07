@@ -100,6 +100,15 @@ export default function Recommendations() {
     setError
   ] = useState("");
 
+  // ==========================================================
+  // CURRENT STUDENT SKILLS
+  // ==========================================================
+
+  const [
+    studentSkills,
+    setStudentSkills
+  ] = useState([]);
+
 
   // ==========================================================
   // GET TOKEN
@@ -144,6 +153,161 @@ export default function Recommendations() {
 
   };
 
+
+  // ==========================================================
+  // FETCH STUDENT PROFILE + ACTUAL INTERNSHIP SKILLS
+  // ==========================================================
+
+  const hydrateRecommendationData = useCallback(
+    async (recommendationList) => {
+      const token = getToken();
+
+      // -------------------------------
+      // Student profile / skills
+      // -------------------------------
+
+      let loadedStudentSkills = [];
+
+      if (token) {
+        try {
+          let profileResponse = await fetch(
+            `${API_BASE_URL}/students/profile`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          // Fallback route used elsewhere in the app.
+          if (!profileResponse.ok) {
+            profileResponse = await fetch(
+              `${API_BASE_URL}/student/profile`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+          }
+
+          if (profileResponse.ok) {
+            const profileResult =
+              await profileResponse.json();
+
+            const profile =
+              profileResult?.data || {};
+
+            loadedStudentSkills =
+              Array.isArray(profile?.skills)
+                ? profile.skills
+                : [];
+
+            setStudentSkills(
+              loadedStudentSkills
+            );
+          }
+        } catch (profileError) {
+          console.error(
+            "Student profile fetch error:",
+            profileError
+          );
+        }
+      }
+
+      // -------------------------------
+      // Actual internship skills
+      // -------------------------------
+
+      const hydratedList =
+        await Promise.all(
+          recommendationList.map(
+            async (recommendation) => {
+              const internshipId =
+                recommendation?.internship_id;
+
+              if (!internshipId) {
+                return {
+                  ...recommendation,
+                  skills: Array.isArray(
+                    recommendation?.skills
+                  )
+                    ? recommendation.skills
+                    : [],
+                };
+              }
+
+              try {
+                const internshipResponse =
+                  await fetch(
+                    `${API_BASE_URL}/internships/${internshipId}`
+                  );
+
+                if (!internshipResponse.ok) {
+                  return {
+                    ...recommendation,
+                    skills: Array.isArray(
+                      recommendation?.skills
+                    )
+                      ? recommendation.skills
+                      : [],
+                  };
+                }
+
+                const internshipResult =
+                  await internshipResponse.json();
+
+                const internshipData =
+                  internshipResult?.data || {};
+
+                return {
+                  ...recommendation,
+                  // Keep recommendation fields exactly as returned
+                  // by the recommendation API and only enrich with
+                  // the actual internship skills required by the
+                  // frontend penalty calculation.
+                  skills: Array.isArray(
+                    internshipData?.skills
+                  )
+                    ? internshipData.skills
+                    : [],
+                };
+              } catch (internshipError) {
+                console.error(
+                  `Failed to fetch skills for internship ${internshipId}:`,
+                  internshipError
+                );
+
+                return {
+                  ...recommendation,
+                  skills: Array.isArray(
+                    recommendation?.skills
+                  )
+                    ? recommendation.skills
+                    : [],
+                };
+              }
+            }
+          )
+        );
+
+      setRecommendations(
+        hydratedList
+      );
+
+      saveRecommendationsToCache(
+        hydratedList
+      );
+
+      return {
+        hydratedList,
+        studentSkills: loadedStudentSkills,
+      };
+    },
+    []
+  );
 
   // ==========================================================
   // FETCH RECOMMENDATIONS
@@ -245,19 +409,10 @@ export default function Recommendations() {
 
 
         // ====================================================
-        // Update state
+        // Enrich recommendations with actual internship skills
         // ====================================================
 
-        setRecommendations(
-          recommendationList
-        );
-
-
-        // ====================================================
-        // Update cache
-        // ====================================================
-
-        saveRecommendationsToCache(
+        await hydrateRecommendationData(
           recommendationList
         );
 
@@ -306,7 +461,7 @@ export default function Recommendations() {
       }
 
     },
-    []
+    [hydrateRecommendationData]
   );
 
 
@@ -328,11 +483,11 @@ export default function Recommendations() {
       cached.length > 0
     ) {
 
-      setRecommendations(
+      hydrateRecommendationData(
         cached
-      );
-
-      setLoading(false);
+      ).finally(() => {
+        setLoading(false);
+      });
 
       return;
 
@@ -346,7 +501,8 @@ export default function Recommendations() {
     fetchRecommendations();
 
   }, [
-    fetchRecommendations
+    fetchRecommendations,
+    hydrateRecommendationData
   ]);
 
 
@@ -569,6 +725,10 @@ export default function Recommendations() {
 
                     internship={
                       internship
+                    }
+
+                    studentSkills={
+                      studentSkills
                     }
 
                     onFeedback={
