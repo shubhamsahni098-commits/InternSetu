@@ -52,6 +52,9 @@ export default function Internships() {
   const [error, setError] =
     useState("");
 
+  const [studentProfile, setStudentProfile] =
+    useState(null);
+
 
   // ==========================================================
   // PERSONALIZATION POPUP
@@ -402,7 +405,9 @@ export default function Internships() {
           await response.json();
 
 
-        return result?.data || null;
+        const profile = result?.data || null;
+        setStudentProfile(profile);
+        return profile;
 
       } catch (error) {
 
@@ -1216,6 +1221,10 @@ export default function Internships() {
 
                     internship={
                       internship
+                    }
+
+                    studentSkills={
+                      studentProfile?.skills || []
                     }
 
                     onFeedback={

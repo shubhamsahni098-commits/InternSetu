@@ -16,6 +16,7 @@ import "./InternshipCard.css";
 
 export default function InternshipCard({
   internship,
+  studentSkills = [],
   onFeedback,
 }) {
 
@@ -138,10 +139,38 @@ export default function InternshipCard({
     "";
 
 
-  const score =
+  const originalScore =
     internship.personalized_score_100 ??
     internship.final_score_100 ??
     0;
+
+
+  const normalizeSkill = (skill) => {
+
+    const normalized = String(skill || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[\s._-]+/g, "");
+
+
+    const aliases = {
+      ml: "machinelearning",
+      aiml: "machinelearning",
+      machinelearning: "machinelearning",
+      js: "javascript",
+      javascript: "javascript",
+      node: "nodejs",
+      nodejs: "nodejs",
+      reactjs: "react",
+      react: "react",
+      cpp: "c++",
+      "c++": "c++",
+    };
+
+
+    return aliases[normalized] || normalized;
+
+  };
 
 
   const skills =
@@ -150,6 +179,75 @@ export default function InternshipCard({
     )
       ? internship.skills
       : [];
+
+
+  const normalizedStudentSkills =
+    new Set(
+      (Array.isArray(studentSkills)
+        ? studentSkills
+        : []
+      ).map(normalizeSkill)
+    );
+
+
+  const matchedSkillCount =
+    skills.filter((skill) => {
+      const normalized =
+        normalizeSkill(skill);
+
+      return (
+        normalized &&
+        normalizedStudentSkills.has(normalized)
+      );
+    }).length;
+
+
+  const skillCoverage =
+    skills.length > 0
+      ? Math.round(
+          (matchedSkillCount / skills.length) *
+            100
+        )
+      : 0;
+
+
+  const penaltyMultiplier =
+    skillCoverage <= 20
+      ? 0.2
+      : skillCoverage <= 40
+        ? 0.4
+        : skillCoverage <= 60
+          ? 0.6
+          : skillCoverage < 80
+            ? 0.8
+            : 1;
+
+
+  const score =
+    originalScore === null ||
+    originalScore === undefined
+      ? 0
+      : Math.round(
+          Number(originalScore) *
+            penaltyMultiplier
+        );
+
+
+  const matchScoreStyle =
+    score <= 40
+      ? {
+          backgroundColor: "#FEE2E2",
+          color: "#B91C1C",
+        }
+      : score < 80
+        ? {
+            backgroundColor: "#FEF3C7",
+            color: "#B45309",
+          }
+        : {
+            backgroundColor: "#DCFCE7",
+            color: "#15803D",
+          };
 
 
   // ==========================================================
@@ -308,7 +406,7 @@ export default function InternshipCard({
 
           {/* Match Score */}
 
-          <div className="ai-match">
+          <div className="ai-match" style={matchScoreStyle}>
 
             <Sparkles size={15} />
 
