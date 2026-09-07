@@ -963,6 +963,44 @@ def make_json_safe(value: Any) -> Any:
     return value
 
 
+
+def apply_skill_match_penalty(
+    overall_score: Any,
+    skill_score: Any
+) -> float:
+    """
+    Reduce the final displayed match score when skill compatibility is low.
+
+    Skill score thresholds:
+      <= 20  -> 20% of overall score
+      <= 40  -> 40% of overall score
+      <= 60  -> 60% of overall score
+      < 80   -> 80% of overall score
+      >= 80  -> no penalty
+    """
+    overall = safe_float(overall_score)
+
+    if overall is None:
+        return 0.0
+
+    skill = safe_float(skill_score)
+
+    if skill is None:
+        return round(overall, 2)
+
+    if skill <= 20:
+        multiplier = 0.20
+    elif skill <= 40:
+        multiplier = 0.40
+    elif skill <= 60:
+        multiplier = 0.60
+    elif skill < 80:
+        multiplier = 0.80
+    else:
+        multiplier = 1.00
+
+    return round(overall * multiplier, 2)
+
 # ============================================================
 # Main recommendation function
 # ============================================================
@@ -1656,6 +1694,17 @@ def recommend_internships(
                 )
             ),
             2
+        )
+
+        internship[
+            "personalized_score_100"
+        ] = apply_skill_match_penalty(
+            internship[
+                "personalized_score_100"
+            ],
+            internship[
+                "skill_match_score_100"
+            ]
         )
 
 
