@@ -424,6 +424,67 @@ export default function Internships() {
 
 
   // ==========================================================
+  // ENRICH RECOMMENDATIONS WITH ACTUAL INTERNSHIP SKILLS
+  // ==========================================================
+
+  const enrichRecommendationsWithSkills = async (
+    recommendationList
+  ) => {
+    return Promise.all(
+      recommendationList.map(async (recommendation) => {
+        if (Array.isArray(recommendation?.skills)) {
+          return recommendation;
+        }
+
+        const internshipId =
+          recommendation?.internship_id ||
+          recommendation?.id;
+
+        if (!internshipId) {
+          return {
+            ...recommendation,
+            skills: [],
+          };
+        }
+
+        try {
+          const response = await fetch(
+            `${API_BASE_URL}/internships/${internshipId}`
+          );
+
+          if (!response.ok) {
+            return {
+              ...recommendation,
+              skills: [],
+            };
+          }
+
+          const result = await response.json();
+          const skills = result?.data?.skills;
+
+          return {
+            ...recommendation,
+            skills: Array.isArray(skills)
+              ? skills
+              : [],
+          };
+        } catch (error) {
+          console.error(
+            `Failed to fetch skills for internship ${internshipId}:`,
+            error
+          );
+
+          return {
+            ...recommendation,
+            skills: [],
+          };
+        }
+      })
+    );
+  };
+
+
+  // ==========================================================
   // CHECK WHETHER CACHED RECOMMENDATIONS ARE STILL VALID
   // ==========================================================
 
@@ -458,6 +519,8 @@ export default function Internships() {
 
       const currentProfile =
         await fetchCurrentStudentProfile();
+
+      setStudentProfile(currentProfile);
 
 
       // If the profile cannot be checked,
@@ -551,12 +614,21 @@ export default function Internships() {
       // NOTHING CHANGED → USE CACHE
       // ========================================================
 
+      const enrichedCachedRecommendations =
+        await enrichRecommendationsWithSkills(
+          cachedRecommendations
+        );
+
       setRecommendations(
-        cachedRecommendations
+        enrichedCachedRecommendations
       );
 
       setHasRecommended(
-        cachedRecommendations.length > 0
+        enrichedCachedRecommendations.length > 0
+      );
+
+      saveRecommendationsToCache(
+        enrichedCachedRecommendations
       );
 
       setCheckingRecommendations(false);
@@ -666,21 +738,31 @@ export default function Internships() {
       }
 
 
+      const enrichedRecommendationList =
+        await enrichRecommendationsWithSkills(
+          recommendationList
+        );
+
+      const currentProfile =
+        await fetchCurrentStudentProfile();
+
+      if (currentProfile) {
+        setStudentProfile(currentProfile);
+      }
+
       setRecommendations(
-        recommendationList
+        enrichedRecommendationList
       );
 
       setHasRecommended(true);
 
       saveRecommendationsToCache(
-        recommendationList
+        enrichedRecommendationList
       );
 
 
       // Save the exact profile/preferences state
       // used when this recommendation was generated.
-      const currentProfile =
-        await fetchCurrentStudentProfile();
 
 
       if (currentProfile) {
