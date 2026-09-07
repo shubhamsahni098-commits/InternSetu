@@ -33,6 +33,12 @@ export default function DashboardHome() {
   const [loadingStudent, setLoadingStudent] =
     useState(true);
 
+  const [profileCompletion, setProfileCompletion] =
+    useState(0);
+
+  const [loadingCompletion, setLoadingCompletion] =
+    useState(true);
+
   // ==========================================================
   // Recently Viewed Internships
   // ==========================================================
@@ -108,12 +114,12 @@ export default function DashboardHome() {
 
 
   // ==========================================================
-  // Fetch logged-in student
+  // Fetch logged-in student + calculate Profile Completion
   // ==========================================================
 
   useEffect(() => {
 
-    const loadStudent = async () => {
+    const loadDashboardProfile = async () => {
 
       try {
 
@@ -129,38 +135,71 @@ export default function DashboardHome() {
         }
 
 
-        const response = await fetch(
-          `${API_BASE_URL}/students/profile`,
-          {
-            method: "GET",
+        const [profileResponse, preferencesResponse] =
+          await Promise.all([
+            fetch(
+              `${API_BASE_URL}/students/profile`,
+              {
+                method: "GET",
 
-            headers: {
-              Authorization:
-                `Bearer ${token}`,
-            },
-          }
-        );
+                headers: {
+                  Authorization:
+                    `Bearer ${token}`,
+                },
+              }
+            ),
+            fetch(
+              `${API_BASE_URL}/students/preferences`,
+              {
+                method: "GET",
+
+                headers: {
+                  Authorization:
+                    `Bearer ${token}`,
+                },
+              }
+            ),
+          ]);
 
 
-        const result =
-          await response.json();
+        const [profileResult, preferencesResult] =
+          await Promise.all([
+            profileResponse.json(),
+            preferencesResponse.json(),
+          ]);
 
 
         if (
-          !response.ok ||
-          !result?.success
+          !profileResponse.ok ||
+          !profileResult?.success
         ) {
 
           throw new Error(
-            result?.message ||
+            profileResult?.message ||
             "Failed to fetch student profile."
           );
 
         }
 
 
+        if (
+          !preferencesResponse.ok ||
+          !preferencesResult?.success
+        ) {
+
+          throw new Error(
+            preferencesResult?.message ||
+            "Failed to fetch student preferences."
+          );
+
+        }
+
+
         const student =
-          result?.data;
+          profileResult?.data || {};
+
+        const preferences =
+          preferencesResult?.data || {};
 
 
         if (student?.fullName) {
@@ -171,23 +210,106 @@ export default function DashboardHome() {
 
         }
 
+
+        // ------------------------------------------------------
+        // Profile Completion
+        // Profile = 60%, Preferences = 40%
+        // Each field gets an equal share within its section.
+        // ------------------------------------------------------
+
+        const isFilled = (value) => {
+
+          if (Array.isArray(value)) {
+
+            return value.length > 0;
+
+          }
+
+          if (
+            value === null ||
+            value === undefined
+          ) {
+
+            return false;
+
+          }
+
+          return String(value).trim().length > 0;
+
+        };
+
+
+        const profileFields = [
+          student?.fullName,
+          student?.email,
+          student?.phone,
+          student?.location,
+          student?.education,
+          student?.preferredRole,
+          student?.preferredLocation,
+          student?.skills,
+        ];
+
+
+        const preferenceFields = [
+          preferences?.internshipType,
+          preferences?.workMode,
+          preferences?.preferredCity,
+          preferences?.locationPreference,
+          preferences?.domains,
+          preferences?.stipendPreference,
+          preferences?.duration,
+          preferences?.availability,
+        ];
+
+
+        const profileScore =
+          profileFields.reduce(
+            (total, field) =>
+              total + (isFilled(field) ? 1 : 0),
+            0
+          ) / profileFields.length;
+
+
+        const preferenceScore =
+          preferenceFields.reduce(
+            (total, field) =>
+              total + (isFilled(field) ? 1 : 0),
+            0
+          ) / preferenceFields.length;
+
+
+        const combinedScore =
+          Math.round(
+            (profileScore * 60) +
+            (preferenceScore * 40)
+          );
+
+
+        setProfileCompletion(
+          Math.min(100, Math.max(0, combinedScore))
+        );
+
       } catch (error) {
 
         console.error(
-          "Dashboard student fetch error:",
+          "Dashboard profile completion fetch error:",
           error
         );
+
+        setProfileCompletion(0);
 
       } finally {
 
         setLoadingStudent(false);
+        setLoadingCompletion(false);
 
       }
 
     };
 
 
-    loadStudent();
+    loadDashboardProfile();
 
   }, [navigate]);
 
@@ -314,7 +436,9 @@ export default function DashboardHome() {
             </span>
 
             <strong>
-              70%
+              {loadingCompletion
+                ? "..."
+                : `${profileCompletion}%`}
             </strong>
 
           </div>
@@ -322,7 +446,12 @@ export default function DashboardHome() {
 
           <div className="progress-bar">
 
-            <div className="progress-fill"></div>
+            <div
+              className="progress-fill"
+              style={{
+                width: `${profileCompletion}%`,
+              }}
+            ></div>
 
           </div>
 
