@@ -581,6 +581,15 @@ def calculate_role_similarity(
         internship_role_embeddings
     )[0]
 
+    print("\n===== ROLE SIMILARITY =====")
+    print(f"Student Role: {student_role}")
+    for role, score in zip(internship_roles, similarities):
+        print(
+            f"Internship Role: {role} | "
+            f"Role Match: {score * 100:.2f}%"
+        )
+    print("============================")
+
     return [
         round(float(value * 100), 2)
         for value in similarities
