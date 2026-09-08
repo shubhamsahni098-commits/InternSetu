@@ -524,6 +524,11 @@ export default function InternshipDetails() {
         recommendation?.final_score_100 ??
         null;
 
+    // Semantic role similarity returned by the recommendation engine.
+    const roleSimilarityScore =
+        recommendation?.role_similarity_100 ??
+        null;
+
 
     // =========================================================
     // LOCATION SCORE DETAILS
@@ -1047,19 +1052,32 @@ export default function InternshipDetails() {
             ) {
 
                 if (
-                    profileMatches.role
+                    roleSimilarityScore !== null &&
+                    roleSimilarityScore !== undefined &&
+                    Number.isFinite(
+                        Number(roleSimilarityScore)
+                    )
                 ) {
 
+                    const formattedRoleSimilarity =
+                        Number(
+                            roleSimilarityScore
+                        ).toFixed(2);
+
                     addReason(
-                        "match",
-                        `Role matches your preference (${internshipRole})`
+                        Number(roleSimilarityScore) >= 50
+                            ? "match"
+                            : Number(roleSimilarityScore) >= 30
+                                ? "partial"
+                                : "mismatch",
+                        `Role Match: ${formattedRoleSimilarity}% (Preferred: ${preferredRole}, Internship: ${internshipRole})`
                     );
 
                 } else {
 
                     addReason(
-                        "mismatch",
-                        `Role does not match your preference (Preferred: ${preferredRole}, Internship: ${internshipRole})`
+                        "neutral",
+                        `Preferred Role: ${preferredRole} | Internship Role: ${internshipRole}`
                     );
 
                 }
@@ -1451,6 +1469,7 @@ export default function InternshipDetails() {
             workMode,
             stipend,
             recommendation,
+            roleSimilarityScore,
             locationScore,
             distanceKm,
             isRemoteLocation
