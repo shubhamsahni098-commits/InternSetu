@@ -7,7 +7,6 @@ import {
   UserRound,
   Mail,
   GraduationCap,
-  MapPin,
   BriefcaseBusiness,
   Code,
   CheckCircle,
@@ -36,16 +35,60 @@ export default function Profile() {
   const [profile, setProfile] = useState({
     fullName: "",
     email: "",
-    location: "",
     education: "",
     preferredRole: "",
-    preferredLocation: "",
+    resume: "",
     skills: [],
   });
 
 
   const [skillInput, setSkillInput] =
     useState("");
+
+
+  // ==========================================================
+  // PREDEFINED DATASET SKILLS (162 UNIQUE SKILLS)
+  // ==========================================================
+
+  const PREDEFINED_SKILLS = [
+    "Figma", "UI Design", "UX Design", "Wireframing", "Prototyping",
+    "HTML", "CSS", "JavaScript", "React.js", "TypeScript",
+    "Dart", "Flutter", "Firebase", "REST API", "Git",
+    "Python", "Node.js", "Express.js", "SQL", "Pandas",
+    "Power BI", "Statistics", "PyTorch", "TensorFlow", "Deep Learning",
+    "NLP", "Kotlin", "Java", "Android Studio", "Android SDK",
+    "C++", "OOP", "Data Structures", "C", "Arduino",
+    "ESP32", "STM32", "Linux", "Networking", "Nmap",
+    "Wireshark", "NumPy", "Scikit-learn", "Machine Learning", "LLM",
+    "RAG", "Embeddings", "Hugging Face", "Selenium", "Postman",
+    "PyTest", "API Testing", "Automation Testing", "ROS", "OpenCV",
+    "C#", "Unity", "Unreal Engine", "Game Physics", "React Native",
+    "MySQL", "PostgreSQL", "MongoDB", "Redis", "Swift",
+    "SwiftUI", "Xcode", "UIKit", "AutoCAD", "SolidWorks",
+    "CATIA", "3D Modeling", "CAD", "Apache Spark", "Kafka",
+    "Airflow", "AWS", "Azure", "Docker", "Kubernetes",
+    "Terraform", "Solidity", "Ethereum", "Web3.js", "Smart Contracts",
+    "Jenkins", "CI/CD", "Transformers", "BERT", "YOLO",
+    "CNN", "MQTT", "Verilog", "SystemVerilog", "VHDL",
+    "FPGA", "RTL Design", "Bash", "Operating Systems", "B2B Sales",
+    "Field Sales", "Lead Generation", "English Proficiency (Spoken)",
+    "English Proficiency (Written)", "Google Sheets", "Mathematics", "MS-Excel",
+    "Statistical Modeling", "Human Resources", "MS-Office", "Recruitment",
+    "Resume screening", "Content Marketing", "Digital Marketing", "Sales",
+    "Social Media Marketing", "Content Management", "Search Engine Optimization (SEO)",
+    "Video Editing", "Video Making", "Effective Communication", "Blogging",
+    "Creative Writing", "Written Communication", "Analytical Thinking", "Data Extraction",
+    "MS-PowerPoint", "MS-Word", "Problem Solving", "Hindi Proficiency (Spoken)",
+    "Telugu Proficiency (Spoken)", "Interpersonal skills", "Negotiations", "Legal Drafting",
+    "Legal Research", "Legal Writing", "Statutory compliances", "Community Management",
+    "Event Management", "Client Relationship Management (CRM)", "E-commerce",
+    "Key Account Management", "Logistics Management", "Email Marketing",
+    "Presentation skills", "Research and Analytics", "Content Editing", "Photography",
+    "Business Management", "Business Research", "Market Analysis", "Marketing Campaigns",
+    "Marketing Strategy", "Content Writing", "Public Relations", "Canva",
+    "Generative AI Tools", "Attention to Detail", "Email Management", "Sales Strategy",
+    "Artificial intelligence", "Computer skills"
+  ];
 
 
   const [loading, setLoading] =
@@ -157,17 +200,14 @@ export default function Profile() {
           email:
             student.email || "",
 
-          location:
-            student.location || "",
-
           education:
             student.education || "",
 
           preferredRole:
             student.preferredRole || "",
 
-          preferredLocation:
-            student.preferredLocation || "",
+          resume:
+            student.resume || student.resumeUrl || "",
 
           skills:
             Array.isArray(student.skills)
@@ -201,48 +241,51 @@ export default function Profile() {
   }, [navigate]);
 
 
-  // ==========================================================
-  // Add Skill
-  // ==========================================================
-
-  const handleAddSkill = () => {
-
-    const skill =
-      skillInput.trim();
+  const filteredSkills = PREDEFINED_SKILLS.filter((skill) =>
+    skill.toLowerCase().includes(skillInput.trim().toLowerCase()) &&
+    !profile.skills.some((existingSkill) =>
+      existingSkill.toLowerCase() === skill.toLowerCase()
+    )
+  );
 
 
-    if (!skill) {
-      return;
-    }
-
-
-    const alreadyExists =
-      profile.skills.some(
-        (existingSkill) =>
-          existingSkill.toLowerCase() ===
-          skill.toLowerCase()
-      );
-
-
-    if (alreadyExists) {
-
-      setSkillInput("");
-
-      return;
-    }
-
+  const handleSelectSkill = (skill) => {
 
     setProfile((previous) => ({
       ...previous,
-
       skills: [
         ...previous.skills,
         skill,
       ],
     }));
 
-
     setSkillInput("");
+
+  };
+
+
+  // ==========================================================
+  // Add Skill
+  // ==========================================================
+
+  const handleAddSkill = () => {
+
+    const skill = skillInput.trim();
+
+    if (!skill) {
+      return;
+    }
+
+    const matchedSkill = PREDEFINED_SKILLS.find(
+      (predefinedSkill) =>
+        predefinedSkill.toLowerCase() === skill.toLowerCase()
+    );
+
+    if (!matchedSkill) {
+      return;
+    }
+
+    handleSelectSkill(matchedSkill);
 
   };
 
@@ -327,17 +370,11 @@ export default function Profile() {
             fullName:
               profile.fullName.trim(),
 
-            location:
-              profile.location.trim(),
-
             education:
               profile.education.trim(),
 
             preferredRole:
               profile.preferredRole,
-
-            preferredLocation:
-              profile.preferredLocation,
 
             skills:
               profile.skills,
@@ -585,36 +622,6 @@ export default function Profile() {
             </div>
 
 
-            {/* Location */}
-
-            <div className="profile-field">
-
-              <label>
-
-                <MapPin size={16} />
-
-                Location
-
-              </label>
-
-
-              <input
-                type="text"
-                value={
-                  profile.location
-                }
-                onChange={(event) =>
-                  updateField(
-                    "location",
-                    event.target.value
-                  )
-                }
-                placeholder="e.g. Mumbai"
-              />
-
-            </div>
-
-
             {/* Education */}
 
             <div className="profile-field">
@@ -628,8 +635,7 @@ export default function Profile() {
               </label>
 
 
-              <input
-                type="text"
+              <select
                 value={
                   profile.education
                 }
@@ -639,28 +645,14 @@ export default function Profile() {
                     event.target.value
                   )
                 }
-                placeholder="e.g. B.Tech Computer Science"
-              />
+              >
+                <option value="">Select education</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Postgraduate">Postgraduate</option>
+                <option value="Undergraduate & Postgraduate">Undergraduate &amp; Postgraduate</option>
+              </select>
 
             </div>
-
-          </div>
-
-        </div>
-
-
-        {/* ===================================================
-            CAREER INFORMATION
-        =================================================== */}
-
-        <div className="profile-section">
-
-          <h3>
-            Career Preferences
-          </h3>
-
-
-          <div className="profile-grid">
 
 
             {/* Preferred Role */}
@@ -674,7 +666,6 @@ export default function Profile() {
                 Preferred Role
 
               </label>
-
 
               <select
                 value={
@@ -720,66 +711,34 @@ export default function Profile() {
 
             </div>
 
+          </div>
 
-            {/* Preferred Location */}
+
+
+          <div
+            style={{
+              marginTop: "1.5rem"
+            }}
+          >
 
             <div className="profile-field">
 
               <label>
-
-                <MapPin size={16} />
-
-                Preferred Location
-
+                Resume
               </label>
 
-
-              <select
+              <input
+                type="text"
                 value={
-                  profile.preferredLocation
+                  profile.resume || ""
                 }
-                onChange={(event) =>
-                  updateField(
-                    "preferredLocation",
-                    event.target.value
-                  )
-                }
-              >
-
-                <option value="">
-                  Select location
-                </option>
-
-                <option value="Mumbai">
-                  Mumbai
-                </option>
-
-                <option value="Delhi">
-                  Delhi
-                </option>
-
-                <option value="Bangalore">
-                  Bangalore
-                </option>
-
-                <option value="Hyderabad">
-                  Hyderabad
-                </option>
-
-                <option value="Pune">
-                  Pune
-                </option>
-
-                <option value="Remote">
-                  Remote
-                </option>
-
-              </select>
+                readOnly
+                placeholder="Resume"
+              />
 
             </div>
 
           </div>
-
         </div>
 
 
@@ -798,7 +757,12 @@ export default function Profile() {
           </h3>
 
 
-          <div className="skills-input">
+          <div
+            className="skills-input"
+            style={{
+              position: "relative",
+            }}
+          >
 
             <input
               type="text"
@@ -811,7 +775,8 @@ export default function Profile() {
               onKeyDown={
                 handleSkillKeyDown
               }
-              placeholder="e.g. Python, React, SQL"
+              placeholder="Search and select a skill"
+              autoComplete="off"
             />
 
 
@@ -823,6 +788,64 @@ export default function Profile() {
             >
               Add Skill
             </button>
+
+            {skillInput.trim() && (
+
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: "110px",
+                  top: "calc(100% + 6px)",
+                  maxHeight: "220px",
+                  overflowY: "auto",
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #dcdcdc",
+                  borderRadius: "10px",
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.10)",
+                  zIndex: 100,
+                }}
+              >
+
+                {filteredSkills.length > 0 ? (
+                  filteredSkills.map((skill) => (
+                    <div
+                      key={skill}
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        handleSelectSkill(skill);
+                      }}
+                      style={{
+                        width: "100%",
+                        boxSizing: "border-box",
+                        padding: "10px 14px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        lineHeight: "1.4",
+                        color: "#222222",
+                        backgroundColor: "#ffffff",
+                        textAlign: "left",
+                      }}
+                    >
+                      {skill}
+                    </div>
+                  ))
+                ) : (
+                  <div
+                    style={{
+                      padding: "10px 14px",
+                      color: "#666666",
+                      fontSize: "14px",
+                      backgroundColor: "#ffffff",
+                    }}
+                  >
+                    No matching skill
+                  </div>
+                )}
+
+              </div>
+
+            )}
 
           </div>
 
