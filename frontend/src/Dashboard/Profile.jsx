@@ -11,6 +11,8 @@ import {
   Code,
   CheckCircle,
   X,
+  FileText,
+  Upload,
 } from "lucide-react";
 
 import {
@@ -143,6 +145,11 @@ export default function Profile() {
   const [saving, setSaving] =
     useState(false);
 
+  const [resumeUploading, setResumeUploading] =
+    useState(false);
+
+  const [resumeFileName, setResumeFileName] =
+    useState("");
 
   const [error, setError] =
     useState("");
@@ -238,6 +245,9 @@ export default function Profile() {
           result?.data || {};
 
 
+        const existingResume =
+          student.resume || student.resumeUrl || "";
+
         setProfile({
           fullName:
             student.fullName || "",
@@ -252,13 +262,19 @@ export default function Profile() {
             student.preferredRole || "",
 
           resume:
-            student.resume || student.resumeUrl || "",
+            existingResume,
 
           skills:
             Array.isArray(student.skills)
               ? student.skills
               : [],
         });
+
+        if (existingResume) {
+          setResumeFileName(
+            existingResume.split("/").pop() || "Resume uploaded"
+          );
+        }
 
       } catch (err) {
 
@@ -397,6 +413,123 @@ export default function Profile() {
 
     }
 
+  };
+
+
+  // ==========================================================
+  // Resume Upload
+  // ==========================================================
+
+  const handleResumeUpload = async (event) => {
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    const fileName = file.name.toLowerCase();
+    const isAllowedExtension =
+      fileName.endsWith(".pdf") || fileName.endsWith(".docx");
+
+    if (!allowedTypes.includes(file.type) && !isAllowedExtension) {
+      setError("Only PDF and DOCX resume files are allowed.");
+      event.target.value = "";
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Resume file must be 5 MB or smaller.");
+      event.target.value = "";
+      return;
+    }
+
+    try {
+      setResumeUploading(true);
+      setError("");
+
+      const token = getToken();
+
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("resume", file);
+
+      const response = await fetch(
+        `${API_BASE_URL}/students/profile/resume`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result?.success) {
+        throw new Error(
+          result?.message ||
+            "Failed to upload resume."
+        );
+      }
+
+      const uploadData = result?.data || {};
+      const updatedStudent = uploadData?.student;
+
+      setResumeFileName(file.name);
+
+      setProfile((previous) => ({
+        ...previous,
+        resume:
+          uploadData?.resumeUrl ||
+          updatedStudent?.resumeUrl ||
+          file.name,
+        skills: Array.isArray(uploadData?.skills)
+          ? uploadData.skills
+          : Array.isArray(updatedStudent?.skills)
+            ? updatedStudent.skills
+            : previous.skills,
+      }));
+
+      if (updatedStudent) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(updatedStudent)
+        );
+      }
+
+      const extractedCount = Array.isArray(
+        uploadData?.extractedSkills
+      )
+        ? uploadData.extractedSkills.length
+        : 0;
+
+      setError(
+        extractedCount > 0
+          ? `Resume uploaded successfully. ${extractedCount} matching skill${extractedCount === 1 ? "" : "s"} added.`
+          : "Resume uploaded successfully. No matching skills were found in the Skills section."
+      );
+
+    } catch (err) {
+      console.error("Resume upload error:", err);
+
+      setError(
+        err?.message ||
+          "Unable to upload resume."
+      );
+    } finally {
+      setResumeUploading(false);
+      event.target.value = "";
+    }
   };
 
 
@@ -839,14 +972,54 @@ export default function Profile() {
                 Resume
               </label>
 
-              <input
-                type="text"
-                value={
-                  profile.resume || ""
-                }
-                readOnly
-                placeholder="Resume"
-              />
+              <div className="resume-upload-box">
+
+                <div className="resume-upload-left">
+
+                  <div className="resume-icon">
+                    <FileText size={25} strokeWidth={2} />
+                  </div>
+
+                  <div className="resume-info">
+
+                    <div className="resume-file-name">
+                      {resumeUploading
+                        ? "Uploading resume..."
+                        : resumeFileName || "No file chosen"}
+                    </div>
+
+                    <div className="resume-file-hint">
+                      PDF or DOCX • Maximum 5 MB
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <label
+                  htmlFor="resume-upload"
+                  className={`resume-upload-btn${
+                    resumeUploading ? " resume-upload-disabled" : ""
+                  }`}
+                >
+                  <Upload size={21} strokeWidth={2.2} />
+                  {resumeUploading
+                    ? "Uploading..."
+                    : "Choose File"}
+                </label>
+
+
+                <input
+                  id="resume-upload"
+                  type="file"
+                  accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  onChange={handleResumeUpload}
+                  disabled={resumeUploading}
+                  className="resume-file-input"
+                />
+
+              </div>
 
             </div>
 
