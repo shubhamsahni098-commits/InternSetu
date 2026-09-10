@@ -45,6 +45,9 @@ export default function Profile() {
   const [skillInput, setSkillInput] =
     useState("");
 
+  const [roleInput, setRoleInput] =
+    useState("");
+
 
   // ==========================================================
   // PREDEFINED DATASET SKILLS (162 UNIQUE SKILLS)
@@ -88,6 +91,48 @@ export default function Profile() {
     "Marketing Strategy", "Content Writing", "Public Relations", "Canva",
     "Generative AI Tools", "Attention to Detail", "Email Management", "Sales Strategy",
     "Artificial intelligence", "Computer skills"
+  ];
+
+  // ==========================================================
+  // PREDEFINED DATASET NON-TECHNICAL ROLES (26 UNIQUE ROLES)
+  // ==========================================================
+
+  const PREDEFINED_ROLES = [
+    // Technical roles
+    "Software Developer",
+    "Data Analyst",
+    "Data Scientist",
+    "AI / ML Engineer",
+    "Web Developer",
+    "Backend Developer",
+
+    // Non-technical roles from the dataset
+    "Business Development (Sales)",
+    "Campus Ambassador",
+    "Content Writing",
+    "Content and Social Media Marketing",
+    "Corporate Sales",
+    "Customer Service/Customer Support",
+    "Data Entry",
+    "Digital Marketing",
+    "Event Management",
+    "Field Sales",
+    "Human Resources (HR)",
+    "Influencer Marketing",
+    "Inside Sales",
+    "Law/Legal",
+    "Lead Generation",
+    "Marketing",
+    "Media & Public Relations (PR)",
+    "Operations",
+    "Recruitment",
+    "Sales and Marketing",
+    "Search Engine Optimization (SEO)",
+    "Social Media Marketing",
+    "Talent Acquisition",
+    "Telecalling",
+    "Video Editing/Making",
+    "sales",
   ];
 
 
@@ -247,6 +292,31 @@ export default function Profile() {
       existingSkill.toLowerCase() === skill.toLowerCase()
     )
   );
+
+  const filteredRoles = PREDEFINED_ROLES.filter((role) =>
+    role.toLowerCase().includes(roleInput.trim().toLowerCase())
+  );
+
+  const handleSelectRole = (role) => {
+    updateField("preferredRole", role);
+    setRoleInput("");
+  };
+
+
+  const handleRoleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      const typedRole = roleInput.trim();
+      const matchedRole = PREDEFINED_ROLES.find(
+        (role) => role.toLowerCase() === typedRole.toLowerCase()
+      );
+
+      if (matchedRole) {
+        handleSelectRole(matchedRole);
+      }
+    }
+  };
 
 
   const handleSelectSkill = (skill) => {
@@ -657,7 +727,10 @@ export default function Profile() {
 
             {/* Preferred Role */}
 
-            <div className="profile-field">
+            <div
+              className="profile-field"
+              style={{ position: "relative" }}
+            >
 
               <label>
 
@@ -667,47 +740,86 @@ export default function Profile() {
 
               </label>
 
-              <select
-                value={
-                  profile.preferredRole
-                }
-                onChange={(event) =>
-                  updateField(
-                    "preferredRole",
-                    event.target.value
-                  )
-                }
-              >
+              <input
+                type="text"
+                value={roleInput}
+                onChange={(event) => {
+                  const value = event.target.value;
+                  setRoleInput(value);
+                  if (!value.trim()) {
+                    updateField("preferredRole", "");
+                  }
+                }}
+                onKeyDown={handleRoleKeyDown}
+                placeholder="Search and select a role"
+                autoComplete="off"
+              />
 
-                <option value="">
-                  Select preferred role
-                </option>
+              {roleInput.trim() && (
+                <div
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    top: "calc(100% + 6px)",
+                    maxHeight: "220px",
+                    overflowY: "auto",
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #dcdcdc",
+                    borderRadius: "10px",
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.10)",
+                    zIndex: 100,
+                  }}
+                >
+                  {filteredRoles.length > 0 ? (
+                    filteredRoles.map((role) => (
+                      <div
+                        key={role}
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                          handleSelectRole(role);
+                        }}
+                        style={{
+                          width: "100%",
+                          boxSizing: "border-box",
+                          padding: "10px 14px",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                          lineHeight: "1.4",
+                          color: "#222222",
+                          backgroundColor: "#ffffff",
+                          textAlign: "left",
+                        }}
+                      >
+                        {role}
+                      </div>
+                    ))
+                  ) : (
+                    <div
+                      style={{
+                        padding: "10px 14px",
+                        color: "#666666",
+                        fontSize: "14px",
+                        backgroundColor: "#ffffff",
+                      }}
+                    >
+                      No matching role
+                    </div>
+                  )}
+                </div>
+              )}
 
-                <option value="Software Developer">
-                  Software Developer
-                </option>
-
-                <option value="Data Analyst">
-                  Data Analyst
-                </option>
-
-                <option value="Data Scientist">
-                  Data Scientist
-                </option>
-
-                <option value="AI / ML Engineer">
-                  AI / ML Engineer
-                </option>
-
-                <option value="Web Developer">
-                  Web Developer
-                </option>
-
-                <option value="Backend Developer">
-                  Backend Developer
-                </option>
-
-              </select>
+              {profile.preferredRole && !roleInput && (
+                <div
+                  style={{
+                    marginTop: "8px",
+                    fontSize: "13px",
+                    color: "#555555",
+                  }}
+                >
+                  Selected: {profile.preferredRole}
+                </div>
+              )}
 
             </div>
 
