@@ -473,12 +473,22 @@ export default function Profile() {
         }
       );
 
-      const result = await response.json();
+      // Safely parse JSON so a backend 404/500 HTML response does not
+      // hide the real HTTP status behind a JSON parse error.
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error(
+          `Resume upload failed (${response.status} ${response.statusText}). ` +
+            "Please check the backend route and CORS configuration."
+        );
+      }
 
       if (!response.ok || !result?.success) {
         throw new Error(
           result?.message ||
-            "Failed to upload resume."
+            `Failed to upload resume (${response.status}).`
         );
       }
 
@@ -487,18 +497,72 @@ export default function Profile() {
 
       setResumeFileName(file.name);
 
-      setProfile((previous) => ({
-        ...previous,
-        resume:
-          uploadData?.resumeUrl ||
-          updatedStudent?.resumeUrl ||
-          file.name,
-        skills: Array.isArray(uploadData?.skills)
-          ? uploadData.skills
-          : Array.isArray(updatedStudent?.skills)
-            ? updatedStudent.skills
-            : previous.skills,
-      }));
+      // ------------------------------------------------------
+      // Resume skills + manually selected skills -> Final Skills
+      // ------------------------------------------------------
+      // Backend may return extracted skills in `extractedSkills`,
+      // `skills`, or inside `student.skills`. We merge all of them
+      // with the skills already selected manually by the user.
+      const extractedSkills = Array.isArray(uploadData?.extractedSkills)
+        ? uploadData.extractedSkills
+        : [];
+
+      const backendSkills = Array.isArray(uploadData?.skills)
+        ? uploadData.skills
+        : [];
+
+      const studentSkills = Array.isArray(updatedStudent?.skills)
+        ? updatedStudent.skills
+        : [];
+
+      setProfile((previous) => {
+        const manualSkills = Array.isArray(previous.skills)
+          ? previous.skills
+          : [];
+
+        const allSkills = [
+          ...manualSkills,
+          ...extractedSkills,
+          ...backendSkills,
+          ...studentSkills,
+        ];
+
+        // Convert extracted names such as `react.js` to the canonical
+        // name already used by the predefined skills list when possible.
+        const canonicalSkills = allSkills
+          .filter(
+            (skill) =>
+              typeof skill === "string" && skill.trim()
+          )
+          .map((skill) => {
+            const cleanSkill = skill.trim();
+            const predefinedMatch = PREDEFINED_SKILLS.find(
+              (predefinedSkill) =>
+                predefinedSkill.toLowerCase() === cleanSkill.toLowerCase()
+            );
+            return predefinedMatch || cleanSkill;
+          });
+
+        // Remove duplicates case-insensitively while keeping the first
+        // occurrence and its display name.
+        const finalSkills = [
+          ...new Map(
+            canonicalSkills.map((skill) => [
+              skill.toLowerCase(),
+              skill,
+            ])
+          ).values(),
+        ];
+
+        return {
+          ...previous,
+          resume:
+            uploadData?.resumeUrl ||
+            updatedStudent?.resumeUrl ||
+            file.name,
+          skills: finalSkills,
+        };
+      });
 
       if (updatedStudent) {
         localStorage.setItem(
