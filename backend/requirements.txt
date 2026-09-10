@@ -4,3 +4,6 @@ requests
 sentence-transformers
 scikit-learn
 gunicorn
+google-genai
+python-dotenv
+flask-cors
