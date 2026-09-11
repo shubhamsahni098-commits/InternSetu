@@ -498,7 +498,7 @@ export default function Preferences() {
 
               </div>
 
-            </label>
+            </label> 
 
 
             <label className="option-card">
@@ -533,7 +533,7 @@ export default function Preferences() {
             </label>
 
 
-            <label className="option-card">
+            {/*<label className="option-card">
 
               <input
                 type="radio"
@@ -562,7 +562,7 @@ export default function Preferences() {
 
               </div>
 
-            </label>
+            </label>*/}
 
 
             <label className="option-card">
@@ -861,7 +861,7 @@ export default function Preferences() {
             Domain
         =================================================== */}
 
-        <div className="preference-section">
+       {/* <div className="preference-section">
 
           <h3>
 
@@ -913,7 +913,7 @@ export default function Preferences() {
 
           </div>
 
-        </div>
+        </div>*/}
 
 
         {/* ===================================================

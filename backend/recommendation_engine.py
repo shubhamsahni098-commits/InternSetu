@@ -637,15 +637,14 @@ def calculate_interest_scores(
 # ============================================================
 
 FINAL_SCORE_WEIGHTS = {
-    "skill_match_score_100": 0.20,
-    "role_similarity_100": 0.40,
-    "domain_match_100": 0.15,
-    "interest_score_100": 0.15,
-    "work_mode_match_100": 0.10,
-    "location_score_100": 0.05,
-    "stipend_score_100": 0.05,
-    "duration_score_100": 0.05,
-    "internship_type_score_100": 0.05
+    "skill_match_score_100": 0.20,       # 20%
+    "role_similarity_100": 0.40,         # 40%
+    "interest_score_100": 0.20,          # 20%
+    "work_mode_match_100": 0.10,         # 10%
+    "location_score_100": 0.10,          # 10%
+    "stipend_score_100": 0.05,           # 5%
+    "duration_score_100": 0.05,          # 5%
+    "internship_type_score_100": 0.10    # 10%
 }
 
 
