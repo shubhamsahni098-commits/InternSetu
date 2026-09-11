@@ -1788,6 +1788,16 @@ def recommend_internships(
                     "role_similarity_100"
                 ),
 
+            "skill_match_score_100":
+                internship.get(
+                    "skill_match_score_100"
+                ),
+
+            "interest_score_100":
+                internship.get(
+                    "interest_score_100"
+                ),
+
             "recommendation_reasons":
                 generate_reasons(
                     internship
