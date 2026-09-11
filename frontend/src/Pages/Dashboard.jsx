@@ -31,10 +31,10 @@ export default function Dashboard() {
   return (
     <div className="dashboard-layout">
 
-      {/* Sidebar */}
+      
       <DashboardSidebar />
 
-      {/* Right Side */}
+     
       <main className="dashboard-content">
         <Outlet />
       </main>

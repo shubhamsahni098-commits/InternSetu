@@ -39,11 +39,6 @@ export default function App() {
 
       <Routes>
 
-
-        {/* ====================================================
-            HOME
-        ==================================================== */}
-
         <Route
           path="/"
           element={
@@ -59,19 +54,13 @@ export default function App() {
         />
 
 
-        {/* ====================================================
-            LOGIN
-        ==================================================== */}
-
         <Route
           path="/login"
           element={<Login />}
         />
 
 
-        {/* ====================================================
-            REGISTER
-        ==================================================== */}
+        
 
         <Route
           path="/register"
@@ -79,9 +68,7 @@ export default function App() {
         />
 
 
-        {/* ====================================================
-            ABOUT
-        ==================================================== */}
+        
 
         <Route
           path="/about"
@@ -89,16 +76,14 @@ export default function App() {
         />
 
 
-        {/* ====================================================
-            STUDENT DASHBOARD
-        ==================================================== */}
+        
 
         <Route
           path="/dashboard"
           element={<Dashboard />}
         >
 
-          {/* /dashboard */}
+          
 
           <Route
             index
@@ -106,7 +91,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/profile */}
+          
 
           <Route
             path="profile"
@@ -114,7 +99,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/preferences */}
+          
 
           <Route
             path="preferences"
@@ -122,7 +107,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/internships */}
+          
 
           <Route
             path="internships"
@@ -130,7 +115,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/internships/:id */}
+          
 
           <Route
             path="internships/:id"
@@ -138,7 +123,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/internships/all */}
+         
 
           <Route
             path="internships/all"
@@ -146,7 +131,7 @@ export default function App() {
           />
 
 
-          {/* /dashboard/applications */}
+          
 
           <Route
             path="applications"
@@ -156,9 +141,7 @@ export default function App() {
         </Route>
 
 
-        {/* ====================================================
-            COMPANY
-        ==================================================== */}
+        
 
         <Route
           path="/company/register"
@@ -181,9 +164,7 @@ export default function App() {
       </Routes>
 
 
-      {/* ======================================================
-          GLOBAL BOT
-      ====================================================== */}
+      
 
       <DishaBot />
 

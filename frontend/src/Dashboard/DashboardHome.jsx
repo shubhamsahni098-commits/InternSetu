@@ -23,9 +23,7 @@ export default function DashboardHome() {
   const navigate = useNavigate();
 
 
-  // ==========================================================
-  // Student
-  // ==========================================================
+  
 
   const [studentName, setStudentName] =
     useState("Student");
@@ -39,9 +37,9 @@ export default function DashboardHome() {
   const [loadingCompletion, setLoadingCompletion] =
     useState(true);
 
-  // ==========================================================
+ 
   // Recently Viewed Internships
-  // ==========================================================
+  
 
   const [
     recentlyViewedInternships,
@@ -68,7 +66,8 @@ export default function DashboardHome() {
             ? parsed.slice(0, 3)
             : []
         );
-      } catch (error) {
+      } 
+      catch (error) {
         console.error(
           "Failed to load recently viewed internships:",
           error
@@ -98,7 +97,7 @@ export default function DashboardHome() {
   }, []);
 
 
-  // ==========================================================
+  
   // Get token
   // ==========================================================
 
@@ -113,9 +112,9 @@ export default function DashboardHome() {
   };
 
 
-  // ==========================================================
+  
   // Fetch logged-in student + calculate Profile Completion
-  // ==========================================================
+  
 
   useEffect(() => {
 

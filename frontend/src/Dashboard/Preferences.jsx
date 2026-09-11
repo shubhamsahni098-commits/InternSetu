@@ -35,8 +35,6 @@ export default function Preferences() {
 
   const [preferences, setPreferences] = useState({
 
-    interest: "",
-
     internshipType: "",
 
     workMode: "",
@@ -451,74 +449,6 @@ export default function Preferences() {
       ===================================================== */}
 
       <div className="preferences-card">
-
-
-        {/* ===================================================
-            Area of Interest
-        =================================================== */}
-
-        <div className="preference-section">
-
-          <h3>
-            <BriefcaseBusiness size={20} />
-            Area of Interest
-          </h3>
-
-          <div className="preference-grid">
-
-            <div className="preference-field">
-
-              <label>
-                What are you interested in?
-              </label>
-
-              <select
-                value={preferences.interest}
-                onChange={(event) =>
-                  updatePreference(
-                    "interest",
-                    event.target.value
-                  )
-                }
-              >
-                <option value="">
-                  Select interest
-                </option>
-
-                <option value="Software Development">
-                  Software Development
-                </option>
-
-                <option value="Artificial Intelligence">
-                  Artificial Intelligence
-                </option>
-
-                <option value="Data Science">
-                  Data Science
-                </option>
-
-                <option value="Web Development">
-                  Web Development
-                </option>
-
-                <option value="Cyber Security">
-                  Cyber Security
-                </option>
-
-                <option value="Cloud Computing">
-                  Cloud Computing
-                </option>
-
-                <option value="UI/UX Design">
-                  UI/UX Design
-                </option>
-              </select>
-
-            </div>
-
-          </div>
-
-        </div>
 
 
         {/* ===================================================
